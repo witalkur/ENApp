@@ -19,7 +19,7 @@ from mainApp import views as today_views
 from mainApp.views import (BendTestUpdateView, DelaminationTestUpdateView, ShearTestUpdateView, BendTestDeleteView, 
 DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, NonconformityDeleteView, NonconformitiesView,
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
-PersonDetailView)
+PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView,)
 
 
 urlpatterns = [
@@ -39,10 +39,15 @@ urlpatterns = [
     path('nonconformity/<int:pk>/update/',  NonconformityUpdateView.as_view(), name='nonconformity-update'),
     path('nonconformity/<int:pk>/delete/', NonconformityDeleteView.as_view(), name='nonconformity-delete'),
     path('nonconformity/detail/<int:pk>', NonconformityDetailView.as_view(), name='nonconformity'),
-    path('nonconformity/create', NonconformityCreateView, name='nonconformity-create'),
+    path('nonconformity/create', today_views.NonconformityCreateView, name='nonconformity-create'),
     path('persons/', today_views.PersonsView, name='persons'),
     path('person/<int:pk>/update/', PersonUpdateView.as_view(), name='person-update'),
     path('person/<int:pk>/delete/', PersonDeleteView.as_view(), name='person-delete'),
     path('person/detail/<int:pk>', PersonDetailView.as_view(), name='person'),
-    path('person/create', PersonCreateView, name='person-create'),
+    path('person/create', today_views.PersonCreateView, name='person-create'),
+    path('tools/', today_views.ToolsView, name='tools'),
+    path('tool/<int:pk>/update/', ToolUpdateView.as_view(), name='tool-update'),
+    path('tool/<int:pk>/delete/', ToolDeleteView.as_view(), name='tool-delete'),
+    path('tool/detail/<int:pk>', ToolDetailView.as_view(), name='tool'),
+    path('tool/create', today_views.ToolCreateView, name='tool-create'),
     ]

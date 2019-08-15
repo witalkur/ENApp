@@ -1,5 +1,5 @@
 from django import forms
-from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person
+from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
 from bootstrap_datepicker_plus import DatePickerInput
 
@@ -62,3 +62,11 @@ class PersonForm(forms.ModelForm):
 	class Meta:
 		model = Person
 		fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
+
+class ToolForm(forms.ModelForm):
+	calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	next_calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+
+	class Meta:
+		model = Tool
+		fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]

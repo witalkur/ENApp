@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm
+from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm, ToolForm
 from django.contrib import messages
-from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person
+from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
 from django.views.generic import UpdateView, DeleteView, ListView, DetailView, CreateView
 
@@ -198,3 +198,42 @@ def PersonCreateView(request):
 
 class PersonDetailView(DetailView):
 	model = Person
+
+
+def ToolsView(request):
+	tools = Tool.objects.all().order_by('name')
+	return render(request, 'mainApp/tools.html', {'tools': tools,})
+
+class ToolUpdateView(UpdateView):
+	model = Tool
+	success_url = '/tools'
+	template_name = 'mainApp/tool_update.html'
+	fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
+
+	def post(self, request, *args, **kwargs):
+		messages.success(request, f'Информация сохранена!')
+		return super().post(request, *args, **kwargs)
+
+
+class ToolDeleteView(DeleteView):
+	model = Tool
+	success_url = '/tools'
+	template_name = 'mainApp/tool_confirm_delete.html'
+	
+	def post(self, request, *args, **kwargs):
+		messages.success(request, f'Данные удалены!')
+		return super().post(request, *args, **kwargs)
+
+def ToolCreateView(request):
+	if request.method == 'POST':
+		form = ToolForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, f'Данные добавлены!')
+			return redirect('tools')
+	else:
+		form = ToolForm()
+	return render(request, 'mainApp/tool_form.html', {'form': form,})
+
+class ToolDetailView(DetailView):
+	model = Tool

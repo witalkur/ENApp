@@ -3,7 +3,6 @@ from django.db import models
 wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 
-
 class Person(models.Model):
 	name = models.CharField(max_length=100)
 	position = models.CharField(max_length=100)
@@ -13,7 +12,6 @@ class Person(models.Model):
 
 	def __str__(self):
 		return self.name
-
 
 class TestLamella(models.Model):
 	test_date = models.DateField()
@@ -143,3 +141,6 @@ class Tool(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+
