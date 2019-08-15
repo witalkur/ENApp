@@ -1,0 +1,25 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+
+{% block content %} 
+{% for nonconformity in nonconformities %}
+<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity-create' %}">Добавить новое несоотвествие</a>
+<div class="content-section tabletoday">
+    <table>
+        <tr>
+            <th>{{ nonconformity.nonconformity_date|date:"m:d:Y" }}</th>
+            <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity' nonconformity.id %}">{{ nonconformity.name }}</a></th>
+            <th>{{ nonconformity.resp_person.name }}</th>
+            <th></th>
+            <th>
+                <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity-update' nonconformity.id %}">Редактировать</a>
+            </th>
+             <th>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nonconformity-delete' nonconformity.id %}">Удалить</a>
+            </th>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+{% endblock content %}

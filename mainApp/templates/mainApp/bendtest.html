@@ -1,0 +1,24 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}	
+			
+	<div class="content-section tabletoday">
+        <table>
+            <div class="border-bottom">
+                <h2>Добавить новый тест на изгиб</h2> 
+                    <form method="POST" action="{% url 'bendtest' %}">
+                        {% csrf_token %}
+                    <th>  
+                        {{ form|crispy }} 
+                    </th>
+                    <th>
+                        <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Добавить</button>
+                    </th>
+                    </form>  
+        </table>
+    </div>
+{% endblock content %}
