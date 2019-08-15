@@ -8,6 +8,8 @@ class Person(models.Model):
 	name = models.CharField(max_length=100)
 	position = models.CharField(max_length=100)
 	training_date = models.DateField()
+	next_training_date = models.DateField()
+	comment = models.TextField(null=True)
 
 	def __str__(self):
 		return self.name

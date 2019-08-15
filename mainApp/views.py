@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm
+from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm
 from django.contrib import messages
-from .models import TestLamella, TestDelamination, TestShear, Nonconformity
+from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person
 import datetime
 from django.views.generic import UpdateView, DeleteView, ListView, DetailView, CreateView
 
@@ -143,6 +143,10 @@ class NonconformityDeleteView(DeleteView):
 	model = Nonconformity
 	success_url = '/nonconformities'
 	template_name = 'mainApp/nonconformity_confirm_delete.html'
+	
+	def post(self, request, *args, **kwargs):
+		messages.success(request, f'Несоответствие удалено!')
+		return super().post(request, *args, **kwargs)	
 
 class NonconformityDetailView(DetailView):
 	model = Nonconformity
@@ -157,3 +161,40 @@ def NonconformityCreateView(request):
 	else:
 		form = NonconformityForm()
 	return render(request, 'mainApp/nonconformity_form.html', {'form': form,})
+
+def PersonsView(request):
+	persons = Person.objects.all().order_by('name')
+	return render(request, 'mainApp/persons.html', {'persons': persons,})
+
+class PersonUpdateView(UpdateView):
+	model = Person
+	success_url = '/persons'
+	template_name = 'mainApp/person_update.html'
+	fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
+
+	def post(self, request, *args, **kwargs):
+		messages.success(request, f'Данные о сотруднике сохранены!')
+		return super().post(request, *args, **kwargs)
+
+class PersonDeleteView(DeleteView):
+	model = Person
+	success_url = '/persons'
+	template_name = 'mainApp/person_confirm_delete.html'
+	
+	def post(self, request, *args, **kwargs):
+		messages.success(request, f'Данные о сотруднике удалены!')
+		return super().post(request, *args, **kwargs)
+
+def PersonCreateView(request):
+	if request.method == 'POST':
+		form = PersonForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, f'Данные о новом сотруднике добавлены!')
+			return redirect('persons')
+	else:
+		form = PersonForm()
+	return render(request, 'mainApp/person_form.html', {'form': form,})
+
+class PersonDetailView(DetailView):
+	model = Person

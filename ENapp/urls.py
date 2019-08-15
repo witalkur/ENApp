@@ -18,7 +18,9 @@ from django.urls import path
 from mainApp import views as today_views
 from mainApp.views import (BendTestUpdateView, DelaminationTestUpdateView, ShearTestUpdateView, BendTestDeleteView, 
 DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, NonconformityDeleteView, NonconformitiesView,
-NonconformityDetailView, NonconformityCreateView)
+NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
+PersonDetailView)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,4 +40,9 @@ urlpatterns = [
     path('nonconformity/<int:pk>/delete/', NonconformityDeleteView.as_view(), name='nonconformity-delete'),
     path('nonconformity/detail/<int:pk>', NonconformityDetailView.as_view(), name='nonconformity'),
     path('nonconformity/create', NonconformityCreateView, name='nonconformity-create'),
-]
+    path('persons/', today_views.PersonsView, name='persons'),
+    path('person/<int:pk>/update/', PersonUpdateView.as_view(), name='person-update'),
+    path('person/<int:pk>/delete/', PersonDeleteView.as_view(), name='person-delete'),
+    path('person/detail/<int:pk>', PersonDetailView.as_view(), name='person'),
+    path('person/create', PersonCreateView, name='person-create'),
+    ]

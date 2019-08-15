@@ -3,8 +3,8 @@
 {% load bootstrap4 %}
 
 {% block content %} 
-{% for nonconformity in nonconformities %}
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity-create' %}">Добавить новое несоотвествие</a>
+{% for nonconformity in nonconformities %}
 <div class="content-section tabletoday">
     <table>
         <tr>

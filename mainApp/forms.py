@@ -1,5 +1,5 @@
 from django import forms
-from .models import TestLamella, TestDelamination, TestShear, Nonconformity
+from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person
 import datetime
 from bootstrap_datepicker_plus import DatePickerInput
 
@@ -54,3 +54,11 @@ class NonconformityForm(forms.ModelForm):
 	class Meta:
 		model = Nonconformity
 		fields = ['name', 'description', 'resp_person', 'nonconformity_date',]
+
+class PersonForm(forms.ModelForm):
+	training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	next_training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+
+	class Meta:
+		model = Person
+		fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]

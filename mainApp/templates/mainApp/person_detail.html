@@ -1,0 +1,12 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% block content %}
+  <div class="media-body content-section tabletoday">
+    <h2 class="article-title">{{ object.name }}</h2>
+    <h3 class="article-title">{{ object.position }}</h3>
+    <small class="text-muted">{{ object.trainig_date|date:"F d, Y" }}</small>
+    <small class="text-muted">{{ object.next_trainig_date|date:"F d, Y" }}</small>
+    <p class="article-content">{{ object.comment }}</p>
+  </div>
+{% endblock content %}
