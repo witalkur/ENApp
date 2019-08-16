@@ -10,7 +10,7 @@
         <table>
             <div class="border-bottom">
                 <h2>Добавить новый тест на изгиб</h2> 
-                    <form method="POST" action="{% url 'bendtest' %}">
+                    <form method="POST" action="{% url 'bendtest' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                     <th>  
                         {{ form|crispy }} 

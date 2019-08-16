@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
@@ -43,7 +44,15 @@ class TestLamella(models.Model):
 	base_fj_crash = models.IntegerField()
 	out_of_fj_crash = models.IntegerField()
 	comment = models.TextField()
-	#photo = models.FileField(upload_to='uploads/')
+	photo = models.ImageField(upload_to='uploads', blank=True)
+
+	#def save(self):
+		#super().save()
+		#img = Image.open(self.image.path)
+		#if img.height > 600 or img.width > 600:
+			#output_size = (600, 600)
+			#img.thumbnail(output_size)
+			#img.save(self.image.path)
 
 	def __str__(self):
 		return (str(self.test_number) + '  Lamellas Test')
@@ -77,7 +86,7 @@ class TestDelamination(models.Model):
 	pressure_time = models.CharField(max_length=100)
 	layer_out_percent = models.IntegerField()
 	comment = models.TextField()
-	#photo = models.FileField(upload_to='uploads/')
+	photo = models.ImageField(upload_to='uploads', blank=True)
 
 	def __str__(self):
 		return (str(self.test_number) + '  Delamination Test')
@@ -117,7 +126,7 @@ class TestShear(models.Model):
 	layer_ripped_percent_average = models.IntegerField()
 	force_crash = models.FloatField()
 	comment = models.TextField()
-	#photo = models.FileField(upload_to='uploads/')
+	photo = models.ImageField(upload_to='uploads', blank=True)
 
 	def __str__(self):
 		return (str(self.test_number) + '  Shear Test')
