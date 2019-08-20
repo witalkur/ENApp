@@ -102,6 +102,90 @@ def def_d_air_temperature():
 def def_d_wood_temperature():
 	try: return last_delamtests.wood_temperature
 	except: return None
+#lkjSDBvljbsv
+def def_sh_equipment():
+	try: return last_sheartests.equipment
+	except: return None
+
+def def_sh_glue():
+	try: return last_sheartests.glue
+	except: return None
+
+def def_sh_glue_harderner_amount():
+	try: return last_sheartests.glue_harderner_amount
+	except: return None
+
+def def_sh_test_number():
+	try: return (int(last_sheartests.test_number) + 1)
+	except: return None
+
+def def_sh_test_time():
+	try: return last_sheartests.test_time
+	except: return None
+
+def def_sh_type_of_wood():
+	try: return last_sheartests.type_of_wood
+	except: return None
+
+def def_sh_glue_pressure():
+	try: return last_sheartests.glue_pressure
+	except: return None
+
+def def_sh_pressure_time():
+	try: return last_sheartests.pressure_time
+	except: return None
+
+def def_sh_glue_use_amount():
+	try: return last_sheartests.glue_use_amount
+	except: return None
+
+def def_sh_glue_batch_number():
+	try: return last_sheartests.glue_batch_number
+	except: return None
+
+def def_sh_air_moisture():
+	try: return last_sheartests.air_moisture
+	except: return None
+
+def def_sh_timber_params():
+	try: return last_sheartests.timber_params
+	except: return None
+
+def def_sh_sorter_person():
+	try: return last_sheartests.sorter_person
+	except: return None
+
+def def_sh_fj_person():
+	try: return last_sheartests.fj_person
+	except: return None
+
+def def_sh_glue_person():
+	try: return last_sheartests.glue_person
+	except: return None
+
+def def_sh_marking_person():
+	try: return last_sheartests.marking_person
+	except: return None
+	
+def def_sh_glue_expiration_date():
+	try: return last_sheartests.glue_expiration_date
+	except: return None
+
+def def_sh_wood_moisture():
+	try: return last_sheartests.wood_moisture
+	except: return None
+
+def def_sh_glue_temperature():
+	try: return last_sheartests.glue_temperature
+	except: return None
+
+def def_sh_air_temperature():
+	try: return last_sheartests.air_temperature
+	except: return None
+
+def def_sh_wood_temperature():
+	try: return last_sheartests.wood_temperature
+	except: return None	
 
 def def_bt_equipment():
 	try: return last_bendtests.equipment
@@ -211,7 +295,7 @@ class Person(models.Model):
 
 class TestLamella(models.Model):
 	test_date = models.DateField()
-	test_time = models.TimeField(blank=True, default=def_bt_test_time)
+	test_time = models.TimeField(blank=True, null=True, default=def_bt_test_time)
 	test_number = models.IntegerField(default=def_bt_test_number)
 	equipment = models.CharField(max_length=100, default=def_bt_equipment)
 	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_bt_type_of_wood)
@@ -229,14 +313,14 @@ class TestLamella(models.Model):
 	lamellas_left_moisture = models.IntegerField(default=def_bt_lamellas_left_moisture)
 	lamellas_right_moisture = models.IntegerField(default=def_bt_lamellas_right_moisture)
 	glue_pressure = models.FloatField(default=def_bt_glue_pressure)
-	pressure_time = models.FloatField(blank=True, default=def_bt_pressure_time)
+	pressure_time = models.FloatField(blank=True, null=True, default=def_bt_pressure_time)
 	glue_use_amount = models.IntegerField(default=def_bt_glue_use_amount)
 	glue_batch_number = models.CharField(max_length=100, default=def_bt_glue_batch_number)
 	glue_expiration_date = models.DateField()
 	lamellas_param = models.CharField(max_length=100, default=def_bt_lamellas_param)
 	lamellas_took_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestLamella_took_person', default=def_bt_lamellas_took_person)
 	force_crash = models.FloatField()
-	time_of_testing = models.IntegerField(blank=True)
+	time_of_testing = models.IntegerField(blank=True, null=True)
 	lamellas_strength = models.FloatField()
 	passed = models.BooleanField(default=False)
 	by_fj_crash = models.IntegerField()
@@ -264,7 +348,7 @@ last_bendtests = TestLamella.objects.all().order_by('-test_date').first()
 
 class TestDelamination(models.Model):
 	test_date = models.DateField()
-	test_time = models.TimeField(blank=True, default=def_d_test_time)
+	test_time = models.TimeField(blank=True, null=True, default=def_d_test_time)
 	test_number = models.IntegerField(default=def_d_test_number)
 	equipment = models.CharField(max_length=100, default=def_d_equipment)
 	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_d_type_of_wood)
@@ -278,7 +362,7 @@ class TestDelamination(models.Model):
 	glue_harderner_amount = models.CharField(max_length=100, blank=True, default=def_d_glue_harderner_amount)
 	glue_temperature = models.IntegerField(blank=True, null=True, default=def_d_glue_temperature)
 	air_temperature = models.IntegerField(default=def_d_air_temperature)
-	wood_temperature = models.IntegerField(blank=True, default=def_d_wood_temperature)
+	wood_temperature = models.IntegerField(blank=True, null=True, default=def_d_wood_temperature)
 	glue = models.CharField(max_length=100, default=def_d_glue)
 	glue_batch_number = models.CharField(max_length=100, default=def_d_glue_batch_number)
 	glue_expiration_date = models.DateField()
@@ -287,12 +371,12 @@ class TestDelamination(models.Model):
 	sample_length = models.FloatField()
 	glue_use_amount = models.IntegerField(default=def_d_glue_use_amount)
 	glue_pressure = models.FloatField(default=def_d_glue_pressure)
-	start_glue_time = models.TimeField(blank=True)
-	end_glue_time = models.TimeField(blank=True)
-	pressure_time = models.IntegerField(blank=True)
+	start_glue_time = models.TimeField(blank=True, null=True)
+	end_glue_time = models.TimeField(blank=True, null=True)
+	pressure_time = models.IntegerField(blank=True, null=True)
 	layer_out_percent = models.IntegerField()
 	passed = models.BooleanField(default=False)
-	comment = models.TextField(blank=True)
+	comment = models.TextField(blank=True, null=True)
 	photo = models.ImageField(upload_to='uploads', blank=True)
 
 	def __str__(self):
@@ -302,38 +386,38 @@ last_delamtests = TestDelamination.objects.all().order_by('-test_date').first()
 
 class TestShear(models.Model):
 	test_date = models.DateField()
-	test_time = models.TimeField(blank=True, default=None)
-	test_number = models.IntegerField()
-	equipment = models.CharField(max_length=100)
-	type_of_wood = models.CharField(max_length=100, choices=wood_types)
-	timber_params = models.CharField(max_length=100)
-	sorter_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_sorter_person')
-	fj_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_fj_person')
-	glue_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_glue_person')
-	marking_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_marking_person')
-	air_moisture = models.IntegerField()
-	wood_moisture = models.IntegerField()
-	glue_temperature = models.IntegerField(blank=True)
-	air_temperature = models.IntegerField()
-	wood_temperature = models.IntegerField(blank=True)
-	glue = models.CharField(max_length=100)
-	glue_batch_number = models.CharField(max_length=100)
-	glue_expiration_date = models.DateField()
+	test_time = models.TimeField(blank=True, null=True, default=None)
+	test_number = models.IntegerField(default=def_sh_test_number)
+	equipment = models.CharField(max_length=100, default=def_sh_equipment)
+	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_sh_type_of_wood)
+	timber_params = models.CharField(max_length=100, default=def_sh_timber_params)
+	sorter_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_sorter_person', default=def_sh_sorter_person)
+	fj_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_fj_person', default=def_sh_fj_person)
+	glue_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_glue_person', default=def_sh_glue_person)
+	marking_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_marking_person', default=def_sh_marking_person)
+	air_moisture = models.IntegerField(default=def_sh_air_moisture)
+	wood_moisture = models.IntegerField(default=def_sh_wood_moisture)
+	glue_temperature = models.IntegerField(blank=True, null=True, default=def_sh_glue_temperature)
+	air_temperature = models.IntegerField(default=def_sh_air_temperature)
+	wood_temperature = models.IntegerField(blank=True, null=True, default=def_sh_wood_temperature)
+	glue = models.CharField(max_length=100, default=def_sh_glue)
+	glue_batch_number = models.CharField(max_length=100, default=def_sh_glue_batch_number)
+	glue_expiration_date = models.DateField(default=def_sh_glue_expiration_date)
 	sample_thickness = models.FloatField()
 	sample_width = models.FloatField()
 	sample_length = models.FloatField()
-	glue_use_amount = models.IntegerField()
-	glue_harderner_amount = models.CharField(max_length=100, blank=True)
-	glue_pressure = models.FloatField()
-	start_glue_time = models.TimeField(blank=True)
-	end_glue_time = models.TimeField(blank=True)
-	pressure_time = models.IntegerField(blank=True)
-	time_of_testing = models.IntegerField(blank=True)
-	layer_ripped_percent1 = models.IntegerField(blank=True)
-	layer_ripped_percent2 = models.IntegerField(blank=True)
-	layer_ripped_percent3 = models.IntegerField(blank=True)
-	layer_ripped_percent4 = models.IntegerField(blank=True)
-	layer_ripped_percent5 = models.IntegerField(blank=True)
+	glue_use_amount = models.IntegerField(default=def_sh_glue_use_amount)
+	glue_harderner_amount = models.CharField(max_length=100, blank=True, default=def_sh_glue_harderner_amount)
+	glue_pressure = models.FloatField(default=def_sh_glue_pressure)
+	start_glue_time = models.TimeField(blank=True, null=True)
+	end_glue_time = models.TimeField(blank=True, null=True)
+	pressure_time = models.IntegerField(blank=True, null=True)
+	time_of_testing = models.IntegerField(blank=True, null=True)
+	layer_ripped_percent1 = models.IntegerField(blank=True, null=True)
+	layer_ripped_percent2 = models.IntegerField(blank=True, null=True)
+	layer_ripped_percent3 = models.IntegerField(blank=True, null=True)
+	layer_ripped_percent4 = models.IntegerField(blank=True, null=True)
+	layer_ripped_percent5 = models.IntegerField(blank=True, null=True)
 	layer_ripped_percent_average = models.IntegerField()
 	force_crash = models.FloatField()
 	passed = models.BooleanField(default=False)
@@ -343,6 +427,7 @@ class TestShear(models.Model):
 	def __str__(self):
 		return (str(self.test_number) + '  Shear Test')
 
+last_sheartests = TestShear.objects.all().order_by('-test_date').first()
 
 class Nonconformity(models.Model):
 	name = models.CharField(max_length=100)

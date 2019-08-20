@@ -2,7 +2,7 @@ from django import forms
 from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
 from bootstrap_datepicker_plus import DatePickerInput
-from .models import def_bt_glue_expiration_date, def_d_glue_expiration_date
+from .models import def_bt_glue_expiration_date, def_d_glue_expiration_date, def_sh_glue_expiration_date
 
 
 class BendtestForm(forms.ModelForm):
@@ -32,8 +32,8 @@ class TestDelaminationForm(forms.ModelForm):
 
 
 class TestShearForm(forms.ModelForm):
-	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
+	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_sh_glue_expiration_date)
 
 	class Meta:
 		model = TestShear
