@@ -18,6 +18,7 @@ def_d_wood_temperature, def_d_air_temperature)
 wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 
+
 def def_d_equipment():
 	try: return last_delamtests.equipment
 	except: return None
@@ -27,7 +28,7 @@ def def_d_glue():
 	except: return None
 
 def def_d_glue_harderner_amount():
-	try: return last_bendtests.glue_harderner_amount
+	try: return last_delamtests.glue_harderner_amount
 	except: return None
 
 def def_d_test_number():
@@ -244,6 +245,12 @@ class TestLamella(models.Model):
 	comment = models.TextField(blank=True)
 	photo = models.ImageField(upload_to='uploads', blank=True)
 
+
+
+
+	def __str__(self):
+		return (str(self.test_number) + '  Lamellas Test')
+
 	#def save(self):
 		#super().save()
 		#img = Image.open(self.image.path)
@@ -251,9 +258,8 @@ class TestLamella(models.Model):
 			#output_size = (600, 600)
 			#img.thumbnail(output_size)
 			#img.save(self.image.path)
+last_bendtests = TestLamella.objects.all().order_by('-test_date').first()
 
-	def __str__(self):
-		return (str(self.test_number) + '  Lamellas Test')
 
 
 class TestDelamination(models.Model):
@@ -292,6 +298,7 @@ class TestDelamination(models.Model):
 	def __str__(self):
 		return (str(self.test_number) + '  Delamination Test')
 
+last_delamtests = TestDelamination.objects.all().order_by('-test_date').first()
 
 class TestShear(models.Model):
 	test_date = models.DateField()
@@ -356,5 +363,4 @@ class Tool(models.Model):
 	def __str__(self):
 		return self.name
 
-last_delamtests = TestDelamination.objects.all().order_by('-test_date').first()
-last_bendtests = TestLamella.objects.all().order_by('-test_date').first()
+

@@ -19,7 +19,7 @@ class BendtestForm(forms.ModelForm):
 		'out_of_fj_crash', 'comment', 'photo']
 
 class TestDelaminationForm(forms.ModelForm):
-	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
 	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_d_glue_expiration_date)
 
 	class Meta:
