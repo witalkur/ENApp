@@ -1,0 +1,15 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Вы вышли из аккаунта!</h2>
+        <div class="boredr-top pt-3">
+
+        <a href="{% url 'login' %}">Войти снова</a>
+
+        </div>
+{% endblock content %}
+
+{% block sidebar %}
+{% endblock sidebar %}

@@ -4,7 +4,9 @@ from django.contrib import messages
 from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
 from django.views.generic import UpdateView, DeleteView, ListView, DetailView, CreateView
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def today(request):
 	if request.method == 'POST':
 		form = DateForm(request.POST)
@@ -20,6 +22,7 @@ def today(request):
 	return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 		'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm,})
 
+@login_required
 def bendtest(request):
 	if request.method == 'POST':
 		form = BendtestForm(request.POST, request.FILES)
@@ -31,6 +34,7 @@ def bendtest(request):
 		form = BendtestForm()
 	return render(request, 'mainApp/bendtest.html', {'form': form})
 
+@login_required
 def TestDelaminationView(request):
 	if request.method == 'POST':
 		form = TestDelaminationForm(request.POST, request.FILES)
@@ -42,6 +46,7 @@ def TestDelaminationView(request):
 		form = TestDelaminationForm()
 	return render(request, 'mainApp/TestDelamination.html', {'form': form})
 
+@login_required
 def TestShearView(request):
 	if request.method == 'POST':
 		form = TestShearForm(request.POST, request.FILES)
@@ -53,6 +58,7 @@ def TestShearView(request):
 		form = TestShearForm()
 	return render(request, 'mainApp/TestShear.html', {'form': form})
 
+@login_required
 def DateTestsView(request):
 	if request.method == 'POST':
 		form = DateForm(request.POST)
@@ -64,16 +70,18 @@ def DateTestsView(request):
 			return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 				'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm})
 
+
 class BendTestUpdateView(UpdateView):
 	model = TestLamella
 	success_url = '/'
+	form_class = BendtestForm
 	template_name = 'mainApp/TestUpdate.html'
-	fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
+	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
 		'glue_harderner_amount', 'lamellas_thickness', 'lamellas_width', 'lamellas_length', 'fj_length', 'fj_path', 'fj_gap',
 		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
 		'pressure_time', 'glue_use_amount', 'glue_batch_number', 'glue_expiration_date', 'lamellas_param',
 		'lamellas_took_person', 'force_crash', 'time_of_testing', 'lamellas_strength', 'passed', 'by_fj_crash', 'base_fj_crash',
-		'out_of_fj_crash', 'comment', 'photo']
+		'out_of_fj_crash', 'comment', 'photo']'''
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на изгиб был изменен!')
@@ -82,12 +90,13 @@ class BendTestUpdateView(UpdateView):
 class DelaminationTestUpdateView(UpdateView):
 	model = TestDelamination
 	success_url = '/'
+	form_class = TestDelaminationForm
 	template_name = 'mainApp/TestUpdate.html'
-	fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
+	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
 		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_harderner_amount', 
 		'glue_temperature', 'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
 		'sample_thickness', 'sample_width', 'sample_length', 'glue_use_amount', 'glue_pressure',
-		'start_glue_time', 'end_glue_time', 'pressure_time', 'layer_out_percent', 'passed', 'comment', 'photo',]
+		'start_glue_time', 'end_glue_time', 'pressure_time', 'layer_out_percent', 'passed', 'comment', 'photo',]'''
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на деламинацию был изменен!')
@@ -97,13 +106,14 @@ class ShearTestUpdateView(UpdateView):
 	model = TestShear
 	success_url = '/'
 	template_name = 'mainApp/TestUpdate.html'
-	fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
+	form_class = TestShearForm
+	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
 		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_temperature',
 		'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
 		'sample_thickness', 'sample_width', 'sample_length', 'glue_use_amount', 'glue_harderner_amount', 'glue_pressure',
 		'start_glue_time', 'end_glue_time', 'pressure_time', 'time_of_testing', 'layer_ripped_percent1', 'layer_ripped_percent2',
 		 'layer_ripped_percent3', 'layer_ripped_percent4', 'layer_ripped_percent5', 'layer_ripped_percent_average',
-		 'force_crash', 'passed', 'comment', 'photo']
+		 'force_crash', 'passed', 'comment', 'photo']'''
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на срез был изменен!')

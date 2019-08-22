@@ -20,6 +20,10 @@ from mainApp.views import (BendTestUpdateView, DelaminationTestUpdateView, Shear
 DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, NonconformityDeleteView, NonconformitiesView,
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
 PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView,)
+from users import views as user_views
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -50,4 +54,12 @@ urlpatterns = [
     path('tool/<int:pk>/delete/', ToolDeleteView.as_view(), name='tool-delete'),
     path('tool/detail/<int:pk>', ToolDetailView.as_view(), name='tool'),
     path('tool/create', today_views.ToolCreateView, name='tool-create'),
+    path('register/', user_views.register, name='register'),
+    path('profile/', user_views.profile, name='profile'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+
     ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

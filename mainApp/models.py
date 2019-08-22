@@ -1,7 +1,7 @@
 from django.db import models
 from PIL import Image
 import datetime
-"""
+'''
 from .bendtest_function import (def_bt_equipment, def_bt_glue, def_bt_lamellas_thickness,
 def_bt_lamellas_width, def_bt_lamellas_length, def_bt_glue_harderner_amount, def_bt_test_number,
 def_bt_test_time, def_bt_fj_length, def_bt_fj_path, def_bt_fj_gap, def_bt_fj_angle, def_bt_type_of_wood,
@@ -14,273 +14,405 @@ def_d_test_time, def_d_type_of_wood, def_d_glue_pressure, def_d_pressure_time, d
 def_d_glue_batch_number, def_d_air_moisture, def_d_timber_params, def_d_sorter_person, def_d_fj_person,
 def_d_glue_person, def_d_marking_person, def_d_glue_expiration_date, def_d_wood_moisture, def_d_glue_temperature,
 def_d_wood_temperature, def_d_air_temperature)
-"""
+'''
 wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 
 
 def def_d_equipment():
-	try: return last_delamtests.equipment
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.equipment
 	except: return None
 
 def def_d_glue():
-	try: return last_delamtests.glue
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue
 	except: return None
 
 def def_d_glue_harderner_amount():
-	try: return last_delamtests.glue_harderner_amount
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_harderner_amount
 	except: return None
 
 def def_d_test_number():
-	try: return (int(last_delamtests.test_number) + 1)
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return (int(last_delamtests.test_number) + 1)
 	except: return None
 
 def def_d_test_time():
-	try: return last_delamtests.test_time
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.test_time
 	except: return None
 
 def def_d_type_of_wood():
-	try: return last_delamtests.type_of_wood
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.type_of_wood
 	except: return None
 
 def def_d_glue_pressure():
-	try: return last_delamtests.glue_pressure
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_pressure
 	except: return None
 
 def def_d_pressure_time():
-	try: return last_delamtests.pressure_time
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.pressure_time
 	except: return None
 
 def def_d_glue_use_amount():
-	try: return last_delamtests.glue_use_amount
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_use_amount
 	except: return None
 
 def def_d_glue_batch_number():
-	try: return last_delamtests.glue_batch_number
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_batch_number
 	except: return None
 
 def def_d_air_moisture():
-	try: return last_delamtests.air_moisture
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.air_moisture
 	except: return None
 
 def def_d_timber_params():
-	try: return last_delamtests.timber_params
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.timber_params
 	except: return None
 
 def def_d_sorter_person():
-	try: return last_delamtests.sorter_person
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.sorter_person
 	except: return None
 
 def def_d_fj_person():
-	try: return last_delamtests.fj_person
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.fj_person
 	except: return None
 
 def def_d_glue_person():
-	try: return last_delamtests.glue_person
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_person
 	except: return None
 
 def def_d_marking_person():
-	try: return last_delamtests.marking_person
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.marking_person
 	except: return None
 	
 def def_d_glue_expiration_date():
-	try: return last_delamtests.glue_expiration_date
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_expiration_date
 	except: return None
 
 def def_d_wood_moisture():
-	try: return last_delamtests.wood_moisture
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.wood_moisture
 	except: return None
 
 def def_d_glue_temperature():
-	try: return last_delamtests.glue_temperature
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.glue_temperature
 	except: return None
 
 def def_d_air_temperature():
-	try: return last_delamtests.air_temperature
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.air_temperature
 	except: return None
 
 def def_d_wood_temperature():
-	try: return last_delamtests.wood_temperature
+	try:
+		last_delamtests = TestDelamination.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_delamtests.wood_temperature
 	except: return None
 #lkjSDBvljbsv
 def def_sh_equipment():
-	try: return last_sheartests.equipment
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.equipment
 	except: return None
 
 def def_sh_glue():
-	try: return last_sheartests.glue
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue
 	except: return None
 
 def def_sh_glue_harderner_amount():
-	try: return last_sheartests.glue_harderner_amount
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_harderner_amount
 	except: return None
 
 def def_sh_test_number():
-	try: return (int(last_sheartests.test_number) + 1)
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return (int(last_sheartests.test_number) + 1)
 	except: return None
 
 def def_sh_test_time():
-	try: return last_sheartests.test_time
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.test_time
 	except: return None
 
 def def_sh_type_of_wood():
-	try: return last_sheartests.type_of_wood
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.type_of_wood
 	except: return None
 
 def def_sh_glue_pressure():
-	try: return last_sheartests.glue_pressure
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_pressure
 	except: return None
 
 def def_sh_pressure_time():
-	try: return last_sheartests.pressure_time
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.pressure_time
 	except: return None
 
 def def_sh_glue_use_amount():
-	try: return last_sheartests.glue_use_amount
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_use_amount
 	except: return None
 
 def def_sh_glue_batch_number():
-	try: return last_sheartests.glue_batch_number
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_batch_number
 	except: return None
 
 def def_sh_air_moisture():
-	try: return last_sheartests.air_moisture
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.air_moisture
 	except: return None
 
 def def_sh_timber_params():
-	try: return last_sheartests.timber_params
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.timber_params
 	except: return None
 
 def def_sh_sorter_person():
-	try: return last_sheartests.sorter_person
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.sorter_person
 	except: return None
 
 def def_sh_fj_person():
-	try: return last_sheartests.fj_person
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.fj_person
 	except: return None
 
 def def_sh_glue_person():
-	try: return last_sheartests.glue_person
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_person
 	except: return None
 
 def def_sh_marking_person():
-	try: return last_sheartests.marking_person
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.marking_person
 	except: return None
 	
 def def_sh_glue_expiration_date():
-	try: return last_sheartests.glue_expiration_date
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_expiration_date
 	except: return None
 
 def def_sh_wood_moisture():
-	try: return last_sheartests.wood_moisture
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.wood_moisture
 	except: return None
 
 def def_sh_glue_temperature():
-	try: return last_sheartests.glue_temperature
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.glue_temperature
 	except: return None
 
 def def_sh_air_temperature():
-	try: return last_sheartests.air_temperature
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.air_temperature
 	except: return None
 
 def def_sh_wood_temperature():
-	try: return last_sheartests.wood_temperature
+	try:
+		last_sheartests = TestShear.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_sheartests.wood_temperature
 	except: return None	
 
 def def_bt_equipment():
-	try: return last_bendtests.equipment
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.equipment
 	except: return None
 
 def def_bt_glue():
-	try: return last_bendtests.glue
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue
 	except: return None
 
 def def_bt_lamellas_thickness():
-	try: return last_bendtests.lamellas_thickness
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_thickness
 	except: return None
 
 def def_bt_lamellas_width():
-	try: return last_bendtests.lamellas_width
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_width
 	except: return None
 
 def def_bt_lamellas_length():
-	try: return last_bendtests.lamellas_length
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_length
 	except: return None
 
 def def_bt_glue_harderner_amount():
-	try: return last_bendtests.glue_harderner_amount
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue_harderner_amount
 	except: return None
 
 def def_bt_test_number():
-	try: return (int(last_bendtests.test_number) + 1)
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return (int(last_bendtests.test_number) + 1)
 	except: return None
 
 def def_bt_test_time():
-	try: return last_bendtests.test_time
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.test_time
 	except: return None
 
 def def_bt_fj_length():
-	try: return last_bendtests.fj_length
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.fj_length
 	except: return None
 
 def def_bt_fj_path():
-	try: return last_bendtests.fj_path
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.fj_path
 	except: return None
 
 def def_bt_fj_gap():
-	try: return last_bendtests.fj_gap
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.fj_gap
 	except: return None
 
 def def_bt_fj_angle():
-	try: return last_bendtests.fj_angle
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.fj_angle
 	except: return None
 
 def def_bt_type_of_wood():
-	try: return last_bendtests.type_of_wood
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.type_of_wood
 	except: return None
 
 def def_bt_strength_class():
-	try: return last_bendtests.strength_class
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.strength_class
 	except: return None
 
 def def_bt_fj_orientation():
-	try: return last_bendtests.fj_orientation
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.fj_orientation
 	except: return None
 
 def def_bt_lamellas_left_moisture():
-	try: return last_bendtests.lamellas_left_moisture
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_left_moisture
 	except: return None
 
 def def_bt_lamellas_right_moisture():
-	try: return last_bendtests.lamellas_right_moisture
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_right_moisture
 	except: return None
 
 def def_bt_glue_pressure():
-	try: return last_bendtests.glue_pressure
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue_pressure
 	except: return None
 
 def def_bt_pressure_time():
-	try: return last_bendtests.pressure_time
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.pressure_time
 	except: return None
 
 def def_bt_glue_use_amount():
-	try: return last_bendtests.glue_use_amount
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue_use_amount
 	except: return None
 
 def def_bt_glue_batch_number():
-	try: return last_bendtests.glue_batch_number
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue_batch_number
 	except: return None
 
 def def_bt_glue_expiration_date():
-	try: return last_bendtests.glue_expiration_date
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.glue_expiration_date
 	except: return None
 
 def def_bt_lamellas_param():
-	try: return last_bendtests.lamellas_param
+	try:
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_param
 	except: return None
 
 def def_bt_lamellas_took_person():
-	try: return last_bendtests.lamellas_took_person
+	try: 
+		last_bendtests = TestLamella.objects.all().order_by('-test_date', '-test_number', '-test_time').first()
+		return last_bendtests.lamellas_took_person
 	except: return None
 
 class Person(models.Model):
@@ -295,7 +427,7 @@ class Person(models.Model):
 
 class TestLamella(models.Model):
 	test_date = models.DateField()
-	test_time = models.TimeField(blank=True, null=True, default=def_bt_test_time)
+	test_time = models.TimeField(blank=True, null=True, default=None)
 	test_number = models.IntegerField(default=def_bt_test_number)
 	equipment = models.CharField(max_length=100, default=def_bt_equipment)
 	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_bt_type_of_wood)
@@ -342,7 +474,6 @@ class TestLamella(models.Model):
 			#output_size = (600, 600)
 			#img.thumbnail(output_size)
 			#img.save(self.image.path)
-last_bendtests = TestLamella.objects.all().order_by('-test_date').first()
 
 
 
@@ -382,7 +513,7 @@ class TestDelamination(models.Model):
 	def __str__(self):
 		return (str(self.test_number) + '  Delamination Test')
 
-last_delamtests = TestDelamination.objects.all().order_by('-test_date').first()
+
 
 class TestShear(models.Model):
 	test_date = models.DateField()
@@ -427,7 +558,6 @@ class TestShear(models.Model):
 	def __str__(self):
 		return (str(self.test_number) + '  Shear Test')
 
-last_sheartests = TestShear.objects.all().order_by('-test_date').first()
 
 class Nonconformity(models.Model):
 	name = models.CharField(max_length=100)

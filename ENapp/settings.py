@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'jquery',
     'bootstrap_datepicker_plus',
+    'users.apps.UsersConfig',
     'mainApp.apps.MainappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,3 +127,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'today'
+LOGIN_URL = 'login'
