@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm, ToolForm
 from django.contrib import messages
 from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
 from django.views.generic import UpdateView, DeleteView, ListView, DetailView, CreateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 @login_required
 def today(request):
@@ -16,9 +18,10 @@ def today(request):
 	else:
 		form = DateForm()
 		today_date = datetime.date.today()
-	bendtests = TestLamella.objects.filter(test_date=today_date).order_by('test_number')
-	delamination_tests = TestDelamination.objects.filter(test_date=today_date).order_by('test_number')
-	shear_tests = TestShear.objects.filter(test_date=today_date).order_by('test_number')
+		user = get_object_or_404(User, username=request.user.username)
+	bendtests = TestLamella.objects.filter(test_date=today_date, author=user).order_by('test_number')
+	delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=user).order_by('test_number')
+	shear_tests = TestShear.objects.filter(test_date=today_date, author=user).order_by('test_number')
 	return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 		'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm,})
 
@@ -27,6 +30,7 @@ def bendtest(request):
 	if request.method == 'POST':
 		form = BendtestForm(request.POST, request.FILES)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Новый тест на изгиб сохранен!')
 			return redirect('today')
@@ -39,6 +43,7 @@ def TestDelaminationView(request):
 	if request.method == 'POST':
 		form = TestDelaminationForm(request.POST, request.FILES)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Новый тест на деламинацию сохранен!')
 			return redirect('today')
@@ -51,6 +56,7 @@ def TestShearView(request):
 	if request.method == 'POST':
 		form = TestShearForm(request.POST, request.FILES)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Новый тест на срез сохранен!')
 			return redirect('today')
@@ -64,14 +70,14 @@ def DateTestsView(request):
 		form = DateForm(request.POST)
 		if form.is_valid():
 			today_date = form.cleaned_data.get('need_date')
-			bendtests = TestLamella.objects.filter(test_date=today_date).order_by('test_number')
-			delamination_tests = TestDelamination.objects.filter(test_date=today_date).order_by('test_number')
-			shear_tests = TestShear.objects.filter(test_date=today_date).order_by('test_number')
+			bendtests = TestLamella.objects.filter(test_date=today_date, author=use).order_by('test_number')
+			delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=use).order_by('test_number')
+			shear_tests = TestShear.objects.filter(test_date=today_date, author=use).order_by('test_number')
 			return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 				'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm})
 
 
-class BendTestUpdateView(UpdateView):
+class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestLamella
 	success_url = '/'
 	form_class = BendtestForm
@@ -87,7 +93,7 @@ class BendTestUpdateView(UpdateView):
 		messages.success(request, f'Тест на изгиб был изменен!')
 		return super().post(request, *args, **kwargs)
 
-class DelaminationTestUpdateView(UpdateView):
+class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestDelamination
 	success_url = '/'
 	form_class = TestDelaminationForm
@@ -102,7 +108,7 @@ class DelaminationTestUpdateView(UpdateView):
 		messages.success(request, f'Тест на деламинацию был изменен!')
 		return super().post(request, *args, **kwargs)
 
-class ShearTestUpdateView(UpdateView):
+class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestShear
 	success_url = '/'
 	template_name = 'mainApp/TestUpdate.html'
@@ -119,27 +125,29 @@ class ShearTestUpdateView(UpdateView):
 		messages.success(request, f'Тест на срез был изменен!')
 		return super().post(request, *args, **kwargs)
 
-class BendTestDeleteView(DeleteView):
+class BendTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestLamella
 	success_url = '/'
 	template_name = 'mainApp/test_confirm_delete.html'
 
-class DelaminationTestDeleteView(DeleteView):
+class DelaminationTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestDelamination
 	success_url = '/'
 	template_name = 'mainApp/test_confirm_delete.html'
 
-class ShearTestDeleteView(DeleteView):
+class ShearTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestShear
 	success_url = '/'
 	template_name = 'mainApp/test_confirm_delete.html'
 
+@login_required
 def NonconformitiesView(request):
-	nonconformities = Nonconformity.objects.all().order_by('nonconformity_date')
+	user = get_object_or_404(User, username=request.user.username)
+	nonconformities = Nonconformity.objects.filter(author=user).order_by('nonconformity_date')
 	return render(request, 'mainApp/nonconformities.html', {'nonconformities': nonconformities,})
 
 
-class NonconformityUpdateView(UpdateView):
+class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Nonconformity
 	success_url = '/nonconformities'
 	template_name = 'mainApp/nonconformity_update.html'
@@ -149,7 +157,7 @@ class NonconformityUpdateView(UpdateView):
 		messages.success(request, f'Несоответствие отредактировано!')
 		return super().post(request, *args, **kwargs)
 
-class NonconformityDeleteView(DeleteView):
+class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Nonconformity
 	success_url = '/nonconformities'
 	template_name = 'mainApp/nonconformity_confirm_delete.html'
@@ -158,13 +166,15 @@ class NonconformityDeleteView(DeleteView):
 		messages.success(request, f'Несоответствие удалено!')
 		return super().post(request, *args, **kwargs)	
 
-class NonconformityDetailView(DetailView):
+class NonconformityDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Nonconformity
 
+@login_required
 def NonconformityCreateView(request):
 	if request.method == 'POST':
 		form = NonconformityForm(request.POST)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Новое несоответствие добавлено!')
 			return redirect('nonconformities')
@@ -172,11 +182,13 @@ def NonconformityCreateView(request):
 		form = NonconformityForm()
 	return render(request, 'mainApp/nonconformity_form.html', {'form': form,})
 
+@login_required
 def PersonsView(request):
-	persons = Person.objects.all().order_by('name')
+	user = get_object_or_404(User, username=request.user.username)
+	persons = Person.objects.filter(author=user).order_by('name')
 	return render(request, 'mainApp/persons.html', {'persons': persons,})
 
-class PersonUpdateView(UpdateView):
+class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Person
 	success_url = '/persons'
 	template_name = 'mainApp/person_update.html'
@@ -186,7 +198,7 @@ class PersonUpdateView(UpdateView):
 		messages.success(request, f'Данные о сотруднике сохранены!')
 		return super().post(request, *args, **kwargs)
 
-class PersonDeleteView(DeleteView):
+class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Person
 	success_url = '/persons'
 	template_name = 'mainApp/person_confirm_delete.html'
@@ -195,10 +207,12 @@ class PersonDeleteView(DeleteView):
 		messages.success(request, f'Данные о сотруднике удалены!')
 		return super().post(request, *args, **kwargs)
 
+@login_required
 def PersonCreateView(request):
 	if request.method == 'POST':
 		form = PersonForm(request.POST)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Данные о новом сотруднике добавлены!')
 			return redirect('persons')
@@ -206,15 +220,16 @@ def PersonCreateView(request):
 		form = PersonForm()
 	return render(request, 'mainApp/person_form.html', {'form': form,})
 
-class PersonDetailView(DetailView):
+class PersonDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Person
 
-
+@login_required
 def ToolsView(request):
-	tools = Tool.objects.all().order_by('name')
+	user = get_object_or_404(User, username=request.user.username)
+	tools = Tool.objects.filter(author=user).order_by('name')
 	return render(request, 'mainApp/tools.html', {'tools': tools,})
 
-class ToolUpdateView(UpdateView):
+class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Tool
 	success_url = '/tools'
 	template_name = 'mainApp/tool_update.html'
@@ -225,7 +240,7 @@ class ToolUpdateView(UpdateView):
 		return super().post(request, *args, **kwargs)
 
 
-class ToolDeleteView(DeleteView):
+class ToolDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Tool
 	success_url = '/tools'
 	template_name = 'mainApp/tool_confirm_delete.html'
@@ -238,6 +253,7 @@ def ToolCreateView(request):
 	if request.method == 'POST':
 		form = ToolForm(request.POST)
 		if form.is_valid():
+			form.instance.author = request.user
 			form.save()
 			messages.success(request, f'Данные добавлены!')
 			return redirect('tools')
@@ -245,5 +261,5 @@ def ToolCreateView(request):
 		form = ToolForm()
 	return render(request, 'mainApp/tool_form.html', {'form': form,})
 
-class ToolDetailView(DetailView):
+class ToolDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Tool

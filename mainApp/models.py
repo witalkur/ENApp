@@ -1,6 +1,7 @@
 from django.db import models
 from PIL import Image
 import datetime
+from django.contrib.auth.models import User
 '''
 from .bendtest_function import (def_bt_equipment, def_bt_glue, def_bt_lamellas_thickness,
 def_bt_lamellas_width, def_bt_lamellas_length, def_bt_glue_harderner_amount, def_bt_test_number,
@@ -421,6 +422,7 @@ class Person(models.Model):
 	training_date = models.DateField()
 	next_training_date = models.DateField()
 	comment = models.TextField(blank=True)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
@@ -460,6 +462,7 @@ class TestLamella(models.Model):
 	out_of_fj_crash = models.IntegerField()
 	comment = models.TextField(blank=True)
 	photo = models.ImageField(upload_to='uploads', blank=True)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 
 
@@ -509,6 +512,7 @@ class TestDelamination(models.Model):
 	passed = models.BooleanField(default=False)
 	comment = models.TextField(blank=True, null=True)
 	photo = models.ImageField(upload_to='uploads', blank=True)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return (str(self.test_number) + '  Delamination Test')
@@ -554,6 +558,7 @@ class TestShear(models.Model):
 	passed = models.BooleanField(default=False)
 	comment = models.TextField(blank=True)
 	photo = models.ImageField(upload_to='uploads', blank=True)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return (str(self.test_number) + '  Shear Test')
@@ -564,6 +569,7 @@ class Nonconformity(models.Model):
 	description = models.TextField(blank=True)
 	resp_person = models.ForeignKey(Person, on_delete=models.PROTECT)
 	nonconformity_date = models.DateField()
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
@@ -574,6 +580,7 @@ class Tool(models.Model):
 	resp_person = models.ForeignKey(Person, on_delete=models.PROTECT)
 	calibration_date = models.DateField()
 	next_calibration_date = models.DateField()
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
