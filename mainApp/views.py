@@ -69,10 +69,11 @@ def DateTestsView(request):
 	if request.method == 'POST':
 		form = DateForm(request.POST)
 		if form.is_valid():
+			user = get_object_or_404(User, username=request.user.username)
 			today_date = form.cleaned_data.get('need_date')
-			bendtests = TestLamella.objects.filter(test_date=today_date, author=use).order_by('test_number')
-			delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=use).order_by('test_number')
-			shear_tests = TestShear.objects.filter(test_date=today_date, author=use).order_by('test_number')
+			bendtests = TestLamella.objects.filter(test_date=today_date, author=user).order_by('test_number')
+			delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=user).order_by('test_number')
+			shear_tests = TestShear.objects.filter(test_date=today_date, author=user).order_by('test_number')
 			return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 				'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm})
 
@@ -92,6 +93,16 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на изгиб был изменен!')
 		return super().post(request, *args, **kwargs)
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
 
 class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestDelamination

@@ -72,3 +72,17 @@ class ToolForm(forms.ModelForm):
 		model = Tool
 		fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
 
+
+class BendtestFilterForm(forms.ModelForm):
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
+	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_bt_glue_expiration_date)
+
+	class Meta:
+		model = TestLamella
+		fields = ['start_test_date', 'end_test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
+		'glue_harderner_amount', 'lamellas_thickness', 'lamellas_width', 'lamellas_length', 'fj_length', 'fj_path', 'fj_gap',
+		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
+		'pressure_time', 'glue_use_amount', 'glue_batch_number', 'glue_expiration_date', 'lamellas_param',
+		'lamellas_took_person', 'force_crash', 'time_of_testing', 'lamellas_strength', 'passed', 'by_fj_crash', 'base_fj_crash',
+		'out_of_fj_crash', 'comment', 'photo']
