@@ -78,20 +78,23 @@ wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('', '-------'), ('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 fj_orientation_types = [('', '-------'), ('Пластевое', 'Пластевое'), ('Ребровое', 'Ребровое')]
 class BendtestFilterForm(forms.ModelForm):
-	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(),required=False)
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
 	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
 	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_bt_glue_expiration_date, required=False)
 	lamellas_took_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
-	type_of_wood = forms.ModelMultipleChoiceField(queryset=Wood_types.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
+	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)
 	#type_of_wood = forms.MultipleChoiceField(choices=wood_types, required=False)
 	strength_class = forms.ChoiceField(choices=strength_class_types, initial='', widget=forms.Select(), required=False)
 	glue = forms.CharField(max_length=100, initial=None, required=False)
 	glue_harderner_amount = forms.CharField(max_length=100, initial=None, required=False)
-	lamellas_thickness = forms.IntegerField(initial=None, required=False)
-	lamellas_width = forms.IntegerField(initial=None, required=False)
-	lamellas_length = forms.IntegerField(initial=None, required=False)
+	lamellas_thickness_from = forms.IntegerField(initial=None, required=False)
+	lamellas_thickness_to = forms.IntegerField(initial=None, required=False)
+	lamellas_width_from = forms.IntegerField(initial=None, required=False)
+	lamellas_width_to = forms.IntegerField(initial=None, required=False)
+	lamellas_length_from = forms.IntegerField(initial=None, required=False)
+	lamellas_length_to = forms.IntegerField(initial=None, required=False)
 	fj_length = forms.IntegerField(initial=None, required=False)
 	fj_path = forms.IntegerField(initial=None, required=False)
 	fj_gap = forms.IntegerField(initial=None, required=False)
@@ -116,9 +119,11 @@ class BendtestFilterForm(forms.ModelForm):
 
 	class Meta:
 		model = TestLamella
-		fields = ['start_test_date', 'end_test_date', 'start_test_time', 'start_test_time', 'end_test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
-		'glue_harderner_amount', 'lamellas_thickness', 'lamellas_width', 'lamellas_length', 'fj_length', 'fj_path', 'fj_gap',
+		fields = ['start_test_date', 'end_test_date', 'start_test_time', 'start_test_time', 'end_test_time', 'test_number', 
+		'equipment', 'type_of_wood', 'strength_class', 'glue', 
+		'glue_harderner_amount', 'lamellas_thickness_from', 'lamellas_thickness_to', 'lamellas_width_from', 
+		'lamellas_width_to', 'lamellas_length_from', 'lamellas_length_to', 'fj_length', 'fj_path', 'fj_gap',
 		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
 		'pressure_time', 'glue_use_amount', 'glue_batch_number', 'glue_expiration_date', 'lamellas_param',
-		'lamellas_took_person', 'force_crash', 'time_of_testing', 'lamellas_strength', 'passed', 'by_fj_crash', 'base_fj_crash',
-		'out_of_fj_crash', 'comment']
+		'lamellas_took_person', 'force_crash', 'time_of_testing', 'lamellas_strength', 'passed', 'by_fj_crash', 
+		'base_fj_crash', 'out_of_fj_crash', 'comment']

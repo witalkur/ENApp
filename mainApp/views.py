@@ -291,7 +291,51 @@ def bendtestfilterView(request):
 				bendtests = bendtests.filter(test_date__lte=end_test_date).order_by('test_number')
 			if form.cleaned_data.get('type_of_wood'):
 				type_of_wood = form.cleaned_data.get('type_of_wood')
-				bendtests = bendtests.filter(type_of_wood__in=type_of_wood).order_by('test_number')
+				bendtests = bendtests.filter(type_of_wood=type_of_wood).order_by('test_number')
+			if form.cleaned_data.get('start_test_time'):
+				start_test_time = form.cleaned_data.get('start_test_time')
+				bendtests = bendtests.filter(test_time__gte=start_test_time).order_by('test_number')
+			if form.cleaned_data.get('end_test_time'):
+				end_test_time = form.cleaned_data.get('end_test_time')
+				bendtests = bendtests.filter(test_time__lte=end_test_time).order_by('test_number')
+			if form.cleaned_data.get('test_number'):
+				test_number = form.cleaned_data.get('test_number')
+				bendtests = bendtests.filter(test_number=test_number).order_by('test_number')
+			if form.cleaned_data.get('equipment'):
+				equipment = form.cleaned_data.get('equipment')
+				bendtests = bendtests.filter(equipment__iexact=equipment).order_by('test_number')	
+			if form.cleaned_data.get('strength_class'):
+				strength_class = form.cleaned_data.get('strength_class')
+				bendtests = bendtests.filter(strength_class=strength_class).order_by('test_number')	
+			if form.cleaned_data.get('glue'):
+				glue = form.cleaned_data.get('glue')
+				bendtests = bendtests.filter(glue__iexact=glue).order_by('test_number')
+			if form.cleaned_data.get('glue_harderner_amount'):
+				glue_harderner_amount = form.cleaned_data.get('glue_harderner_amount')
+				bendtests = bendtests.filter(glue_harderner_amount__iexact=glue).order_by('test_number')
+			if form.cleaned_data.get('lamellas_thickness_from'):
+				lamellas_thickness_from = form.cleaned_data.get('lamellas_thickness_from')
+				bendtests = bendtests.filter(lamellas_thickness__gte=lamellas_thickness_from).order_by('test_number')
+			if form.cleaned_data.get('lamellas_thickness_to'):
+				lamellas_thickness_to = form.cleaned_data.get('lamellas_thickness_to')
+				bendtests = bendtests.filter(lamellas_thickness__lte=lamellas_thickness_to).order_by('test_number')
+			if form.cleaned_data.get('fj_length'):
+				fj_length = form.cleaned_data.get('fj_length')
+				bendtests = bendtests.filter(fj_length=fj_length).order_by('test_number')
+			if form.cleaned_data.get('fj_path'):
+				fj_path = form.cleaned_data.get('fj_path')
+				bendtests = bendtests.filter(fj_path=fj_path).order_by('test_number')
+			if form.cleaned_data.get('fj_gap'):
+				fj_gap = form.cleaned_data.get('fj_gap')
+				bendtests = bendtests.filter(fj_gap=fj_gap).order_by('test_number')
+			if form.cleaned_data.get('fj_angle'):
+				fj_angle = form.cleaned_data.get('fj_angle')
+				bendtests = bendtests.filter(fj_angle=fj_angle).order_by('test_number')
+			if form.cleaned_data.get('fj_orientation'):
+				fj_orientation = form.cleaned_data.get('fj_orientation')
+				bendtests = bendtests.filter(fj_orientation=fj_orientation).order_by('test_number')
+
+
 	else:
 		form = BendtestFilterForm()
 	return render(request, 'mainApp/bendtestfilter.html', {'bendtests': bendtests, 'form': form, })
