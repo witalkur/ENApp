@@ -80,7 +80,6 @@ fj_orientation_types = [('', '-------'), ('Пластевое', 'Пластев�
 class BendtestFilterForm(forms.ModelForm):
 	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
 	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_bt_glue_expiration_date, required=False)
 	lamellas_took_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
@@ -100,18 +99,28 @@ class BendtestFilterForm(forms.ModelForm):
 	fj_gap = forms.IntegerField(initial=None, required=False)
 	fj_angle = forms.IntegerField(initial=None, required=False)
 	fj_orientation = forms.ChoiceField(choices=fj_orientation_types, initial='', widget=forms.Select(), required=False)
-	lamellas_left_moisture = forms.IntegerField(initial=None, required=False)
-	lamellas_right_moisture = forms.IntegerField(initial=None, required=False)
-	glue_pressure = forms.FloatField(initial=None, required=False)
-	pressure_time = forms.IntegerField(initial=None, required=False)
-	glue_use_amount = forms.IntegerField(initial=None, required=False)
+	lamellas_left_moisture_from = forms.IntegerField(initial=None, required=False)
+	lamellas_left_moisture_to = forms.IntegerField(initial=None, required=False)
+	lamellas_right_moisture_from = forms.IntegerField(initial=None, required=False)
+	lamellas_right_moisture_to = forms.IntegerField(initial=None, required=False)
+	glue_pressure_from = forms.FloatField(initial=None, required=False)
+	glue_pressure_to = forms.FloatField(initial=None, required=False)
+	pressure_time_from = forms.IntegerField(initial=None, required=False)
+	pressure_time_to = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_from = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_to = forms.IntegerField(initial=None, required=False)
 	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
 	lamellas_param = forms.CharField(max_length=100, initial=None, required=False)
-	force_crash = forms.FloatField(initial=None, required=False)
+	force_crash_from = forms.FloatField(initial=None, required=False)
+	force_crash_to = forms.FloatField(initial=None, required=False)
 	start_test_time = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
 	end_test_time = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
-	lamellas_strength = forms.FloatField(initial=None, required=False)
+	time_of_testing_from = forms.IntegerField(initial=None, required=False)
+	time_of_testing_to = forms.IntegerField(initial=None, required=False)
+	lamellas_strength_from = forms.FloatField(initial=None, required=False)
+	lamellas_strength_to = forms.FloatField(initial=None, required=False)
 	by_fj_crash = forms.IntegerField(initial=None, required=False)
 	base_fj_crash = forms.IntegerField(initial=None, required=False)
 	out_of_fj_crash = forms.IntegerField(initial=None, required=False)
@@ -123,7 +132,10 @@ class BendtestFilterForm(forms.ModelForm):
 		'equipment', 'type_of_wood', 'strength_class', 'glue', 
 		'glue_harderner_amount', 'lamellas_thickness_from', 'lamellas_thickness_to', 'lamellas_width_from', 
 		'lamellas_width_to', 'lamellas_length_from', 'lamellas_length_to', 'fj_length', 'fj_path', 'fj_gap',
-		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
-		'pressure_time', 'glue_use_amount', 'glue_batch_number', 'glue_expiration_date', 'lamellas_param',
-		'lamellas_took_person', 'force_crash', 'time_of_testing', 'lamellas_strength', 'passed', 'by_fj_crash', 
+		'fj_angle', 'fj_orientation', 'lamellas_left_moisture_from', 'lamellas_left_moisture_to',
+		'lamellas_right_moisture_from', 'lamellas_right_moisture_to', 'glue_pressure_from', 'glue_pressure_to',
+		'pressure_time_from', 'pressure_time_to', 'glue_use_amount_from', 'glue_use_amount_to', 
+		'glue_batch_number', 'start_glue_expiration_date', 'end_glue_expiration_date', 'lamellas_param',
+		'lamellas_took_person', 'force_crash_from', 'force_crash_to', 'time_of_testing_from', 'time_of_testing_to',
+		 'lamellas_strength_from', 'lamellas_strength_to', 'passed', 'by_fj_crash', 
 		'base_fj_crash', 'out_of_fj_crash', 'comment']

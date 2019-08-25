@@ -312,7 +312,7 @@ def bendtestfilterView(request):
 				bendtests = bendtests.filter(glue__iexact=glue).order_by('test_number')
 			if form.cleaned_data.get('glue_harderner_amount'):
 				glue_harderner_amount = form.cleaned_data.get('glue_harderner_amount')
-				bendtests = bendtests.filter(glue_harderner_amount__iexact=glue).order_by('test_number')
+				bendtests = bendtests.filter(glue_harderner_amount__iexact=glue_harderner_amount).order_by('test_number')
 			if form.cleaned_data.get('lamellas_thickness_from'):
 				lamellas_thickness_from = form.cleaned_data.get('lamellas_thickness_from')
 				bendtests = bendtests.filter(lamellas_thickness__gte=lamellas_thickness_from).order_by('test_number')
@@ -334,6 +334,69 @@ def bendtestfilterView(request):
 			if form.cleaned_data.get('fj_orientation'):
 				fj_orientation = form.cleaned_data.get('fj_orientation')
 				bendtests = bendtests.filter(fj_orientation=fj_orientation).order_by('test_number')
+			if form.cleaned_data.get('lamellas_left_moisture_from'):
+				lamellas_left_moisture_from = form.cleaned_data.get('lamellas_left_moisture_from')
+				bendtests = bendtests.filter(lamellas_left_moisture__gte=lamellas_left_moisture_from).order_by('test_number')
+			if form.cleaned_data.get('lamellas_left_moisture_to'):
+				lamellas_left_moisture_to = form.cleaned_data.get('lamellas_left_moisture_to')
+				bendtests = bendtests.filter(lamellas_left_moisture__lte=lamellas_left_moisture_to).order_by('test_number')
+			if form.cleaned_data.get('lamellas_right_moisture_from'):
+				lamellas_right_moisture_from = form.cleaned_data.get('lamellas_right_moisture_from')
+				bendtests = bendtests.filter(lamellas_right_moisture__gte=lamellas_right_moisture_from).order_by('test_number')
+			if form.cleaned_data.get('lamellas_right_moisture_to'):
+				lamellas_right_moisture_to = form.cleaned_data.get('lamellas_right_moisture_to')
+				bendtests = bendtests.filter(lamellas_right_moisture__lte=lamellas_right_moisture_to).order_by('test_number')
+			if form.cleaned_data.get('glue_pressure_from'):
+				glue_pressure_from = form.cleaned_data.get('glue_pressure_from')
+				bendtests = bendtests.filter(glue_pressure__gte=glue_pressure_from).order_by('test_number')
+			if form.cleaned_data.get('glue_pressure_to'):
+				glue_pressure_to = form.cleaned_data.get('glue_pressure_to')
+				bendtests = bendtests.filter(glue_pressure__lte=glue_pressure_to).order_by('test_number')
+			if form.cleaned_data.get('pressure_time_from'):
+				pressure_time_from = form.cleaned_data.get('pressure_time_from')
+				bendtests = bendtests.filter(pressure_time__gte=pressure_time_from).order_by('test_number')
+			if form.cleaned_data.get('pressure_time_to'):
+				pressure_time_to = form.cleaned_data.get('pressure_time_to')
+				bendtests = bendtests.filter(pressure_time__lte=pressure_time_to).order_by('test_number')
+			if form.cleaned_data.get('glue_use_amount_from'):
+				glue_use_amount_from = form.cleaned_data.get('glue_use_amount_from')
+				bendtests = bendtests.filter(glue_use_amount__gte=glue_use_amount_from).order_by('test_number')
+			if form.cleaned_data.get('glue_use_amount_to'):
+				glue_use_amount_to = form.cleaned_data.get('glue_use_amount_to')
+				bendtests = bendtests.filter(glue_use_amount__lte=glue_use_amount_to).order_by('test_number')
+			if form.cleaned_data.get('glue_batch_number'):
+				glue_batch_number = form.cleaned_data.get('glue_batch_number')
+				bendtests = bendtests.filter(glue_batch_number=glue_batch_number).order_by('test_number')
+			if form.cleaned_data.get('start_glue_expiration_date'):
+				start_glue_expiration_date = form.cleaned_data.get('start_glue_expiration_date')
+				bendtests = bendtests.filter(glue_expiration_date__gte=start_glue_expiration_date).order_by('test_number')
+			if form.cleaned_data.get('end_glue_expiration_date'):
+				end_glue_expiration_date = form.cleaned_data.get('end_glue_expiration_date')
+				bendtests = bendtests.filter(glue_expiration_date__lte=end_glue_expiration_date).order_by('test_number')
+			if form.cleaned_data.get('lamellas_param'):
+				lamellas_param = form.cleaned_data.get('lamellas_param')
+				bendtests = bendtests.filter(lamellas_param__iexact=lamellas_param).order_by('test_number')
+			if form.cleaned_data.get('lamellas_took_person'):
+				lamellas_took_person = form.cleaned_data.get('lamellas_took_person')
+				bendtests = bendtests.filter(lamellas_took_person=lamellas_took_person).order_by('test_number')
+			if form.cleaned_data.get('force_crash_from'):
+				force_crash_from = form.cleaned_data.get('force_crash_from')
+				bendtests = bendtests.filter(force_crash__gte=force_crash_from).order_by('test_number')
+			if form.cleaned_data.get('force_crash_to'):
+				force_crash_to = form.cleaned_data.get('force_crash_to')
+				bendtests = bendtests.filter(force_crash__lte=force_crash_to).order_by('test_number')
+			if form.cleaned_data.get('time_of_testing_from'):
+				time_of_testing_from = form.cleaned_data.get('time_of_testing_from')
+				bendtests = bendtests.filter(time_of_testing__gte=time_of_testing_from).order_by('test_number')
+			if form.cleaned_data.get('time_of_testing_to'):
+				time_of_testing_to = form.cleaned_data.get('time_of_testing_to')
+				bendtests = bendtests.filter(time_of_testing__lte=time_of_testing_to).order_by('test_number')
+			if form.cleaned_data.get('lamellas_strength_from'):
+				lamellas_strength_from = form.cleaned_data.get('lamellas_strength_from')
+				bendtests = bendtests.filter(lamellas_strength__gte=lamellas_strength_from).order_by('test_number')
+			if form.cleaned_data.get('lamellas_strength_to'):
+				lamellas_strength_to = form.cleaned_data.get('lamellas_strength_to')
+				bendtests = bendtests.filter(lamellas_strength__lte=lamellas_strength_to).order_by('test_number')
 
 
 	else:
