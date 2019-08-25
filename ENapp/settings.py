@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'users.apps.UsersConfig',
     'mainApp.apps.MainappConfig',
+    'multiselectfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

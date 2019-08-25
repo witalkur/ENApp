@@ -2,6 +2,7 @@ from django.db import models
 from PIL import Image
 import datetime
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 '''
 from .bendtest_function import (def_bt_equipment, def_bt_glue, def_bt_lamellas_thickness,
 def_bt_lamellas_width, def_bt_lamellas_length, def_bt_glue_harderner_amount, def_bt_test_number,
@@ -16,7 +17,7 @@ def_d_glue_batch_number, def_d_air_moisture, def_d_timber_params, def_d_sorter_p
 def_d_glue_person, def_d_marking_person, def_d_glue_expiration_date, def_d_wood_moisture, def_d_glue_temperature,
 def_d_wood_temperature, def_d_air_temperature)
 '''
-wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
+#wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
 strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 
 
@@ -426,13 +427,22 @@ class Person(models.Model):
 
 	def __str__(self):
 		return self.name
+wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
+
+class Wood_types(models.Model):
+	name = models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.name
 
 class TestLamella(models.Model):
+	
+
 	test_date = models.DateField()
 	test_time = models.TimeField(blank=True, null=True, default=None)
 	test_number = models.IntegerField(default=def_bt_test_number)
 	equipment = models.CharField(max_length=100, default=def_bt_equipment)
-	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_bt_type_of_wood)
+	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, related_name='TestLamella_fj_wood_type', default=def_bt_type_of_wood)
 	strength_class = models.CharField(max_length=100, choices=strength_class_types, default=def_bt_strength_class)
 	glue = models.CharField(max_length=100, default=def_bt_glue)
 	glue_harderner_amount = models.CharField(max_length=100, blank=True, default=def_bt_glue_harderner_amount)
@@ -447,7 +457,7 @@ class TestLamella(models.Model):
 	lamellas_left_moisture = models.IntegerField(default=def_bt_lamellas_left_moisture)
 	lamellas_right_moisture = models.IntegerField(default=def_bt_lamellas_right_moisture)
 	glue_pressure = models.FloatField(default=def_bt_glue_pressure)
-	pressure_time = models.FloatField(blank=True, null=True, default=def_bt_pressure_time)
+	pressure_time = models.IntegerField(blank=True, null=True, default=def_bt_pressure_time)
 	glue_use_amount = models.IntegerField(default=def_bt_glue_use_amount)
 	glue_batch_number = models.CharField(max_length=100, default=def_bt_glue_batch_number)
 	glue_expiration_date = models.DateField()
@@ -584,5 +594,4 @@ class Tool(models.Model):
 
 	def __str__(self):
 		return self.name
-
 

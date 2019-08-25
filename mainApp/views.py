@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm, ToolForm
+from .forms import BendtestForm, TestDelaminationForm, TestShearForm, DateForm, NonconformityForm, PersonForm, ToolForm, BendtestFilterForm
 from django.contrib import messages
 from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool
 import datetime
@@ -274,3 +274,24 @@ def ToolCreateView(request):
 
 class ToolDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Tool
+
+
+@login_required
+def bendtestfilterView(request):
+	user = get_object_or_404(User, username=request.user.username)
+	bendtests = TestLamella.objects.filter(author=user).order_by('test_number')
+	if request.method == 'POST':
+		form = BendtestFilterForm(request.POST)
+		if form.is_valid():
+			if form.cleaned_data.get('start_test_date'):
+				start_test_date = form.cleaned_data.get('start_test_date')
+				bendtests = bendtests.filter(test_date__gte=start_test_date).order_by('test_number')
+			if form.cleaned_data.get('end_test_date'):
+				end_test_date = form.cleaned_data.get('end_test_date')
+				bendtests = bendtests.filter(test_date__lte=end_test_date).order_by('test_number')
+			if form.cleaned_data.get('type_of_wood'):
+				type_of_wood = form.cleaned_data.get('type_of_wood')
+				bendtests = bendtests.filter(type_of_wood__in=type_of_wood).order_by('test_number')
+	else:
+		form = BendtestFilterForm()
+	return render(request, 'mainApp/bendtestfilter.html', {'bendtests': bendtests, 'form': form, })
