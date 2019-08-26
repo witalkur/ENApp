@@ -1,5 +1,5 @@
 from django import forms
-from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool, Wood_types
+from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool, Wood_types, strength_class_types
 import datetime
 from bootstrap_datepicker_plus import DatePickerInput
 from bootstrap_datepicker_plus import TimePickerInput
@@ -65,6 +65,20 @@ class PersonForm(forms.ModelForm):
 		model = Person
 		fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
 
+class Wood_typeForm(forms.ModelForm):
+	name = forms.CharField(max_length=100)
+
+	class Meta:
+		model = Wood_types
+		fields = ['name']
+
+class strength_class_typesForm(forms.ModelForm):
+	name = forms.CharField(max_length=100)
+
+	class Meta:
+		model = strength_class_types
+		fields = ['name']
+
 class ToolForm(forms.ModelForm):
 	calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
 	next_calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
@@ -73,10 +87,11 @@ class ToolForm(forms.ModelForm):
 		model = Tool
 		fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
 
-wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
+#wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
 #wood_types = ['spruce', 'pine',]
-strength_class_types = [('', '-------'), ('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
+#strength_class_types = [('', '-------'), ('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 fj_orientation_types = [('', '-------'), ('Пластевое', 'Пластевое'), ('Ребровое', 'Ребровое')]
+
 class BendtestFilterForm(forms.ModelForm):
 	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
 	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
@@ -84,8 +99,7 @@ class BendtestFilterForm(forms.ModelForm):
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
 	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)
-	#type_of_wood = forms.MultipleChoiceField(choices=wood_types, required=False)
-	strength_class = forms.ChoiceField(choices=strength_class_types, initial='', widget=forms.Select(), required=False)
+	strength_class = forms.ModelChoiceField(queryset=strength_class_types.objects.all(), initial='None', required=False)
 	glue = forms.CharField(max_length=100, initial=None, required=False)
 	glue_harderner_amount = forms.CharField(max_length=100, initial=None, required=False)
 	lamellas_thickness_from = forms.IntegerField(initial=None, required=False)
@@ -121,9 +135,14 @@ class BendtestFilterForm(forms.ModelForm):
 	time_of_testing_to = forms.IntegerField(initial=None, required=False)
 	lamellas_strength_from = forms.FloatField(initial=None, required=False)
 	lamellas_strength_to = forms.FloatField(initial=None, required=False)
-	by_fj_crash = forms.IntegerField(initial=None, required=False)
-	base_fj_crash = forms.IntegerField(initial=None, required=False)
-	out_of_fj_crash = forms.IntegerField(initial=None, required=False)
+	by_fj_crash_from = forms.IntegerField(initial=None, required=False)
+	by_fj_crash_to = forms.IntegerField(initial=None, required=False)
+	base_fj_crash_from = forms.IntegerField(initial=None, required=False)
+	base_fj_crash_to = forms.IntegerField(initial=None, required=False)
+	out_of_fj_crash_from = forms.IntegerField(initial=None, required=False)
+	out_of_fj_crash_to = forms.IntegerField(initial=None, required=False)
+	passed_true = forms.BooleanField(initial=False, required=False)
+	passed_false = forms.BooleanField(initial=False, required=False)
 	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
 
 	class Meta:
@@ -137,5 +156,6 @@ class BendtestFilterForm(forms.ModelForm):
 		'pressure_time_from', 'pressure_time_to', 'glue_use_amount_from', 'glue_use_amount_to', 
 		'glue_batch_number', 'start_glue_expiration_date', 'end_glue_expiration_date', 'lamellas_param',
 		'lamellas_took_person', 'force_crash_from', 'force_crash_to', 'time_of_testing_from', 'time_of_testing_to',
-		 'lamellas_strength_from', 'lamellas_strength_to', 'passed', 'by_fj_crash', 
-		'base_fj_crash', 'out_of_fj_crash', 'comment']
+		 'lamellas_strength_from', 'lamellas_strength_to', 'passed', 'by_fj_crash_from', 'by_fj_crash_to', 
+		'base_fj_crash_from', 'base_fj_crash_to', 'out_of_fj_crash_from', 'out_of_fj_crash_to', 'passed_true', 
+		'passed_false', 'comment']

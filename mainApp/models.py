@@ -435,15 +435,19 @@ class Wood_types(models.Model):
 	def __str__(self):
 		return self.name
 
-class TestLamella(models.Model):
-	
+class strength_class_types(models.Model):
+	name = models.CharField(max_length=100)
 
+	def __str__(self):
+		return self.name
+
+class TestLamella(models.Model):
 	test_date = models.DateField()
 	test_time = models.TimeField(blank=True, null=True, default=None)
 	test_number = models.IntegerField(default=def_bt_test_number)
 	equipment = models.CharField(max_length=100, default=def_bt_equipment)
 	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, related_name='TestLamella_fj_wood_type', default=def_bt_type_of_wood)
-	strength_class = models.CharField(max_length=100, choices=strength_class_types, default=def_bt_strength_class)
+	strength_class = models.ForeignKey(strength_class_types, on_delete=models.PROTECT, related_name='TestLamella_strength_class', default=def_bt_strength_class)
 	glue = models.CharField(max_length=100, default=def_bt_glue)
 	glue_harderner_amount = models.CharField(max_length=100, blank=True, default=def_bt_glue_harderner_amount)
 	lamellas_thickness = models.IntegerField(default=def_bt_lamellas_thickness)

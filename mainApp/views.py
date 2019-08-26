@@ -397,6 +397,36 @@ def bendtestfilterView(request):
 			if form.cleaned_data.get('lamellas_strength_to'):
 				lamellas_strength_to = form.cleaned_data.get('lamellas_strength_to')
 				bendtests = bendtests.filter(lamellas_strength__lte=lamellas_strength_to).order_by('test_number')
+			if form.cleaned_data.get('by_fj_crash_from'):
+				by_fj_crash_from = form.cleaned_data.get('by_fj_crash_from')
+				bendtests = bendtests.filter(by_fj_crash__gte=by_fj_crash_from).order_by('test_number')
+			if form.cleaned_data.get('by_fj_crash_to'):
+				by_fj_crash_to = form.cleaned_data.get('by_fj_crash_to')
+				bendtests = bendtests.filter(by_fj_crash__lte=by_fj_crash_to).order_by('test_number')
+			if form.cleaned_data.get('out_of_fj_crash_from'):
+				out_of_fj_crash_from = form.cleaned_data.get('out_of_fj_crash_from')
+				bendtests = bendtests.filter(out_of_fj_crash__gte=out_of_fj_crash_from).order_by('test_number')
+			if form.cleaned_data.get('out_of_fj_crash_to'):
+				out_of_fj_crash_to = form.cleaned_data.get('out_of_fj_crash_to')
+				bendtests = bendtests.filter(out_of_fj_crash__lte=out_of_fj_crash_to).order_by('test_number')
+			if form.cleaned_data.get('base_fj_crash_from'):
+				base_fj_crash_from = form.cleaned_data.get('base_fj_crash_from')
+				bendtests = bendtests.filter(base_fj_crash__gte=base_fj_crash_from).order_by('test_number')
+			if form.cleaned_data.get('base_fj_crash_to'):
+				base_fj_crash_to = form.cleaned_data.get('base_fj_crash_to')
+				bendtests = bendtests.filter(base_fj_crash__lte=base_fj_crash_to).order_by('test_number')
+			if form.cleaned_data.get('base_fj_crash_to'):
+				base_fj_crash_to = form.cleaned_data.get('base_fj_crash_to')
+				bendtests = bendtests.filter(base_fj_crash__lte=base_fj_crash_to).order_by('test_number')
+			if form.cleaned_data.get('passed_true'):
+				bendtests = bendtests.filter(passed=True).order_by('test_number')
+			if form.cleaned_data.get('passed_false'):
+				bendtests = bendtests.filter(passed=False).order_by('test_number')
+			if form.cleaned_data.get('comment'):
+				comment = form.cleaned_data.get('comment')
+				bendtests = bendtests.filter(comment__icontains=comment).order_by('test_number')
+
+
 
 
 	else:
