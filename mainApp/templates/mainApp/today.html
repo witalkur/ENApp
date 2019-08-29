@@ -172,7 +172,9 @@
                     <li class="list-group-item list-group-item-light"><a href="{% url 'bendtest' %}">+ Тест на изгиб</a></li>
                     <li class="list-group-item list-group-item-light"><a href="{% url 'testshear' %}">+ Тест на срез</a></li>
                     <li class="list-group-item list-group-item-light"><a href="{% url 'testdelamination' %}">+ Тест на деламинацию</a></li>
-                    <li class="list-group-item list-group-item-light"><a href="{% url 'bendtestfilter' %}">Фильтры тестов</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="{% url 'bendtestfilter' %}">Фильтры тестов на изгиб</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="{% url 'delamtestfilter' %}">Фильтры тестов на деламинацию</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="{% url 'sheartestfilter' %}">Фильтры тестов на срез</a></li>
                   </ul>
               </div> 
               <div class="content-section">
@@ -181,6 +183,7 @@
                     <li class="list-group-item list-group-item-light"><a href="{% url 'persons' %}">Ответственные лица</a></li>
                     <li class="list-group-item list-group-item-light"><a href="{% url 'tools' %}">Инструменты/Приборы/Датчики</a></li>
                     <li class="list-group-item list-group-item-light"><a href="#">Ссылки на стандарт</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="{% url 'settings' %}">Настройки</a></li>
                   </ul>
               </div> 
         </div>

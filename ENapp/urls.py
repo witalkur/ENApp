@@ -19,7 +19,8 @@ from mainApp import views as today_views
 from mainApp.views import (BendTestUpdateView, DelaminationTestUpdateView, ShearTestUpdateView, BendTestDeleteView, 
 DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, NonconformityDeleteView, NonconformitiesView,
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
-PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView, bendtestfilterView)
+PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView, bendtestfilterView,
+Wood_types_UpdateView, Wood_types_DeleteView, Strength_class_UpdateView, Strength_class_DeleteView)
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -58,8 +59,14 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    path('bendtestfilter/', today_views.bendtestfilterView, name='bendtestfilter')
-
+    path('bendtestfilter/', today_views.bendtestfilterView, name='bendtestfilter'),
+    path('delamtestfilter/', today_views.DelaminationTestfilterView, name='delamtestfilter'),
+    path('sheartestfilter/', today_views.ShearTestfilterView, name='sheartestfilter'),
+    path('settings/', today_views.SettingsView, name='settings'),
+    path('woodtype/<int:pk>/update/', Wood_types_UpdateView.as_view(), name='woodtype-update'),
+    path('woodtype/<int:pk>/delete/', Wood_types_DeleteView.as_view(), name='woodtype-delete'),
+    path('strengthclass/<int:pk>/update/', Strength_class_UpdateView.as_view(), name='strengthclass-update'),
+    path('strengthclass/<int:pk>/delete/', Strength_class_DeleteView.as_view(), name='strengthclass-delete'),
     ]
 
 if settings.DEBUG:

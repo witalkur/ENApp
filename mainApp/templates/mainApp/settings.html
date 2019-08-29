@@ -1,0 +1,54 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="media content-section">
+    <h2>Породы дерева</h2> 
+                <form method="POST" action="{% url 'settings' %}">
+                    {% csrf_token %}
+                    <th>  
+                    {{ wood_form|crispy }} 
+                    </th>
+                    <th>
+                        <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Добавить</button>
+                    </th>
+                </form> 
+    {% for wood_type in wood_types_list %}
+    <div class="content-section tabletoday">
+        <table>
+            <tr>
+                <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'woodtype-update' wood_type.id %}">{{ wood_type.name }}</a></th>
+                 <th>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'woodtype-delete' wood_type.id %}">Удалить</a>
+                </th>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+</div> 
+<div class="media content-section">
+    <h2>Классы прочности</h2> 
+                <form method="POST" action="{% url 'settings' %}">
+                    {% csrf_token %}
+                    <th>  
+                    {{ class_form|crispy }} 
+                    </th>
+                    <th>
+                        <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Добавить</button>
+                    </th>
+                </form> 
+    {% for class_strength in class_strength_list %}
+    <div class="content-section tabletoday">
+        <table>
+            <tr>
+                <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'strengthclass-update' class_strength.id %}">{{ class_strength.name }}</a></th>
+                 <th>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'strengthclass-delete' class_strength.id %}">Удалить</a>
+                </th>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+</div> 
+{% endblock content %}

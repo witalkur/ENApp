@@ -27,7 +27,7 @@ class TestDelaminationForm(forms.ModelForm):
 		model = TestDelamination
 		fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
 		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_harderner_amount', 
-		'glue_temperature', 'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
+		'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
 		'sample_thickness', 'sample_width', 'sample_length', 'glue_use_amount', 'glue_pressure',
 		'start_glue_time', 'end_glue_time', 'pressure_time', 'layer_out_percent', 'passed', 'comment', 'photo',]
 
@@ -39,7 +39,7 @@ class TestShearForm(forms.ModelForm):
 	class Meta:
 		model = TestShear
 		fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
-		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_temperature',
+		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture',
 		'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
 		'sample_thickness', 'sample_width', 'sample_length', 'glue_use_amount', 'glue_harderner_amount', 'glue_pressure',
 		'start_glue_time', 'end_glue_time', 'pressure_time', 'time_of_testing', 'layer_ripped_percent1', 'layer_ripped_percent2',
@@ -159,3 +159,126 @@ class BendtestFilterForm(forms.ModelForm):
 		 'lamellas_strength_from', 'lamellas_strength_to', 'passed', 'by_fj_crash_from', 'by_fj_crash_to', 
 		'base_fj_crash_from', 'base_fj_crash_to', 'out_of_fj_crash_from', 'out_of_fj_crash_to', 'passed_true', 
 		'passed_false', 'comment']
+
+
+class DelaminationTestFilterForm(forms.ModelForm):
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
+	test_number = forms.IntegerField(initial=None, required=False)
+	equipment = forms.CharField(max_length=100, initial=None, required=False)
+	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)
+	timber_params = forms.CharField(max_length=100, initial=None, required=False)
+	sorter_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	fj_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	glue_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	marking_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	air_moisture_from = forms.IntegerField(initial=None, required=False)
+	air_moisture_to = forms.IntegerField(initial=None, required=False)
+	wood_moisture_from = forms.IntegerField(initial=None, required=False)
+	wood_moisture_to = forms.IntegerField(initial=None, required=False)
+	glue_harderner_amount = forms.CharField(max_length=100, initial=None, required=False)
+	air_temperature_from = forms.IntegerField(initial=None, required=False)
+	air_temperature_to = forms.IntegerField(initial=None, required=False)
+	wood_temperature_from = forms.IntegerField(initial=None, required=False)
+	wood_temperature_to = forms.IntegerField(initial=None, required=False)
+	glue = forms.CharField(max_length=100, initial=None, required=False)
+	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	sample_thickness_from = forms.IntegerField(initial=None, required=False)
+	sample_thickness_to = forms.IntegerField(initial=None, required=False)
+	sample_width_from = forms.IntegerField(initial=None, required=False)
+	sample_width_to = forms.IntegerField(initial=None, required=False)
+	sample_length_from = forms.IntegerField(initial=None, required=False)
+	sample_length_to = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_from = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_to = forms.IntegerField(initial=None, required=False)
+	glue_pressure_from = forms.FloatField(initial=None, required=False)
+	glue_pressure_to = forms.FloatField(initial=None, required=False)
+	start_glue_time_from = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	start_glue_time_to = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	pressure_time_from = forms.IntegerField(initial=None, required=False)
+	pressure_time_to = forms.IntegerField(initial=None, required=False)
+	layer_out_percent_from = forms.IntegerField(initial=None, required=False)
+	layer_out_percent_to = forms.IntegerField(initial=None, required=False)
+	passed_true = forms.BooleanField(initial=False, required=False)
+	passed_false = forms.BooleanField(initial=False, required=False)
+	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
+
+	class Meta:
+		model = TestDelamination
+		fields = ['start_test_date', 'end_test_date', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 
+		'sorter_person',
+		'fj_person', 'glue_person', 'marking_person', 'air_moisture_from', 'air_moisture_to', 'wood_moisture_from', 
+		'wood_moisture_to', 'glue_harderner_amount', 
+		'air_temperature_from', 'air_temperature_to', 'wood_temperature_from', 'wood_temperature_to',
+		 'glue', 'glue_batch_number', 'start_glue_expiration_date', 'end_glue_expiration_date',
+		'sample_thickness_from', 'sample_thickness_to', 'sample_width_from', 'sample_width_to', 'sample_length_from', 
+		'sample_length_to', 'glue_use_amount_from', 'glue_use_amount_to', 'glue_pressure_from', 'glue_pressure_to',
+		'start_glue_time_from', 'start_glue_time_to', 'pressure_time_from', 'pressure_time_to', 'layer_out_percent_from', 
+		'layer_out_percent_to', 'passed_true', 'passed_false', 'comment']
+
+
+class ShearTestFilterForm(forms.ModelForm):
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
+	test_time_from = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	test_time_to = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	test_number = forms.IntegerField(initial=None, required=False)
+	equipment = forms.CharField(max_length=100, initial=None, required=False)
+	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)
+	timber_params = forms.CharField(max_length=100, initial=None, required=False)
+	sorter_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	fj_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	glue_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	marking_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
+	air_moisture_from = forms.IntegerField(initial=None, required=False)
+	air_moisture_to = forms.IntegerField(initial=None, required=False)
+	wood_moisture_from = forms.IntegerField(initial=None, required=False)
+	wood_moisture_to = forms.IntegerField(initial=None, required=False)
+	air_temperature_from = forms.IntegerField(initial=None, required=False)
+	air_temperature_to = forms.IntegerField(initial=None, required=False)
+	wood_temperature_from = forms.IntegerField(initial=None, required=False)
+	wood_temperature_to = forms.IntegerField(initial=None, required=False)
+	glue = forms.CharField(max_length=100, initial=None, required=False)
+	glue_harderner_amount = forms.CharField(max_length=100, initial=None, required=False)
+	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	sample_thickness_from = forms.IntegerField(initial=None, required=False)
+	sample_thickness_to = forms.IntegerField(initial=None, required=False)
+	sample_width_from = forms.IntegerField(initial=None, required=False)
+	sample_width_to = forms.IntegerField(initial=None, required=False)
+	sample_length_from = forms.IntegerField(initial=None, required=False)
+	sample_length_to = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_from = forms.IntegerField(initial=None, required=False)
+	glue_use_amount_to = forms.IntegerField(initial=None, required=False)
+	glue_pressure_from = forms.FloatField(initial=None, required=False)
+	glue_pressure_to = forms.FloatField(initial=None, required=False)
+	start_glue_time_from = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	start_glue_time_to = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	pressure_time_from = forms.IntegerField(initial=None, required=False)
+	pressure_time_to = forms.IntegerField(initial=None, required=False)
+	time_of_testing_from = forms.IntegerField(initial=None, required=False)
+	time_of_testing_to = forms.IntegerField(initial=None, required=False)
+	layer_ripped_percent_average_from = forms.IntegerField(initial=None, required=False)
+	layer_ripped_percent_average_to = forms.IntegerField(initial=None, required=False)
+	force_crash_from = forms.IntegerField(initial=None, required=False)
+	force_crash_to = forms.IntegerField(initial=None, required=False)
+	passed_true = forms.BooleanField(initial=False, required=False)
+	passed_false = forms.BooleanField(initial=False, required=False)
+	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
+
+	class Meta:
+		model = TestShear
+		fields = ['start_test_date', 'end_test_date', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 
+		'sorter_person',
+		'fj_person', 'glue_person', 'marking_person', 'air_moisture_from', 'air_moisture_to', 'wood_moisture_from', 
+		'wood_moisture_to', 'glue_harderner_amount', 
+		'air_temperature_from', 'air_temperature_to', 'wood_temperature_from', 'wood_temperature_to',
+		 'glue', 'glue_batch_number', 'start_glue_expiration_date', 'end_glue_expiration_date',
+		'sample_thickness_from', 'sample_thickness_to', 'sample_width_from', 'sample_width_to', 'sample_length_from', 
+		'sample_length_to', 'glue_use_amount_from', 'glue_use_amount_to', 'glue_pressure_from', 'glue_pressure_to',
+		'start_glue_time_from', 'start_glue_time_to', 'pressure_time_from', 'pressure_time_to', 
+		'time_of_testing_from', 'time_of_testing_to', 'layer_ripped_percent_average_from', 'layer_ripped_percent_average_to',
+		'force_crash_from', 'force_crash_to', 'passed_true', 'passed_false', 'comment']
