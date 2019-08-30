@@ -18,7 +18,7 @@ def_d_glue_person, def_d_marking_person, def_d_glue_expiration_date, def_d_wood_
 def_d_wood_temperature, def_d_air_temperature)
 '''
 #wood_types = [('spruce', 'spruce'), ('pine', 'pine')]
-strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
+#strength_class_types = [('C14', 'C14'), ('C18', 'C18'), ('C24', 'C24'), ('C30', 'C30')]
 
 
 def def_d_equipment():
@@ -427,16 +427,18 @@ class Person(models.Model):
 
 	def __str__(self):
 		return self.name
-wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
+#wood_types = [('', '-------'), ('spruce', 'spruce'), ('pine', 'pine')]
 
 class Wood_types(models.Model):
 	name = models.CharField(max_length=100)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
 
 class strength_class_types(models.Model):
 	name = models.CharField(max_length=100)
+	author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
@@ -446,8 +448,8 @@ class TestLamella(models.Model):
 	test_time = models.TimeField(blank=True, null=True, default=None)
 	test_number = models.IntegerField(default=def_bt_test_number)
 	equipment = models.CharField(max_length=100, default=def_bt_equipment)
-	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, related_name='TestLamella_fj_wood_type', default=def_bt_type_of_wood)
-	strength_class = models.ForeignKey(strength_class_types, on_delete=models.PROTECT, related_name='TestLamella_strength_class', default=def_bt_strength_class)
+	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, null=True, related_name='TestLamella_fj_wood_type', default=def_bt_type_of_wood)
+	strength_class = models.ForeignKey(strength_class_types, on_delete=models.PROTECT, null=True, related_name='TestLamella_strength_class', default=def_bt_strength_class)
 	glue = models.CharField(max_length=100, default=def_bt_glue)
 	glue_harderner_amount = models.CharField(max_length=100, blank=True, default=def_bt_glue_harderner_amount)
 	lamellas_thickness = models.IntegerField(default=def_bt_lamellas_thickness)
@@ -499,7 +501,7 @@ class TestDelamination(models.Model):
 	test_time = models.TimeField(blank=True, null=True, default=def_d_test_time)
 	test_number = models.IntegerField(default=def_d_test_number)
 	equipment = models.CharField(max_length=100, default=def_d_equipment)
-	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_d_type_of_wood)
+	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, related_name='TestDelamination_type_of_wood', default=def_d_type_of_wood)
 	timber_params = models.CharField(max_length=100, default=def_d_timber_params)
 	sorter_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestDelamination_sorter_person', default=def_d_sorter_person)
 	fj_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestDelamination_fj_person', default=def_d_fj_person)
@@ -538,7 +540,7 @@ class TestShear(models.Model):
 	test_time = models.TimeField(blank=True, null=True, default=None)
 	test_number = models.IntegerField(default=def_sh_test_number)
 	equipment = models.CharField(max_length=100, default=def_sh_equipment)
-	type_of_wood = models.CharField(max_length=100, choices=wood_types, default=def_sh_type_of_wood)
+	type_of_wood = models.ForeignKey(Wood_types, on_delete=models.PROTECT, related_name='TestShear_type_of_wood', default=def_sh_type_of_wood)
 	timber_params = models.CharField(max_length=100, default=def_sh_timber_params)
 	sorter_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_sorter_person', default=def_sh_sorter_person)
 	fj_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestShear_fj_person', default=def_sh_fj_person)

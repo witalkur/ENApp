@@ -169,6 +169,12 @@ class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateVie
 		messages.success(request, f'Несоответствие отредактировано!')
 		return super().post(request, *args, **kwargs)
 
+	def test_func(self):
+		nonconformity = self.get_object()
+		if self.request.user == nonconformity.author:
+			return True
+		return False
+
 class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Nonconformity
 	success_url = '/nonconformities'
@@ -176,7 +182,14 @@ class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
 	
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Несоответствие удалено!')
-		return super().post(request, *args, **kwargs)	
+		return super().post(request, *args, **kwargs)
+
+	def test_func(self):
+		nonconformity = self.get_object()
+		if self.request.user == nonconformity.author:
+			return True
+		return False
+
 
 class NonconformityDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Nonconformity
@@ -210,6 +223,12 @@ class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		messages.success(request, f'Данные о сотруднике сохранены!')
 		return super().post(request, *args, **kwargs)
 
+	def test_func(self):
+		person = self.get_object()
+		if self.request.user == person.author:
+			return True
+		return False
+
 class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Person
 	success_url = '/persons'
@@ -218,6 +237,12 @@ class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Данные о сотруднике удалены!')
 		return super().post(request, *args, **kwargs)
+
+	def test_func(self):
+		person = self.get_object()
+		if self.request.user == person.author:
+			return True
+		return False
 
 @login_required
 def PersonCreateView(request):
@@ -251,6 +276,12 @@ class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		messages.success(request, f'Информация сохранена!')
 		return super().post(request, *args, **kwargs)
 
+	def test_func(self):
+		tool = self.get_object()
+		if self.request.user == tool.author:
+			return True
+		return False
+
 
 class ToolDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Tool
@@ -260,6 +291,12 @@ class ToolDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Данные удалены!')
 		return super().post(request, *args, **kwargs)
+
+	def test_func(self):
+		tool = self.get_object()
+		if self.request.user == tool.author:
+			return True
+		return False
 
 def ToolCreateView(request):
 	if request.method == 'POST':
@@ -717,19 +754,26 @@ def ShearTestfilterView(request):
 @login_required
 def SettingsView(request):
 	if request.method == 'POST':
-		wood_form = Wood_typeForm(request.POST)
-		class_form = strength_class_typesForm(request.POST)
+		wood_form = Wood_typeForm(request.POST, prefix='wood_type')
+		
 		if wood_form.is_valid():
+			wood_form.instance.author = request.user
 			wood_form.save()
 			messages.success(request, f'Новая порода дерева добавлена!')
 			return redirect('settings')
-		elif class_form.is_valid():
+		
+	else:
+		wood_form = Wood_typeForm(prefix='wood_type')
+	if request.method == 'POST' and not wood_form.is_valid():
+		class_form = strength_class_typesForm(request.POST, prefix='strength_class')
+		wood_form = Wood_typeForm(prefix='wood_type')
+		if class_form.is_valid():
+			class_form.instance.author = request.user
 			class_form.save()
 			messages.success(request, f'Новый класс прочности добавлен!')
 			return redirect('settings')
 	else:
-		wood_form = Wood_typeForm()
-		class_form = strength_class_typesForm()
+		class_form = strength_class_typesForm(prefix='strength_class')
 	user = get_object_or_404(User, username=request.user.username)
 	wood_types_list = Wood_types.objects.filter(author=user).order_by('name')
 	class_strength_list = strength_class_types.objects.filter(author=user).order_by('name')
@@ -746,6 +790,12 @@ class Wood_types_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 		messages.success(request, f'Порода дерева сохранена!')
 		return super().post(request, *args, **kwargs)
 
+	def test_func(self):
+		wood_type = self.get_object()
+		if self.request.user == wood_type.author:
+			return True
+		return False
+
 class Wood_types_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Wood_types
 	success_url = '/settings'
@@ -754,6 +804,12 @@ class Wood_types_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Порода дерева удалена!')
 		return super().post(request, *args, **kwargs)
+
+	def test_func(self):
+		wood_type = self.get_object()
+		if self.request.user == wood_type.author:
+			return True
+		return False
 
 class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = strength_class_types
@@ -765,6 +821,12 @@ class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateV
 		messages.success(request, f'Класс прочности сохранен!')
 		return super().post(request, *args, **kwargs)
 
+	def test_func(self):
+		strength_class_type = self.get_object()
+		if self.request.user == strength_class_type.author:
+			return True
+		return False
+
 class Strength_class_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = strength_class_types
 	success_url = '/settings'
@@ -773,3 +835,9 @@ class Strength_class_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteV
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Класс прочности удален!')
 		return super().post(request, *args, **kwargs)
+
+	def test_func(self):
+		strength_class_type = self.get_object()
+		if self.request.user == strength_class_type.author:
+			return True
+		return False

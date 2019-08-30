@@ -4,16 +4,19 @@
 
 {% block content %}
 <div class="media content-section">
-    <h2>Породы дерева</h2> 
-                <form method="POST" action="{% url 'settings' %}">
-                    {% csrf_token %}
-                    <th>  
-                    {{ wood_form|crispy }} 
-                    </th>
-                    <th>
-                        <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Добавить</button>
-                    </th>
-                </form> 
+    <h2>Породы дерева</h2>
+        <div>
+            <form method="POST" action="{% url 'settings' %}">
+                {% csrf_token %}
+                <th>  
+                {{ wood_form|crispy }} 
+                </th>
+                <th>
+                    <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Добавить</button>
+                </th>
+            </form> 
+        </div>
+    <div>
     {% for wood_type in wood_types_list %}
     <div class="content-section tabletoday">
         <table>
@@ -26,6 +29,7 @@
         </table>
     </div>
     {% endfor %}
+    </div>
 </div> 
 <div class="media content-section">
     <h2>Классы прочности</h2> 
@@ -48,7 +52,7 @@
                 </th>
             </tr>
         </table>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div> 
 {% endblock content %}
