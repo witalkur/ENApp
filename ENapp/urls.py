@@ -27,6 +27,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', today_views.today, name='today'),
@@ -67,6 +68,10 @@ urlpatterns = [
     path('woodtype/<int:pk>/delete/', Wood_types_DeleteView.as_view(), name='woodtype-delete'),
     path('strengthclass/<int:pk>/update/', Strength_class_UpdateView.as_view(), name='strengthclass-update'),
     path('strengthclass/<int:pk>/delete/', Strength_class_DeleteView.as_view(), name='strengthclass-delete'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),
+    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
+    name='password_reset_confirm'),
     ]
 
 if settings.DEBUG:

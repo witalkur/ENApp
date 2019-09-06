@@ -1,0 +1,115 @@
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #ddd;
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/*Container
+============*/
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+
+/*Header
+===========*/
+.site__header {
+	width: 100%;
+	height: 63px;
+	padding: 20px 15px;
+	background: #008080;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.header__inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav {
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.nav__link {
+	color: #fff;
+	text-decoration: none;
+	opacity: .75;
+	margin-left: 30px;
+
+}
+
+.nav__link:first-child {
+	margin-left: 0;
+}
+
+.nav__link:hover {
+	opacity: 1;
+	transition: opacity .1s 
+	linear;
+
+}
+
+/*Intro
+===========*/
+
+.intro {
+	height: 750px;
+	padding-top: 63px;
+	
+	
+}
+
+
+.work__window {
+display: flex;
+flex-direction: row;
+
+}
+
+.work__place {
+display: flex;
+flex-direction: column;
+height: auto;
+}
+
+.sidebar {
+	width: 25%;
+	height: 750px;
+}
+.date {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 24px;
+	color: #000000;
+	padding-top: 15px;
+	padding-left: 30px;
+}
+
+.col-form-label {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
