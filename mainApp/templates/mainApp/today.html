@@ -110,9 +110,51 @@
 				    
 				    
 			    <section id="content-tab1">
-			        <p>
-					Здесь размещаете любое содержание....
-			        </p>
+			       
+                        {% for test in bendtests %}
+                        <div class="test_item">
+                        <table class="table">
+                        	<tr>
+	                            <th>Номер теста: {{ test.test_number }}</th>
+	                            <th>Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+	                            {% if test.test_time %}
+	                            <th>Время: {{ test.test_time }}</th>
+	                            {% else %}
+	                            <th>Время: ---</th>
+	                            {% endif %}
+	                            <th>Порода: {{ test.type_of_wood }}</th>
+	                            <th>Класс: {{ test.strength_class }}</th>
+                            </tr>
+                            <tr>
+                            	<th>Оборудование: {{ test.equipment }}</th>
+                            	<th>Клей: {{ test.glue }}</th>
+                            	{% if test.glue_harderner_amount %}
+	                            <th>Клей:отвердитель {{ test.glue_harderner_amount }}</th>
+	                            {% else %}
+	                            <th>Клей:отвердитель  ---</th>
+	                            {% endif %}
+	                            <th>Расход клея: {{ test.glue_use_amount }} г/см3</th>
+	                             {% if test.passed %}
+	                            <th>Прошел: Да</th>
+	                            {% else %}
+	                            <th>Прошел: Нет</th>
+	                            {% endif %}
+                            </tr>
+                            <tr>
+                            	<th>Толщина: {{ test.lamellas_thickness }} мм</th>
+                            	<th>Ширина: {{ test.lamellas_width }} мм</th>
+                            	<th>Длина: {{ test.lamellas_length }} мм</th>
+                            	<th>Слева: {{ test.lamellas_left_moisture }} %</th>
+                            	<th>Справа: {{ test.lamellas_right_moisture }} %</th>
+                            </tr>
+
+                            <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' test.id %}">Изменить</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'bend-test-delete' test.id %}">Удалить</a></th>
+                        </table>
+                        </div>
+                        {% endfor %}
+                        
+                   
 			    </section>  
 			    <section id="content-tab2">
 			        <p>

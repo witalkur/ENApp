@@ -277,3 +277,25 @@ padding: 0;
 		padding: 15px;
 	}
 }
+
+
+.test_item {
+	
+	border: 1px solid #008080;
+}
+
+.table {
+	border-collapse: separate;
+	border-spacing: 5px;
+	text-align: center;
+	margin: 0 0;
+	ro
+}
+
+
+th, tr {
+	margin: 0 0;
+	border: 1px solid grey;
+	border-radius: 3px 3px 0 0;	
+	padding: 0 0;
+}
