@@ -145,3 +145,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'witalkur@gmail.com'
 EMAIL_HOST_PASSWORD = 'Nikita888nikita888'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

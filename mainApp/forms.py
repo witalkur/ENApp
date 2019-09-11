@@ -48,7 +48,7 @@ class TestShearForm(forms.ModelForm):
 
 
 class DateForm(forms.Form):
-	need_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	need_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}))
 
 class NonconformityForm(forms.ModelForm):
 	nonconformity_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))

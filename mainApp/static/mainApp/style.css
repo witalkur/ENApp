@@ -17,8 +17,11 @@ body {
 ============*/
 
 .container {
+	display: flex;
 	width: 100%;
-	margin: 0 auto;
+	margin: 0 0;
+	padding: 0;
+	height: 100%;
 }
 
 
@@ -27,7 +30,7 @@ body {
 .site__header {
 	width: 100%;
 	height: 63px;
-	padding: 20px 15px;
+
 	background: #008080;
 	position: absolute;
 	top: 0;
@@ -39,37 +42,45 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 }
 
-.logo {
-	font-size: 18px;
+.header__logo {
+
+}
+
+#logo {
+	position: absolute;
+	padding-bottom: 20px;
+	left: 40px;
+	font-size: 22px;
 	font-weight: 700;
 	color: #fff;
 	text-decoration: none;
 }
 
-.nav {
+#nav {
 	font-size: 13px;
 	font-weight: 600;
 }
 
-.nav__link {
+#nav__link {
 	color: #fff;
 	text-decoration: none;
 	opacity: .75;
 	margin-left: 30px;
 
+
 }
 
-.nav__link:first-child {
+#nav__link:first-child {
 	margin-left: 0;
 }
 
-.nav__link:hover {
+#nav__link:hover {
 	opacity: 1;
 	transition: opacity .1s 
-	linear;
-
+	linear;	
 }
 
 /*Intro
@@ -85,26 +96,40 @@ body {
 
 .work__window {
 display: flex;
+flex-flow: row;
+flex-wrap: nowrap;
 flex-direction: row;
+height: 100%;
+
+
 
 }
 
 .work__place {
+flex: 3;
 display: flex;
 flex-direction: column;
-height: auto;
+
+}
+.dates {
+	display: flex;
+	height: 80px;
+	align-items: center;
+
 }
 
 .sidebar {
-	width: 25%;
-	height: 750px;
-}
-.date {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 24px;
-	color: #000000;
-	padding-top: 15px;
+	flex: 1;
 	padding-left: 30px;
+
+}
+#date {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	font-weight: 500;
+	color: #000000;
+	padding-left: 10px;
+	white-space: nowrap;
 }
 
 .col-form-label {
@@ -112,4 +137,140 @@ height: auto;
 	font-size: 13px;
 	padding-bottom: 0;
 	margin-bottom: 0;
+}
+
+.date__form {
+	display: flex;
+	padding: 13px 0;
+	margin: 0 0;
+	width: 250px;
+	
+}
+
+.form__input {
+padding: 0 10px;
+margin: 0;
+}
+
+.but {
+padding: 0;
+
+}
+
+/* Базовый контейнер табов */
+.tab_container {
+	display: flex;
+	width: 100%;
+	padding: 0px;
+	padding-right: 10px;
+	margin: 0 auto;
+
+}
+
+/* Стили секций с содержанием */
+.tabs>.for_section>section {
+	display: none;
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+.tabs>.for_section>section>p {
+	margin: 0 0 5px;
+	line-height: 1.5;
+	color: #383838;
+	/* прикрутим анимацию */
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+/* Описываем анимацию свойства opacity */
+ 
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+/* Прячем чекбоксы */
+.tabs>.tab_container>input {
+	display: none;
+	position: absolute;
+}
+/* Стили переключателей вкладок (табов) */
+.tab__container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+}
+
+.tabs>.tab_container>label {
+	flex: 1;
+	margin: 0 0 -1px;
+	padding: 15px 50px;
+	font-weight: 600;
+	text-align: center;
+	color: #aaa;
+	border: 0px solid #ddd;
+	border-width: 1px 1px 1px 1px;
+	background: #f1f1f1;
+	border-radius: 3px 3px 0 0;
+}
+/* Шрифт-иконки от Font Awesome в формате Unicode */
+.tabs>.tab_container>label:before {
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;
+}
+
+/* Изменения стиля переключателей вкладок при наведении */
+ 
+.tabs>.tab_container>label:hover {
+	color: #888;
+	cursor: pointer;
+}
+/* Стили для активной вкладки */
+.tabs>.tab_container>input:checked+label {
+	color: #555;
+	border-top: 1px solid #008080;
+	border-bottom: 1px solid #fff;
+	background: #fff;
+}
+/* Активация секций с помощью псевдокласса :checked */
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {
+	display: block;
+}
+/* Убираем текст с переключателей 
+* и оставляем иконки на малых экранах
+*/
+ 
+@media screen and (max-width: 680px) {
+	.tabs>.tab_container>label {
+		font-size: 0;
+	}
+	.tabs>.tab_container>label:before {
+		margin: 0;
+		font-size: 18px;
+	}
+}
+/* Изменяем внутренние отступы 
+*  переключателей для малых экранов
+*/
+@media screen and (max-width: 400px) {
+	.tabs>.tab_container>label {
+		padding: 15px;
+	}
 }

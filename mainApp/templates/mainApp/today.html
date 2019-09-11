@@ -1,28 +1,51 @@
 {% load static %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
-{% load crispy_forms_tags %}
+{% bootstrap_javascript jquery='full' %}
 
 
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="ru">
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'mainApp/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'mainApp/style.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+           <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    locale: 'ru',
+                });
+            });
+        </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
    
-    <!-- Bootstrap CSS-->
+        <!-- Bootstrap CSS-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+ 	
+   
 
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+     
 
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js" integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
+
+    <!-- Tempus Dominus Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+   
+    <script src="{% static 'mainApp/ru.js' %}"></script>
+ 
   
 {{ date_form.media }}
 </head>
@@ -33,16 +56,16 @@
 	<div class="container">
 		<div class="header__inner">
 			<div class="header__logo">
-				<a class="logo" href="/">FPC App EN 14080:2013</a>
+				<a id="logo" href="/">FPC App EN 14080:2013</a>
 			</div>
-			<nav class="nav">
-				<a class="nav__link" href="{% url 'today' %}">Главная</a>
+			<nav id="nav">
+				<a id="nav__link" href="{% url 'today' %}">Главная</a>
 				{% if user.is_authenticated %}
-				<a class="nav__link" href="{% url 'profile' %}">Мой профиль</a>
-				<a class="nav__link" href="{% url 'logout' %}">Выйти</a>
+				<a id="nav__link" href="{% url 'profile' %}">Мой профиль</a>
+				<a id="nav__link" href="{% url 'logout' %}">Выйти</a>
 				{% else %}
-				<a class="nav__link" href="{% url 'login' %}">Войти</a>
-				<a class="nav__link" href="{% url 'register' %}">Регистрация</a>
+				<a id="nav__link" href="{% url 'login' %}">Войти</a>
+				<a id="nav__link" href="{% url 'register' %}">Регистрация</a>
 				{% endif %}
 			</nav>
 		</div>	
@@ -60,32 +83,58 @@
                 </div>
                 {% endfor %}
             {% endif %}
-			<div class="date">{{ date }}</div>
-			<dir class="date__form">
-				<form method="POST" action="{% url 'date_tests' %}">
-                {% csrf_token %}
-                <th>  
-                {{ date_form|crispy }} 
-                </th>
-                <th>
-                    <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Перейти</button>
-                </th>
-            </form> 
+            <div class='dates'>
+				<div id="date"><h5 id="date">{{ date }}</h5></div>
+				<dir class="date__form">
+					<form method="POST" class="form__input"  action="{% url 'date_tests' %}">
+	                {% csrf_token %}
+	                {{ date_form.need_date }}
 
-			</dir>
-			<div class="work__item">
+	                </dir>
+	                <dir class="but">
+	                <button class="btn btn-info btn-sm" type="submit">Перейти</button></dir> 
+	            </form>
 				
+				
+
 			</div>
+
+			<div class="tabs">
+					<div class="tab_container">
+				    	<input id="tab1" type="radio" name="tabs" checked>
+				    	<label for="tab1" title="Вкладка 1">Изгиб</label>
+				    	<input id="tab2" type="radio" name="tabs">
+				    	<label for="tab2" title="Вкладка 2">Деламинация</label>
+				    	<input id="tab3" type="radio" name="tabs">
+				    	<label for="tab3" title="Вкладка 3">Срез</label>
+				    </div>
+				    <div class="for_section">
+			    <section id="content-tab1">
+			        <p>
+					Здесь размещаете любое содержание....
+			        </p>
+			    </section>  
+			    <section id="content-tab2">
+			        <p>
+			          Здесь размещаете любое содержание....
+			        </p>
+			    </section> 
+			    <section id="content-tab3">
+			        <p>
+			          Здесь размещаете любое содержание....
+					</p>
+			    </section>  
+			    </div>
+			</div>
+
 		</div>
 		<div class="sidebar">
-		<div class="sidebar__item">
-			
+			<h5>a;oejvn;WEJBV;wekjbv;WKJEBVw;kjeb</h5>
 		</div>
 	</div>
-	</div>
-	
-	
-</div>
+</div>	
+
+
 
 
 </body>
