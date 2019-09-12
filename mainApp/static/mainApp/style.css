@@ -163,7 +163,7 @@ padding: 0;
 /* Базовый контейнер табов */
 .tabs {
 	width: 100%;
-	padding: 0;
+	padding: 0 10px;
 	margin: 0;
 	white-space: nowrap;
 }
@@ -174,7 +174,7 @@ padding: 0;
 	padding: 15px 0;
 	background: #fff;
 	margin-right: -9px;
-	border: 1px solid #ddd;
+	
 }
 .tabs>section>p {
 	margin: 0 0 5px;
@@ -248,7 +248,7 @@ padding: 0;
 /* Стили для активной вкладки */
 .tabs>input:checked+label {
 	color: #555;
-	border-top: 1px solid #008080;
+	
 	border-bottom: 1px solid #fff;
 	background: #fff;
 }
@@ -280,22 +280,65 @@ padding: 0;
 
 
 .test_item {
-	
-	border: 1px solid #008080;
+	background: #f1f1f1;
+	border: 3px solid #008080;
+	border-radius: 3px 3px 0 0;
+	margin: 0 0;
+	padding: 0 0;
+
 }
 
 .table {
-	border-collapse: separate;
-	border-spacing: 5px;
+	border-collapse: collapse;
+	border-spacing: 0;
 	text-align: center;
 	margin: 0 0;
-	ro
+	padding: 0 0;
+	height: 100%;
+	width: 100%;
+	border: 3px solid #008080;
 }
 
-
-th, tr {
+.table_inner {
+	border-spacing: 0;
+	text-align: center;
 	margin: 0 0;
-	border: 1px solid grey;
+	width: 100%;
+	height: 100%;
+	padding: 0 0;
+	border: 1px solid #008080;
+}
+.table_cell {
+	margin: 0 0;
+	border: 1px solid #008080;
 	border-radius: 3px 3px 0 0;	
 	padding: 0 0;
+	background: #f1f1f1;
+}
+
+.sidebar {
+	padding-top: 20px;
+	text-align: center;
+}
+.sidebar_inner {
+	display: flex;
+	flex-direction: column;
+	background: #f1f1f1;
+}
+
+.side_link	{
+	display: block;
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #ddd;
+	text-decoration: none;
+}
+
+#cell1 {
+	border-top: 2px solid #008080;
+	border-right: 2px solid #008080;
+	font-family: fontawesome;
+	font-size: 14px;
+	color: #ddd;
 }
