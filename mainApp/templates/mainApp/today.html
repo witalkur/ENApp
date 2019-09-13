@@ -83,6 +83,7 @@
                 </div>
                 {% endfor %}
             {% endif %}
+            {% block content %}
             <div class='dates'>
 				<div id="date"><h5 id="date">{{ date }}</h5></div>
 				<dir class="date__form">
@@ -104,13 +105,13 @@
 				    	<input id="tab1" type="radio" name="tabs" checked>
 				    	<label for="tab1">Изгиб</label>
 				    	<input id="tab2" type="radio" name="tabs">
-				    	<label for="tab2">Деламинация</label>
+				    	<label for="tab2">Срез</label>
 				    	<input id="tab3" type="radio" name="tabs">
-				    	<label for="tab3">Срез</label>
+				    	<label for="tab3">Деламинация</label>
 				    
 				    
 			    <section id="content-tab1">
-			       
+			       		{% if bendtests %}
                         {% for test in bendtests %}
                         
                         <table class="table">
@@ -127,12 +128,12 @@
                             </tr>
                             <tr>
                             	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-                            	<th colspan="2" class="table_cell">Отбор проводил</th>
+                            	<th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
                             </tr>
                             <tr>
                             	<th class="table_cell">Толщина: {{ test.lamellas_thickness }} мм</th>
                             	<th class="table_cell">Ширина: {{ test.lamellas_width }} мм</th>
-                            	<th class="table_cell">Длина: {{ test.lamellas_length }} мм</th>
+                            	<th class="table_cell" id="cell2">Длина: {{ test.lamellas_length }} мм</th>
                             	<th colspan="2" class="table_cell">{{ test.lamellas_took_person }}</th>
                             </tr>
 
@@ -141,8 +142,9 @@
                         </table>
                         
                         {% endfor %}
-                        
-                   
+                        {% else %}
+                        В этот день тестов не добавлено
+                   		{% endif %}
 			    </section>  
 			    <section id="content-tab2">
 			        <p>
@@ -156,15 +158,52 @@
 			    </section>  
 			   
 			</div>
-
+			{% endblock %}
 		</div>
 		<div class="sidebar">
+			{% block sidebar %}
 			<div class="sidebar_inner">
-				<div>Добавить тест</div>
+				<div id="dark_cell_sidebar">Добавление тестов</div>
 				<div class="sidebar_item">
-					<a href="{% url 'bendtest' %}" class="side_link">+ изгиб</a>
+					<a href="{% url 'bendtest' %}" class="side_link">+ Тест на изгиб</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'testshear' %}" class="side_link">+ Тест на срез</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'testdelamination' %}" class="side_link">+ Тест на деламинацию</a>
 				</div>
 			</div>
+			<div class="sidebar_inner">
+				<div id="dark_cell_sidebar">Фильтрация тестов</div>
+				<div class="sidebar_item">
+					<a href="{% url 'bendtestfilter' %}" class="side_link">Найти тесты на изгиб</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'sheartestfilter' %}" class="side_link">Найти тесты на срез</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'delamtestfilter' %}" class="side_link">Найти тесты на деламинацию</a>
+				</div>
+			</div>
+			<div class="sidebar_inner">
+				<div class="sidebar_item">
+					<a href="{% url 'nonconformities' %}" class="side_link">Несоответствия</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'persons' %}" class="side_link">Ответственные лица</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'tools' %}" class="side_link">Оборудование/Инструменты/Приборы</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="#" class="side_link">Ссылки на стандарт</a>
+				</div>
+				<div class="sidebar_item">
+					<a href="{% url 'settings' %}" class="side_link">Настройки</a>
+				</div>
+			</div>
+			{% endblock sidebar %}
 		</div>
 	</div>
 </div>	
