@@ -39,6 +39,15 @@ def bendtest(request):
 		form = BendtestForm()
 	return render(request, 'mainApp/bendtest.html', {'form': form})
 
+class BendTestDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = TestLamella
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
 @login_required
 def TestDelaminationView(request):
 	if request.method == 'POST':
@@ -141,6 +150,12 @@ class BendTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestLamella
 	success_url = '/'
 	template_name = 'mainApp/test_confirm_delete.html'
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
 
 class DelaminationTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestDelamination

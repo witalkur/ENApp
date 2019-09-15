@@ -114,8 +114,8 @@
 			       		{% if bendtests %}
                         {% for test in bendtests %}
                         
-                        <table class="table">
-                        	<tr>
+                        <table class="table" onClick='location.href="{% url "bendtest-detail" test.id %}"'>
+                        	<tr class="table_row">
 	                            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
 	                            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
 	                            {% if test.test_time %}
@@ -126,11 +126,11 @@
 	                            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
 	                            <th class="table_cell">Класс: {{ test.strength_class }}</th>
                             </tr>
-                            <tr>
+                            <tr class="table_row">
                             	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
                             	<th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
                             </tr>
-                            <tr>
+                            <tr class="table_row">
                             	<th class="table_cell">Толщина: {{ test.lamellas_thickness }} мм</th>
                             	<th class="table_cell">Ширина: {{ test.lamellas_width }} мм</th>
                             	<th class="table_cell" id="cell2">Длина: {{ test.lamellas_length }} мм</th>

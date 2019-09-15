@@ -1,0 +1,116 @@
+{% extends "mainApp/today.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% block content %}
+<table class="table_detail">
+	<tr>
+        <th class="table_cell">Номер теста: {{ object.test_number }}</th>
+        <th class="table_cell">Дата: {{ object.test_date|date:"d-m-Y" }}</th>
+        {% if object.test_time %}
+        <th class="table_cell">Время: {{ object.test_time }}</th>
+        {% else %}
+        <th class="table_cell">Время: ---</th>
+        {% endif %}
+        <th class="table_cell">Порода: {{ object.type_of_wood }}</th>
+        <th class="table_cell">Класс: {{ object.strength_class }}</th>
+    </tr>
+    <tr>
+    	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
+    	<th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
+    </tr>
+    <tr>
+    	<th class="table_cell">Толщина: {{ object.lamellas_thickness }} мм</th>
+    	<th class="table_cell">Ширина: {{ object.lamellas_width }} мм</th>
+    	<th class="table_cell" id="cell2">Длина: {{ object.lamellas_length }} мм</th>
+    	<th colspan="2" class="table_cell">{{ object.lamellas_took_person }}</th>
+    </tr>
+    <tr>
+    	<th colspan="5" id="cell3">Параметры пальцевого соединения</th>
+    </tr>
+    <tr>
+    	<th class="table_cell">Длина: {{ object.fj_length }} мм</th>
+    	<th class="table_cell">Шаг: {{ object.fj_path }} мм</th>
+    	<th class="table_cell">Зазор: {{ object.fj_gap }} мм</th>
+    	<th class="table_cell">Угол: {{ object.fj_angle }} г</th>
+    	<th class="table_cell">Ориентация: {{ object.fj_orientation }}</th>
+    </tr>
+    <tr>
+    	<th colspan="2" class="table_cell" id="cell3">Влажность</th>
+    	<th class="table_cell" id="cell3">Клей (отвердитель)</th>
+    	<th class="table_cell" id="cell3">Номер партии клея</th>
+    	<th class="table_cell" id="cell3">Срок годности</th>
+    </tr>
+    <tr>
+    	<th class="table_cell">Слева: {{ object.lamellas_left_moisture }} %</th>
+    	<th class="table_cell">Справа: {{ object.lamellas_right_moisture }} %</th>
+    	<th class="table_cell">{{ object.glue }}</th>
+    	<th class="table_cell">{{ object.glue_batch_number }}</th>
+    	<th class="table_cell">{{ object.glue_expiration_date }}</th>
+    </tr>
+    <tr>
+    	<th colspan="5" class="table_cell" id="cell3">Параметры склеивания</th>
+    </tr>
+    <tr>
+    	<th class="table_cell dark_cell">Расход клея</th>
+    	<th class="table_cell dark_cell">Давление</th>
+    	<th class="table_cell dark_cell">Продолжительность</th>
+    	<th colspan="2" class="table_cell dark_cell">Соотношение К:О</th>
+    </tr>
+    <tr>
+    	<th class="table_cell">{{ object.glue_use_amount }} г/см2</th>
+    	<th class="table_cell">{{ object.glue_pressure }} г/см3</th>
+    	{% if object.pressure_time %}
+    	<th class="table_cell">{{ object.pressure_time }} мин.</th>
+    	{% else %}
+        <th class="table_cell">---</th>
+        {% endif %}
+        {% if object.glue_harderner_amount %}
+    	<th class="table_cell" colspan="2">{{ object.glue_harderner_amount }}</th>
+    	{% else %}
+        <th class="table_cell" colspan="2">---</th>
+        {% endif %}
+    </tr>
+    <tr>
+    	<th colspan="5" class="table_cell" id="cell3">Результаты тестирования</th>
+    </tr>
+    <tr>
+    	<th class="table_cell dark_cell">Сила</th>
+    	<th class="table_cell dark_cell">Напряжение</th>
+    	<th class="table_cell dark_cell">Излом по соединению</th>
+    	<th class="table_cell dark_cell">Излом в основании соединения</th>
+    	<th class="table_cell dark_cell">Излом вне соединения</th>
+    </tr>
+    <tr>
+    	<th class="table_cell">{{ object.force_crash }} kH</th>
+    	<th class="table_cell">{{ object.lamellas_strength }} kH/м2</th>
+    	<th class="table_cell">{{ object.by_fj_crash }} %</th>
+    	<th class="table_cell">{{ object.base_fj_crash }} %</th>
+    	<th class="table_cell">{{ object.out_of_fj_crash }} %</th>
+    </tr>
+    <tr>
+    	<th colspan="5" class="table_cell" id="cell3">Комментарий</th>
+    </tr>
+    <tr>
+    	{% if object.comment %}
+    	<th class="table_cell" colspan="5">{{ object.comment }}</th>
+    	{% else %}
+        <th class="table_cell" colspan="5">---</th>
+        {% endif %}
+    </tr>
+    <tr>
+    	<th class="table_cell dark_cell">Соответствует нормам:</th>
+    	{% if object.passed %}
+    	<th class="table_cell">Да</th>
+    	{% else %}
+        <th class="table_cell">Нет</th>
+        {% endif %}
+    	<th class="table_cell dark_cell">Фото:</th>
+    	<th class="table_cell" colspan="2">{{ object.photo }}</th>
+    </tr>
+</table>
+<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' object.id %}">Изменить</a>
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'bend-test-delete' object.id %}">Удалить</a>
+
+
+
+{% endblock content %}

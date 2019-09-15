@@ -20,7 +20,7 @@ from mainApp.views import (BendTestUpdateView, DelaminationTestUpdateView, Shear
 DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, NonconformityDeleteView, NonconformitiesView,
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
 PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView, bendtestfilterView,
-Wood_types_UpdateView, Wood_types_DeleteView, Strength_class_UpdateView, Strength_class_DeleteView)
+Wood_types_UpdateView, Wood_types_DeleteView, Strength_class_UpdateView, Strength_class_DeleteView, BendTestDetailView)
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -32,6 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', today_views.today, name='today'),
     path('bendtest/', today_views.bendtest, name='bendtest'),
+    path('bendtest/<int:pk>/detail/', BendTestDetailView.as_view(), name='bendtest-detail'),
     path('testdelamination/', today_views.TestDelaminationView, name='testdelamination'),
     path('testshear/', today_views.TestShearView, name='testshear'),
     path('datetests/', today_views.DateTestsView, name='date_tests'),
@@ -72,6 +73,9 @@ urlpatterns = [
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
     name='password_reset_confirm'),
+
+
+    
     ]
 
 if settings.DEBUG:

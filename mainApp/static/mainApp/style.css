@@ -20,7 +20,7 @@ body {
 	display: flex;
 	width: 100%;
 	margin: 0 0;
-	padding: 0;
+	padding: 0 0;
 	height: 100%;
 }
 
@@ -112,7 +112,8 @@ height: 100%;
 flex: 3;
 display: flex;
 flex-direction: column;
-
+margin-right: 50px;
+margin-left: 15px;
 }
 .dates {
 	display: flex;
@@ -124,7 +125,6 @@ flex-direction: column;
 .sidebar {
 	flex: 1;
 	padding-left: 30px;
-
 }
 #date {
 	font-family: 'Open Sans', sans-serif;
@@ -163,7 +163,7 @@ padding: 0;
 /* Базовый контейнер табов */
 .tabs {
 	width: 100%;
-	padding: 0 10px;
+	padding: 0 0 10px;
 	margin: 0;
 	white-space: nowrap;
 }
@@ -171,7 +171,7 @@ padding: 0;
 /* Стили секций с содержанием */
 .tabs>section {
 	display: none;
-	padding: 15px 0;
+	padding: 0 0;
 	background: #fff;
 	margin-right: -9px;
 	
@@ -292,14 +292,40 @@ padding: 0;
 	border-collapse: separate;
 	border-spacing: 0;
 	text-align: center;
-	margin: 0 0;
+	margin: 30px 0;
 	padding: 0 0;
-	height: 100%;
 	width: 100%;
 	border: 5px solid #008080;
 	border-radius: 5px;
 	
 }
+
+.table_detail {
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: center;
+	margin: 30px 0;
+	padding: 0 0;
+	width: 100%;
+	border: 5px solid #008080;
+	border-radius: 5px;
+	
+}
+.table_row {
+	width: 100%;
+}
+
+.table:first-child {
+	margin: 15px 0;
+}
+
+.table:hover {
+cursor:pointer;
+box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+}
+
+
+
 
 .table_inner {
 	border-spacing: 0;
@@ -312,10 +338,10 @@ padding: 0;
 }
 .table_cell {
 	margin: 0 0;
-	border: 1px solid #008080;
-		
-	padding: 0 0;
+	border: 1px solid #008080;	
+	padding: 5px 10px;
 	background: #f1f1f1;
+	width: 20%;
 }
 
 .sidebar {
@@ -398,4 +424,14 @@ padding: 0;
 	color: #000000;
 	font-weight: 700;
 	background: #d8d8d8;
+}
+
+.dark_cell {
+	background: #d8d8d8
+}
+
+
+.table_link {
+	display: block;
+	text-decoration: none;
 }
