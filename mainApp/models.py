@@ -467,7 +467,7 @@ class TestLamella(models.Model):
 	glue_use_amount = models.IntegerField(default=def_bt_glue_use_amount)
 	glue_batch_number = models.CharField(max_length=100, default=def_bt_glue_batch_number)
 	glue_expiration_date = models.DateField()
-	lamellas_param = models.CharField(max_length=100, default=def_bt_lamellas_param)
+	lamellas_param = models.CharField(blank=True, max_length=100, default=def_bt_lamellas_param)
 	lamellas_took_person = models.ForeignKey(Person, on_delete=models.PROTECT, related_name='TestLamella_took_person', default=def_bt_lamellas_took_person)
 	force_crash = models.FloatField()
 	time_of_testing = models.IntegerField(blank=True, null=True)

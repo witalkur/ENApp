@@ -4,35 +4,54 @@
 {% block content %}
 <table class="table_detail">
 	<tr>
-        <th class="table_cell">Номер теста: {{ object.test_number }}</th>
-        <th class="table_cell">Дата: {{ object.test_date|date:"d-m-Y" }}</th>
+		<th class="table_cell dark_cell">Номер теста</th>
+		<th class="table_cell dark_cell">Дата</th>
+		<th class="table_cell dark_cell">Время</th>
+		<th class="table_cell dark_cell">Порода</th>
+		<th class="table_cell dark_cell">Класс</th>
+	</tr>
+	<tr>
+        <th class="table_cell">{{ object.test_number }}</th>
+        <th class="table_cell">{{ object.test_date|date:"d-m-Y" }}</th>
         {% if object.test_time %}
-        <th class="table_cell">Время: {{ object.test_time }}</th>
+        <th class="table_cell">{{ object.test_time }}</th>
         {% else %}
-        <th class="table_cell">Время: ---</th>
+        <th class="table_cell">---</th>
         {% endif %}
-        <th class="table_cell">Порода: {{ object.type_of_wood }}</th>
-        <th class="table_cell">Класс: {{ object.strength_class }}</th>
+        <th class="table_cell">{{ object.type_of_wood }}</th>
+        <th class="table_cell">{{ object.strength_class }}</th>
     </tr>
     <tr>
     	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
     	<th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
     </tr>
     <tr>
-    	<th class="table_cell">Толщина: {{ object.lamellas_thickness }} мм</th>
-    	<th class="table_cell">Ширина: {{ object.lamellas_width }} мм</th>
-    	<th class="table_cell" id="cell2">Длина: {{ object.lamellas_length }} мм</th>
-    	<th colspan="2" class="table_cell">{{ object.lamellas_took_person }}</th>
+    	<th class="table_cell dark_cell">Толщина</th>
+		<th class="table_cell dark_cell">Ширина</th>
+		<th class="table_cell dark_cell" id="cell2">Длина</th>
+		<th colspan="2" rowspan="2" class="table_cell">{{ object.lamellas_took_person }}</th>
     </tr>
     <tr>
-    	<th colspan="5" id="cell3">Параметры пальцевого соединения</th>
+    	<th class="table_cell">{{ object.lamellas_thickness }} мм</th>
+    	<th class="table_cell">{{ object.lamellas_width }} мм</th>
+    	<th class="table_cell" id="cell2">{{ object.lamellas_length }} мм</th>
     </tr>
     <tr>
-    	<th class="table_cell">Длина: {{ object.fj_length }} мм</th>
-    	<th class="table_cell">Шаг: {{ object.fj_path }} мм</th>
-    	<th class="table_cell">Зазор: {{ object.fj_gap }} мм</th>
-    	<th class="table_cell">Угол: {{ object.fj_angle }} г</th>
-    	<th class="table_cell">Ориентация: {{ object.fj_orientation }}</th>
+    	<th colspan="5" class="table_cell" id="cell3">Параметры пальцевого соединения</th>
+    </tr>
+    <tr>
+		<th class="table_cell dark_cell">Длина</th>
+		<th class="table_cell dark_cell">Шаг</th>
+		<th class="table_cell dark_cell">Зазор</th>
+		<th class="table_cell dark_cell">Угол</th>
+		<th class="table_cell dark_cell">Ориентация</th>
+	</tr>
+    <tr>
+    	<th class="table_cell">{{ object.fj_length }} мм</th>
+    	<th class="table_cell">{{ object.fj_path }} мм</th>
+    	<th class="table_cell">{{ object.fj_gap }} мм</th>
+    	<th class="table_cell">{{ object.fj_angle }} г</th>
+    	<th class="table_cell">{{ object.fj_orientation }}</th>
     </tr>
     <tr>
     	<th colspan="2" class="table_cell" id="cell3">Влажность</th>
@@ -54,13 +73,13 @@
     	<th class="table_cell dark_cell">Расход клея</th>
     	<th class="table_cell dark_cell">Давление</th>
     	<th class="table_cell dark_cell">Продолжительность</th>
-    	<th colspan="2" class="table_cell dark_cell">Соотношение К:О</th>
+    	<th colspan="2" class="table_cell dark_cell">Соотношение Клей:Отвердитель</th>
     </tr>
     <tr>
     	<th class="table_cell">{{ object.glue_use_amount }} г/см2</th>
     	<th class="table_cell">{{ object.glue_pressure }} г/см3</th>
     	{% if object.pressure_time %}
-    	<th class="table_cell">{{ object.pressure_time }} мин.</th>
+    	<th class="table_cell">{{ object.pressure_time }} сек.</th>
     	{% else %}
         <th class="table_cell">---</th>
         {% endif %}
@@ -88,15 +107,18 @@
     	<th class="table_cell">{{ object.out_of_fj_crash }} %</th>
     </tr>
     <tr>
-    	<th colspan="5" class="table_cell" id="cell3">Комментарий</th>
+    	<th colspan="4" class="table_cell" id="cell3">Комментарий</th>
+    	<th class="table_cell" id="cell3">Оборудование</th>
     </tr>
     <tr>
     	{% if object.comment %}
-    	<th class="table_cell" colspan="5">{{ object.comment }}</th>
+    	<th class="table_cell" colspan="4">{{ object.comment }}</th>
     	{% else %}
-        <th class="table_cell" colspan="5">---</th>
+        <th class="table_cell" colspan="4">---</th>
         {% endif %}
+        <th class="table_cell">{{ object.equipment }}</th>
     </tr>
+
     <tr>
     	<th class="table_cell dark_cell">Соответствует нормам:</th>
     	{% if object.passed %}
@@ -105,7 +127,7 @@
         <th class="table_cell">Нет</th>
         {% endif %}
     	<th class="table_cell dark_cell">Фото:</th>
-    	<th class="table_cell" colspan="2">{{ object.photo }}</th>
+    	<th class="table_cell" colspan="2"><a href="{{ object.photo.url }}" target="_blank"><img src="{{ object.photo.url }}"></a></th>
     </tr>
 </table>
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' object.id %}">Изменить</a>

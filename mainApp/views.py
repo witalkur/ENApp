@@ -90,7 +90,7 @@ def DateTestsView(request):
 
 class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestLamella
-	success_url = '/'
+	success_url = '/bendtest/{id}/detail/'
 	form_class = BendtestForm
 	template_name = 'mainApp/TestUpdate.html'
 	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 

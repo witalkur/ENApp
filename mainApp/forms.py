@@ -7,12 +7,15 @@ from .models import def_bt_glue_expiration_date, def_d_glue_expiration_date, def
 
 
 class BendtestForm(forms.ModelForm):
-	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_bt_glue_expiration_date)
+	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today())
+	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=def_bt_glue_expiration_date)
+	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}))
+	test_time = forms.TimeField(required=False, widget=TimePickerInput())
 
 	class Meta:
 		model = TestLamella
-		fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
+		fields = ['test_date', 'test_time', 'test_number', 'equipment',
+		'type_of_wood', 'strength_class', 'glue', 
 		'glue_harderner_amount', 'lamellas_thickness', 'lamellas_width', 'lamellas_length', 'fj_length', 'fj_path', 'fj_gap',
 		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
 		'pressure_time', 'glue_use_amount', 'glue_batch_number', 'glue_expiration_date', 'lamellas_param',
