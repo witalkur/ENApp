@@ -23,8 +23,10 @@ class BendtestForm(forms.ModelForm):
 		'out_of_fj_crash', 'comment', 'photo']
 
 class TestDelaminationForm(forms.ModelForm):
-	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_d_glue_expiration_date)
+	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today())
+	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=def_d_glue_expiration_date)
+	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}))
+	test_time = forms.TimeField(required=False, widget=TimePickerInput())
 
 	class Meta:
 		model = TestDelamination
@@ -36,17 +38,18 @@ class TestDelaminationForm(forms.ModelForm):
 
 
 class TestShearForm(forms.ModelForm):
-	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today())
-	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=def_sh_glue_expiration_date)
+	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today())
+	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=def_d_glue_expiration_date)
+	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 100}))
+	test_time = forms.TimeField(required=False, widget=TimePickerInput())
 
 	class Meta:
 		model = TestShear
 		fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
-		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture',
+		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_temperature',
 		'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
 		'sample_thickness', 'sample_width', 'sample_length', 'glue_use_amount', 'glue_harderner_amount', 'glue_pressure',
-		'start_glue_time', 'end_glue_time', 'pressure_time', 'time_of_testing', 'layer_ripped_percent1', 'layer_ripped_percent2',
-		 'layer_ripped_percent3', 'layer_ripped_percent4', 'layer_ripped_percent5', 'layer_ripped_percent_average',
+		'start_glue_time', 'end_glue_time', 'pressure_time', 'time_of_testing', 'number_of_layers', 'layer_ripped_percent_average',
 		 'force_crash', 'passed', 'comment', 'photo']
 
 

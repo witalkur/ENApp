@@ -127,7 +127,11 @@
         <th class="table_cell">Нет</th>
         {% endif %}
     	<th class="table_cell dark_cell">Фото:</th>
+        {% if object.photo %}
     	<th class="table_cell" colspan="2"><a href="{{ object.photo.url }}" target="_blank"><img src="{{ object.photo.url }}"></a></th>
+        {% else %}
+        <th class="table_cell" colspan="2">---</th>
+        {% endif %}
     </tr>
 </table>
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' object.id %}">Изменить</a>

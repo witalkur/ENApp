@@ -39,8 +39,19 @@ def bendtest(request):
 		form = BendtestForm()
 	return render(request, 'mainApp/bendtest.html', {'form': form})
 
+
 class BendTestDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = TestLamella
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
+
+class TestShearDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = TestShear
 
 	def test_func(self):
 		test = self.get_object()
@@ -92,7 +103,7 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestLamella
 	success_url = '/bendtest/{id}/detail/'
 	form_class = BendtestForm
-	template_name = 'mainApp/TestUpdate.html'
+	template_name = 'mainApp/BendTestUpdate.html'
 	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'strength_class', 'glue', 
 		'glue_harderner_amount', 'lamellas_thickness', 'lamellas_width', 'lamellas_length', 'fj_length', 'fj_path', 'fj_gap',
 		'fj_angle', 'fj_orientation', 'lamellas_left_moisture', 'lamellas_right_moisture', 'glue_pressure',
@@ -116,7 +127,7 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestDelamination
-	success_url = '/'
+	success_url = '/testdelamination/{id}/detail/'
 	form_class = TestDelaminationForm
 	template_name = 'mainApp/TestUpdate.html'
 	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
@@ -131,8 +142,8 @@ class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, Update
 
 class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestShear
-	success_url = '/'
-	template_name = 'mainApp/TestUpdate.html'
+	success_url = '/sheartest/{id}/detail/'
+	template_name = 'mainApp/ShearTestUpdate.html'
 	form_class = TestShearForm
 	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
 		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_temperature',
@@ -145,6 +156,16 @@ class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на срез был изменен!')
 		return super().post(request, *args, **kwargs)
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
 
 class BendTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = TestLamella
