@@ -189,9 +189,46 @@
                    		{% endif %}
 			    </section> 
 			    <section id="content-tab3">
-			        <p>
-			          Здесь размещаете любое содержание....
-					</p>
+			        {% if delaminationtests %}
+                        {% for test in delaminationtests %}
+                        
+                        <table class="table" onClick='location.href="{% url "delaminationtest-detail" test.id %}"'>
+                        	<tr class="table_row">
+	                            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
+	                            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+	                            {% if test.test_time %}
+	                            <th class="table_cell">Время: {{ test.test_time }}</th>
+	                            {% else %}
+	                            <th class="table_cell">Время: ---</th>
+	                            {% endif %}
+	                            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
+	                            <th class="table_cell">Класс: {{ test.timber_params }}</th>
+                            </tr>
+                            <tr class="table_row">
+                            	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
+                            	<th class="table_cell" id="cell3">Кол-во швов</th>
+                            	<th class="table_cell" id="cell3">Прошел</th>
+                            </tr>
+                            <tr class="table_row">
+                            	<th class="table_cell">Толщина: {{ test.sample_thickness }} мм</th>
+                            	<th class="table_cell">Ширина: {{ test.sample_width }} мм</th>
+                            	<th class="table_cell" id="cell2">Длина: {{ test.sample_length }} мм</th>
+                            	<th class="table_cell">{{ test.number_of_layers }}</th>
+                            	{% if test.passed %}
+                            	<th class="table_cell">+</th>
+                            	{% else %}
+                            	<th class="table_cell">-</th>
+                            	{% endif %}
+                            </tr>
+
+                            <!-- <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' test.id %}">Изменить</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'bend-test-delete' test.id %}">Удалить</a></th> -->
+                        </table>
+                        
+                        {% endfor %}
+                        {% else %}
+                        В этот день тестов не добавлено
+                   		{% endif %}
 			    </section>  
 			   
 			</div>

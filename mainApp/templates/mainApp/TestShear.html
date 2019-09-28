@@ -5,8 +5,157 @@
 
 
 {% block content %}	
-			
-	<div class="content-section tabletoday">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+    <legend class="border-bottom">Добавить тест на срез</legend>
+    <table class="table_detail">
+    <tr>
+        <th class="table_cell dark_cell">Номер теста</th>
+        <th class="table_cell dark_cell">Дата</th>
+        <th class="table_cell dark_cell">Время</th>
+        <th class="table_cell dark_cell">Порода</th>
+        <th class="table_cell dark_cell">Класс</th>
+    </tr>
+    <tr>
+        <th class="table_cell">{{ form.test_number }}</th>
+        <th class="table_cell">{{ form.test_date }}</th>
+        <th class="table_cell">{{ form.test_time }}</th>
+        <th class="table_cell">{{ form.type_of_wood }}</th>
+        <th class="table_cell">{{ form.strength_class }}</th>
+    </tr>
+    <tr>
+        <td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
+        <th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
+    </tr>
+    <tr>
+        <th class="table_cell dark_cell">Толщина</th>
+        <th class="table_cell dark_cell">Ширина</th>
+        <th class="table_cell dark_cell" id="cell2">Длина</th>
+        <th colspan="2" rowspan="2" class="table_cell">{{ form.lamellas_took_person }}</th>
+    </tr>
+    <tr>
+        <th class="table_cell">{{ form.lamellas_thickness }} мм</th>
+        <th class="table_cell">{{ form.lamellas_width }} мм</th>
+        <th class="table_cell" id="cell2">{{ form.lamellas_length }} мм</th>
+    </tr>
+    <tr>
+        <th colspan="5" id="cell3">Параметры пальцевого соединения</th>
+    </tr>
+    <tr>
+        <th class="table_cell dark_cell">Длина</th>
+        <th class="table_cell dark_cell">Шаг</th>
+        <th class="table_cell dark_cell">Зазор</th>
+        <th class="table_cell dark_cell">Угол</th>
+        <th class="table_cell dark_cell">Ориентация</th>
+    </tr>
+    <tr>
+        <th class="table_cell">{{ form.fj_length }} мм</th>
+        <th class="table_cell">{{ form.fj_path }} мм</th>
+        <th class="table_cell">{{ form.fj_gap }} мм</th>
+        <th class="table_cell">{{ form.fj_angle }} г</th>
+        <th class="table_cell">{{ form.fj_orientation }}</th>
+    </tr>
+    <tr>
+        <th colspan="2" class="table_cell" id="cell3">Влажность</th>
+        <th class="table_cell" id="cell3">Клей (отвердитель)</th>
+        <th class="table_cell" id="cell3">Номер партии клея</th>
+        <th class="table_cell" id="cell3">Срок годности</th>
+    </tr>
+    <tr>
+        <th class="table_cell short">Слева: {{ form.lamellas_left_moisture }} %</th>
+        <th class="table_cell short">Справа: {{ form.lamellas_right_moisture }} %</th>
+        <th class="table_cell">{{ form.glue }}</th>
+        <th class="table_cell">{{ form.glue_batch_number }}</th>
+        <th class="table_cell">{{ form.glue_expiration_date }}</th>
+    </tr>
+    <tr>
+        <th colspan="5" class="table_cell" id="cell3">Параметры склеивания</th>
+    </tr>
+    <tr>
+        <th class="table_cell dark_cell">Расход клея</th>
+        <th class="table_cell dark_cell">Давление</th>
+        <th class="table_cell dark_cell">Продолжительность</th>
+        <th colspan="2" class="table_cell dark_cell">Соотношение Клей:Отвердитель</th>
+    </tr>
+    <tr>
+        <th class="table_cell">{{ form.glue_use_amount }} г/см2</th>
+        <th class="table_cell">{{ form.glue_pressure }} г/см3</th>
+        <th class="table_cell">{{ form.pressure_time }} сек.</th>
+        <th class="table_cell" colspan="2">{{ form.glue_harderner_amount }}</th>
+    </tr>
+    <tr>
+        <th colspan="5" class="table_cell" id="cell3">Результаты тестирования</th>
+    </tr>
+    <tr>
+        <th class="table_cell dark_cell">Сила</th>
+        <th class="table_cell dark_cell">Напряжение</th>
+        <th class="table_cell dark_cell">Излом по соединению</th>
+        <th class="table_cell dark_cell">Излом в основании соединения</th>
+        <th class="table_cell dark_cell">Излом вне соединения</th>
+    </tr>
+    <tr>
+        <th class="table_cell">{{ form.force_crash }} kH</th>
+        <th class="table_cell">{{ form.lamellas_strength }} kH/м2</th>
+        <th class="table_cell short">{{ form.by_fj_crash }} %</th>
+        <th class="table_cell short">{{ form.base_fj_crash }} %</th>
+        <th class="table_cell short">{{ form.out_of_fj_crash }} %</th>
+    </tr>
+    <tr>
+        <th colspan="4" class="table_cell" id="cell3">Комментарий</th>
+        <th class="table_cell" id="cell3">Оборудование</th>
+    </tr>
+    <tr>
+        <th class="table_cell" colspan="4">{{ form.comment }}</th>
+        <th class="table_cell">{{ form.equipment }}</th>
+    </tr>
+    <tr>
+        <th class="table_cell dark_cell">Соответствует нормам:</th>
+        <th class="table_cell long_inp">{{ form.passed }}</th>
+        <th class="table_cell dark_cell">Фото:</th>
+        <th class="table_cell long" colspan="2">{{ form.photo }}</th>
+    </tr>
+</table> <!-- {{ form|crispy }} -->
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-info btn_down" type="submit">Сохранить</button>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <div class="content-section tabletoday">
         <table>
             <div class="border-bottom">
                 <h2>Добавить новый тест на срез</h2> 
@@ -21,5 +170,5 @@
                     </form>  
                 </tr>
         </table>
-    </div>
+    </div> -->
 {% endblock content %}

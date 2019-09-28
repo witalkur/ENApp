@@ -21,7 +21,7 @@ DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, Noncon
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
 PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView, bendtestfilterView,
 Wood_types_UpdateView, Wood_types_DeleteView, Strength_class_UpdateView, Strength_class_DeleteView, BendTestDetailView,
-TestShearDetailView)
+TestShearDetailView, DelamTestDetailView)
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -35,6 +35,7 @@ urlpatterns = [
     path('bendtest/', today_views.bendtest, name='bendtest'),
     path('bendtest/<int:pk>/detail/', BendTestDetailView.as_view(), name='bendtest-detail'),
     path('sheartest/<int:pk>/detail/', TestShearDetailView.as_view(), name='sheartest-detail'),
+    path('delaminationtest/<int:pk>/detail/', DelamTestDetailView.as_view(), name='delaminationtest-detail'),
     path('testdelamination/', today_views.TestDelaminationView, name='testdelamination'),
     path('testshear/', today_views.TestShearView, name='testshear'),
     path('datetests/', today_views.DateTestsView, name='date_tests'),
@@ -45,9 +46,9 @@ urlpatterns = [
     path('delaminationtest/<int:pk>/delete/', DelaminationTestDeleteView.as_view(), name='delamination-test-delete'),
     path('sheartest/<int:pk>/delete/', ShearTestDeleteView.as_view(), name='shear-test-delete'),
     path('nonconformities/', today_views.NonconformitiesView, name='nonconformities'),
-    path('nonconformity/<int:pk>/update/',  NonconformityUpdateView.as_view(), name='nonconformity-update'),
+    path('nonconformity/<int:pk>/update/', NonconformityUpdateView.as_view(), name='nonconformity-update'),
     path('nonconformity/<int:pk>/delete/', NonconformityDeleteView.as_view(), name='nonconformity-delete'),
-    path('nonconformity/detail/<int:pk>', NonconformityDetailView.as_view(), name='nonconformity'),
+    path('nonconformity/<int:pk>/detail/', NonconformityDetailView.as_view(), name='nonconformity-detail'),
     path('nonconformity/create', today_views.NonconformityCreateView, name='nonconformity-create'),
     path('persons/', today_views.PersonsView, name='persons'),
     path('person/<int:pk>/update/', PersonUpdateView.as_view(), name='person-update'),

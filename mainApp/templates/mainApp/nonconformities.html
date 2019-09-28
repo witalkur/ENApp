@@ -4,22 +4,37 @@
 
 {% block content %} 
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity-create' %}">Добавить новое несоотвествие</a>
+ {% if nonconformities %}
 {% for nonconformity in nonconformities %}
-<div class="content-section tabletoday">
-    <table>
-        <tr>
-            <th>{{ nonconformity.nonconformity_date|date:"m:d:Y" }}</th>
-            <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity' nonconformity.id %}">{{ nonconformity.name }}</a></th>
-            <th>{{ nonconformity.resp_person.name }}</th>
-            <th></th>
-            <th>
-                <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'nonconformity-update' nonconformity.id %}">Редактировать</a>
-            </th>
-             <th>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nonconformity-delete' nonconformity.id %}">Удалить</a>
-            </th>
+                        
+    <table class="table" onClick='location.href="{% url "nonconformity-detail" nonconformity.id %}"'>
+        <tr class="table_row">
+            <th class="table_cell" rowspan="2" id="cell2">Дата: {{ nonconformity.nonconformity_date|date:"d-m-Y" }}</th>
+            <th class="table_cell dark_cell">Ответственный</th>
+            
         </tr>
+        <tr class="table_row">
+            <th class="table_cell">{{ nonconformity.resp_person }}</th>
+         </tr>   
+        <tr class="table_row">
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >Название</th>
+            
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell" colspan="2">{{ nonconformity.name }}</th>
+        </tr>
+
     </table>
-</div>
-{% endfor %}
+    
+    {% endfor %}
+    {% else %}
+    Несоответствий не обнаружено
+    {% endif %}
+
 {% endblock content %}
+
+
+       <!--  <th><a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'bend-test-update' test.id %}">Изменить</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'bend-test-delete' test.id %}">Удалить</a></th>
+
+

@@ -59,6 +59,17 @@ class TestShearDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 			return True
 		return False
 
+
+class DelamTestDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = TestDelamination
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
+
 @login_required
 def TestDelaminationView(request):
 	if request.method == 'POST':
@@ -127,9 +138,9 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestDelamination
-	success_url = '/testdelamination/{id}/detail/'
+	success_url = '/delaminationtest/{id}/detail/'
 	form_class = TestDelaminationForm
-	template_name = 'mainApp/TestUpdate.html'
+	template_name = 'mainApp/DelamTestUpdate.html'
 	'''fields = ['test_date', 'test_time', 'test_number', 'equipment', 'type_of_wood', 'timber_params', 'sorter_person',
 		'fj_person', 'glue_person', 'marking_person', 'air_moisture', 'wood_moisture', 'glue_harderner_amount', 
 		'glue_temperature', 'air_temperature', 'wood_temperature', 'glue', 'glue_batch_number', 'glue_expiration_date',
@@ -139,6 +150,17 @@ class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, Update
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Тест на деламинацию был изменен!')
 		return super().post(request, *args, **kwargs)
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
 
 class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = TestShear
@@ -195,6 +217,17 @@ def NonconformitiesView(request):
 	return render(request, 'mainApp/nonconformities.html', {'nonconformities': nonconformities,})
 
 
+class NonconformityDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = Nonconformity
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
+
+
 class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Nonconformity
 	success_url = '/nonconformities'
@@ -227,8 +260,6 @@ class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
 		return False
 
 
-class NonconformityDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
-	model = Nonconformity
 
 @login_required
 def NonconformityCreateView(request):
