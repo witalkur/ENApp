@@ -3,16 +3,35 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
+
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Добавить данные о сотруднике</legend>
-                {{ form|crispy }}
+                <table class="table_detail">
+    <tr class="table_row">
+        <th class="table_cell dark_cell">Имя</th>
+        <th colspan="3" class="table_cell2">{{ form.name }}</th>
+    </tr>
+    <tr class="table_row">
+        <th class="table_cell" id="cell3">Должность</th>
+        <th colspan="3" class="table_cell2" id="cell4">{{ form.position }}</th>
+     </tr>
+     <tr class="table_row">
+         <th class="table_cell" id="cell3">Дата обучения</th>  
+         <th class="table_cell" id="cell4">{{ form.training_date }}</th>
+         <th class="table_cell" id="cell3">Дата следующего обучения</th>  
+         <th class="table_cell" id="cell4">{{ form.next_training_date }}</th>
+     </tr>
+     <tr class="table_row">
+        <th class="table_cell" id="cell3">Комментарий</th>
+        <th colspan="3" class="table_cell" id="cell4">{{ form.comment }}</th>
+     </tr>
+</table>
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Добавить</button>
             </div>
         </form>
-    </div>
+
 {% endblock content %}

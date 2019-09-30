@@ -57,15 +57,17 @@ class DateForm(forms.Form):
 	need_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}))
 
 class NonconformityForm(forms.ModelForm):
-	nonconformity_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	nonconformity_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'},))
+	description = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 120}))
 
 	class Meta:
 		model = Nonconformity
 		fields = ['name', 'description', 'resp_person', 'nonconformity_date',]
 
 class PersonForm(forms.ModelForm):
-	training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
-	next_training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'},))
+	next_training_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'},))
+	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 100}))
 
 	class Meta:
 		model = Person
@@ -86,8 +88,9 @@ class strength_class_typesForm(forms.ModelForm):
 		fields = ['name']
 
 class ToolForm(forms.ModelForm):
-	calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
-	next_calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'))
+	calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'},))
+	next_calibration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'},))
+	description = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 100}))
 
 	class Meta:
 		model = Tool

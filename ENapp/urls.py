@@ -21,7 +21,7 @@ DelaminationTestDeleteView, ShearTestDeleteView, NonconformityUpdateView, Noncon
 NonconformityDetailView, NonconformityCreateView, PersonsView, PersonUpdateView, PersonDeleteView, PersonCreateView,
 PersonDetailView, ToolsView, ToolUpdateView, ToolDeleteView, ToolCreateView, ToolDetailView, bendtestfilterView,
 Wood_types_UpdateView, Wood_types_DeleteView, Strength_class_UpdateView, Strength_class_DeleteView, BendTestDetailView,
-TestShearDetailView, DelamTestDetailView)
+TestShearDetailView, DelamTestDetailView, Wood_types_DetailView)
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -53,11 +53,13 @@ urlpatterns = [
     path('persons/', today_views.PersonsView, name='persons'),
     path('person/<int:pk>/update/', PersonUpdateView.as_view(), name='person-update'),
     path('person/<int:pk>/delete/', PersonDeleteView.as_view(), name='person-delete'),
+    path('person/<int:pk>/detail/', PersonDetailView.as_view(), name='person-detail'),
     path('person/detail/<int:pk>', PersonDetailView.as_view(), name='person'),
     path('person/create', today_views.PersonCreateView, name='person-create'),
     path('tools/', today_views.ToolsView, name='tools'),
     path('tool/<int:pk>/update/', ToolUpdateView.as_view(), name='tool-update'),
     path('tool/<int:pk>/delete/', ToolDeleteView.as_view(), name='tool-delete'),
+    path('tool/<int:pk>/detail/', ToolDetailView.as_view(), name='tool-detail'),
     path('tool/detail/<int:pk>', ToolDetailView.as_view(), name='tool'),
     path('tool/create', today_views.ToolCreateView, name='tool-create'),
     path('register/', user_views.register, name='register'),
@@ -70,6 +72,7 @@ urlpatterns = [
     path('settings/', today_views.SettingsView, name='settings'),
     path('woodtype/<int:pk>/update/', Wood_types_UpdateView.as_view(), name='woodtype-update'),
     path('woodtype/<int:pk>/delete/', Wood_types_DeleteView.as_view(), name='woodtype-delete'),
+    path('woodtype/<int:pk>/detail/', Wood_types_DetailView.as_view(), name='woodtype-detail'),
     path('strengthclass/<int:pk>/update/', Strength_class_UpdateView.as_view(), name='strengthclass-update'),
     path('strengthclass/<int:pk>/delete/', Strength_class_DeleteView.as_view(), name='strengthclass-delete'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),

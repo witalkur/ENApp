@@ -15,11 +15,11 @@
 		<th class="table_cell dark_cell">Класс</th>
 	</tr>
 	<tr>
-        <th class="table_cell">{{ form.test_number }}</th>
-        <th class="table_cell">{{ form.test_date }}</th>
-        <th class="table_cell">{{ form.test_time }}</th>
-        <th class="table_cell">{{ form.type_of_wood }}</th>
-        <th class="table_cell">{{ form.timber_params }}</th>
+        <th class="table_cell2">{{ form.test_number }}</th>
+        <th class="table_cell2">{{ form.test_date }}</th>
+        <th class="table_cell2">{{ form.test_time }}</th>
+        <th class="table_cell2">{{ form.type_of_wood }}</th>
+        <th class="table_cell2">{{ form.timber_params }}</th>
     </tr>
     <tr>
     	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
@@ -29,7 +29,7 @@
     	<th class="table_cell dark_cell">Толщина</th>
 		<th class="table_cell dark_cell">Ширина</th>
 		<th class="table_cell dark_cell" id="cell2">Длина</th>
-		<th colspan="2" rowspan="2" class="table_cell">{{ form.equipment }}</th>
+		<th colspan="2" rowspan="2" class="table_cell2">{{ form.equipment }}</th>
     </tr>
     <tr>
     	<th class="table_cell">{{ form.sample_thickness }} мм</th>
@@ -45,15 +45,15 @@
 	</tr>
     <tr>
         <th colspan="2" class="table_cell dark_cell">Склейка по длине</th>
-        <th colspan="3" class="table_cell">{{ form.fj_person }}</th>
+        <th colspan="3" class="table_cell2">{{ form.fj_person }}</th>
     </tr>
     <tr>
         <th colspan="2" class="table_cell dark_cell">Склейка по пласти</th>
-        <th colspan="3" class="table_cell">{{ form.glue_person }}</th>
+        <th colspan="3" class="table_cell2">{{ form.glue_person }}</th>
     </tr>
     <tr>
         <th colspan="2" class="table_cell dark_cell">Нанесение маркировки</th>
-        <th colspan="3" class="table_cell">{{ form.marking_person }}</th>
+        <th colspan="3" class="table_cell2">{{ form.marking_person }}</th>
     </tr>
     <tr>
         <th colspan="5" class="table_cell" id="cell3">Технологические параметры процесса</th>
@@ -80,11 +80,11 @@
         <th class="table_cell dark_cell">Время конца прессования</th>
     </tr>
      <tr>
-        <th class="table_cell">{{ form.glue }}</th>
-        <th class="table_cell">{{ form.glue_batch_number }}</th>
-        <th class="table_cell">{{ form.glue_expiration_date }}</th>
-        <th class="table_cell">{{ form.start_glue_time }}</th>
-        <th class="table_cell">{{ form.end_glue_time }}</th>
+        <th class="table_cell2">{{ form.glue }}</th>
+        <th class="table_cell2">{{ form.glue_batch_number }}</th>
+        <th class="table_cell2">{{ form.glue_expiration_date }}</th>
+        <th class="table_cell2">{{ form.start_glue_time }}</th>
+        <th class="table_cell2">{{ form.end_glue_time }}</th>
     </tr>
     <tr>
     	<th class="table_cell dark_cell">Расход клея</th>
@@ -96,14 +96,14 @@
     	<th class="table_cell">{{ form.glue_use_amount }} г/см2</th>
     	<th class="table_cell">{{ form.glue_pressure }} г/см3</th>
     	<th class="table_cell">{{ form.pressure_time }} сек.</th>
-    	<th class="table_cell" colspan="2">{{ form.glue_harderner_amount }}</th>
+    	<th class="table_cell2" colspan="2">{{ form.glue_harderner_amount }}</th>
     </tr>
     <tr>
     	<th colspan="5" class="table_cell" id="cell3">Результаты тестирования</th>
     </tr>
     <tr>
     	<th class="table_cell dark_cell">Кол-во швов</th>
-    	<th class="table_cell">{{ form.number_of_layers }}</th>
+    	<th class="table_cell2">{{ form.number_of_layers }}</th>
     	<th class="table_cell dark_cell">Процент раскрытия шва</th>
         <th colspan="2" class="table_cell">{{ form.layer_out_percent }} %</th>
     </tr>

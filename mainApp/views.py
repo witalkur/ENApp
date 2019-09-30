@@ -232,7 +232,8 @@ class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateVie
 	model = Nonconformity
 	success_url = '/nonconformities'
 	template_name = 'mainApp/nonconformity_update.html'
-	fields = ['name', 'description', 'resp_person', 'nonconformity_date',]
+	form_class = NonconformityForm
+	#fields = ['name', 'description', 'resp_person', 'nonconformity_date',]
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Несоответствие отредактировано!')
@@ -284,7 +285,8 @@ class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Person
 	success_url = '/persons'
 	template_name = 'mainApp/person_update.html'
-	fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
+	form_class = PersonForm
+	#fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Данные о сотруднике сохранены!')
@@ -327,6 +329,12 @@ def PersonCreateView(request):
 class PersonDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Person
 
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
 @login_required
 def ToolsView(request):
 	user = get_object_or_404(User, username=request.user.username)
@@ -337,7 +345,8 @@ class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Tool
 	success_url = '/tools'
 	template_name = 'mainApp/tool_update.html'
-	fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
+	form_class = ToolForm
+	#fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Информация сохранена!')
@@ -379,6 +388,12 @@ def ToolCreateView(request):
 
 class ToolDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Tool
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
 
 
 @login_required
@@ -877,6 +892,16 @@ class Wood_types_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
 		if self.request.user == wood_type.author:
 			return True
 		return False
+
+class Wood_types_DetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = Wood_types
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
+			return True
+		return False
+
 
 class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = strength_class_types

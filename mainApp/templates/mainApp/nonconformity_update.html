@@ -1,14 +1,33 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
-
-
 {% block content %} 
-<form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-    <legend class="border-bottom mb-4">Редактировать несоответсвие</legend>
-    {{ form|crispy }}
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<fieldset class="form-group">
+    <legend class="border-bottom mb-4">Редактировать несоответствие</legend>
+     <table class="table_detail">
+        <tr class="table_row">
+            <th class="table_cell dark_cell" id="cell2">Дата</th>
+            <th class="table_cell dark_cell">Ответственный</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell2" id="cell2">{{ form.nonconformity_date }}</th>
+            <th class="table_cell2">{{ form.resp_person }}</th>
+         </tr>   
+        <tr class="table_row">
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >Название</th> 
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell long_name" colspan="2">{{ form.name }}</th>
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >Описание</th>
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell" colspan="2">{{ form.description }}</th>
+        </tr>
+    </table>
     </fieldset>
     <div class="form-group">
         <button class="btn btn-outline-info" type="submit">Сохранить</button>
