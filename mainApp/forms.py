@@ -102,8 +102,8 @@ class ToolForm(forms.ModelForm):
 fj_orientation_types = [('', '-------'), ('Пластевое', 'Пластевое'), ('Ребровое', 'Ребровое')]
 
 class BendtestFilterForm(forms.ModelForm):
-	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
-	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None,required=False)
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today(), required=False)
 	lamellas_took_person = forms.ModelChoiceField(queryset=Person.objects.all(), initial=None, required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
@@ -133,8 +133,8 @@ class BendtestFilterForm(forms.ModelForm):
 	glue_use_amount_from = forms.IntegerField(initial=None, required=False)
 	glue_use_amount_to = forms.IntegerField(initial=None, required=False)
 	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
-	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
-	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
 	lamellas_param = forms.CharField(max_length=100, initial=None, required=False)
 	force_crash_from = forms.FloatField(initial=None, required=False)
 	force_crash_to = forms.FloatField(initial=None, required=False)
@@ -152,7 +152,7 @@ class BendtestFilterForm(forms.ModelForm):
 	out_of_fj_crash_to = forms.IntegerField(initial=None, required=False)
 	passed_true = forms.BooleanField(initial=False, required=False)
 	passed_false = forms.BooleanField(initial=False, required=False)
-	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
+	comment = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 95}), max_length=400, initial=None, required=False)
 
 	class Meta:
 		model = TestLamella
@@ -171,8 +171,8 @@ class BendtestFilterForm(forms.ModelForm):
 
 
 class DelaminationTestFilterForm(forms.ModelForm):
-	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
-	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None,required=False)
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today(), required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
 	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)
@@ -192,8 +192,8 @@ class DelaminationTestFilterForm(forms.ModelForm):
 	wood_temperature_to = forms.IntegerField(initial=None, required=False)
 	glue = forms.CharField(max_length=100, initial=None, required=False)
 	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
-	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
-	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
 	sample_thickness_from = forms.IntegerField(initial=None, required=False)
 	sample_thickness_to = forms.IntegerField(initial=None, required=False)
 	sample_width_from = forms.IntegerField(initial=None, required=False)
@@ -212,7 +212,7 @@ class DelaminationTestFilterForm(forms.ModelForm):
 	layer_out_percent_to = forms.IntegerField(initial=None, required=False)
 	passed_true = forms.BooleanField(initial=False, required=False)
 	passed_false = forms.BooleanField(initial=False, required=False)
-	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
+	comment = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 95}), max_length=400, initial=None, required=False)
 
 	class Meta:
 		model = TestDelamination
@@ -229,8 +229,8 @@ class DelaminationTestFilterForm(forms.ModelForm):
 
 
 class ShearTestFilterForm(forms.ModelForm):
-	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None,required=False)
-	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=datetime.date.today(), required=False)
+	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None,required=False)
+	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today(), required=False)
 	test_time_from = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
 	test_time_to = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
@@ -252,8 +252,8 @@ class ShearTestFilterForm(forms.ModelForm):
 	glue = forms.CharField(max_length=100, initial=None, required=False)
 	glue_harderner_amount = forms.CharField(max_length=100, initial=None, required=False)
 	glue_batch_number = forms.CharField(max_length=100, initial=None, required=False)
-	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
-	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d'), initial=None, required=False)
+	start_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
+	end_glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None, required=False)
 	sample_thickness_from = forms.IntegerField(initial=None, required=False)
 	sample_thickness_to = forms.IntegerField(initial=None, required=False)
 	sample_width_from = forms.IntegerField(initial=None, required=False)
@@ -276,7 +276,7 @@ class ShearTestFilterForm(forms.ModelForm):
 	force_crash_to = forms.IntegerField(initial=None, required=False)
 	passed_true = forms.BooleanField(initial=False, required=False)
 	passed_false = forms.BooleanField(initial=False, required=False)
-	comment = forms.CharField(widget=forms.Textarea, max_length=400, initial=None, required=False)
+	comment = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 95}), max_length=400, initial=None, required=False)
 
 	class Meta:
 		model = TestShear

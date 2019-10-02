@@ -4,8 +4,231 @@
 
 
 
-{% block content %}			
- <div class="content-section tabletoday">
+{% block content %}	
+
+<div class="work_filter">
+<div class="tabs">
+       
+    {% if request.POST %}
+    <input id="tab1" type="radio" name="tabs">
+    <label for="tab1">Фильтры</label>
+    <input id="tab2" type="radio" name="tabs" checked>
+    <label for="tab2">Результаты поиска</label>
+    {% else %}
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Фильтры</label>
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Результаты поиска</label>
+    {% endif %}
+<section id="content-tab1">
+
+ <form method="POST" enctype="multipart/form-data" action="{% url 'sheartestfilter' %}"> 
+        {% csrf_token %}
+    <fieldset class= "form-group">
+    <legend class="border-bottom">Поиск тестов на срез</legend>
+    <table class="table_detail">
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Дата проведения теста, от</th>
+            <th class="table_cell2">{{ form.start_test_date }}</th>
+            <th class="table_cell dark_cell">Дата проведения теста, до</th>
+            <th class="table_cell2">{{ form.end_test_date }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Номер теста</th>
+            <th class="table_cell2">{{ form.test_number }}</th>
+            <th class="table_cell dark_cell">Оборудование</th>
+            <th class="table_cell2">{{ form.equipment }}</th> 
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Тип древесины</th>
+            <th class="table_cell2">{{ form.type_of_wood }}</th>
+            <th class="table_cell dark_cell">Класс прочности</th>
+            <th class="table_cell2">{{ form.timber_params }}</th> 
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Ответственный за сортировку</th>
+            <th class="table_cell2">{{ form.sorter_person }}</th>
+            <th class="table_cell dark_cell">Ответственный за склейку по длине</th>
+            <th class="table_cell2">{{ form.fj_person }}</th>
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Ответственный за склейку по пласти</th>
+            <th class="table_cell2">{{ form.glue_person }}</th>
+            <th class="table_cell dark_cell">Ответственный за нанесение маркировки</th>
+            <th class="table_cell2">{{ form.marking_person }}</th>
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Влажность воздуха в %, от</th>
+            <th class="table_cell2">{{ form.air_moisture_from }}</th>
+            <th class="table_cell dark_cell">Влажность воздуха в %, до</th>
+            <th class="table_cell2">{{ form.air_moisture_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Температура воздуха в С, от</th>
+            <th class="table_cell2">{{ form.air_temperature_from }}</th>
+            <th class="table_cell dark_cell">Температура воздуха в С, до</th>
+            <th class="table_cell2">{{ form.air_temperature_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Влажность древесины в %, от</th>
+            <th class="table_cell2">{{ form.wood_moisture_from }}</th>
+            <th class="table_cell dark_cell">Влажность древесины в %, до</th>
+            <th class="table_cell2">{{ form.wood_moisture_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Температура древесины в С, от</th>
+            <th class="table_cell2">{{ form.wood_temperature_from }}</th>
+            <th class="table_cell dark_cell">Температура древесины в С, до</th>
+            <th class="table_cell2">{{ form.wood_temperature_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Клей</th>
+            <th class="table_cell2">{{ form.glue }}</th>
+            <th class="table_cell dark_cell">Соотношение клей:отвердитель</th>
+            <th class="table_cell2">{{ form.glue_harderner_amount }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Номер партии клея</th>
+            <th class="table_cell2" colspan="3">{{ form.glue_batch_number }}</th>  
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Срок годности партии клея, от</th>
+            <th class="table_cell2">{{ form.start_glue_expiration_date }}</th>
+            <th class="table_cell dark_cell">Срок годности партии клея, до</th>
+            <th class="table_cell2">{{ form.end_glue_expiration_date }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Толщина образца в мм, от</th>
+            <th class="table_cell2">{{ form.sample_thickness_from }}</th>
+            <th class="table_cell dark_cell">Толщина образца в мм, до</th>
+            <th class="table_cell2">{{ form.sample_thickness_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Ширина образца в мм, от</th>
+            <th class="table_cell2">{{ form.sample_width_from }}</th>
+            <th class="table_cell dark_cell">Ширина образца в мм, до</th>
+            <th class="table_cell2">{{ form.sample_width_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Длина образца в мм, от</th>
+            <th class="table_cell2">{{ form.sample_length_from }}</th>
+            <th class="table_cell dark_cell">Длина образца в мм, до</th>
+            <th class="table_cell2">{{ form.sample_length_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Расход клея в гр/м2, от</th>
+            <th class="table_cell2">{{ form.glue_use_amount_from }}</th>
+            <th class="table_cell dark_cell">Расход клея в гр/м2, до</th>
+            <th class="table_cell2">{{ form.glue_use_amount_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Давление прессования, от</th>
+            <th class="table_cell2">{{ form.glue_pressure_from }}</th>
+            <th class="table_cell dark_cell">Давление прессования, до</th>
+            <th class="table_cell2">{{ form.glue_pressure_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Время начала прессования, от</th>
+            <th class="table_cell2">{{ form.start_glue_time_from }}</th>
+            <th class="table_cell dark_cell">Время начала прессования, до</th>
+            <th class="table_cell2">{{ form.start_glue_time_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Продолжительность прессования в мин., от</th>
+            <th class="table_cell2">{{ form.pressure_time_from }}</th>
+            <th class="table_cell dark_cell">Продолжительность прессования в мин., до</th>
+            <th class="table_cell2">{{ form.pressure_time_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Средний процент разрыва волокон, от</th>
+            <th class="table_cell2">{{ form.layer_ripped_percent_average_from }}</th>
+            <th class="table_cell dark_cell">Средний процент разрыва волокон, до</th>
+            <th class="table_cell2">{{ form.layer_ripped_percent_average_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Сила в кН, от</th>
+            <th class="table_cell2">{{ form.force_crash_from }}</th>
+            <th class="table_cell dark_cell">Сила в кН, до</th>
+            <th class="table_cell2">{{ form.force_crash_to }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Соответствует нормам</th>
+            <th class="table_cell2 long_inp">{{ form.passed_true }}</th>
+            <th class="table_cell dark_cell">Не соответствует нормам</th>
+            <th class="table_cell2 long_inp">{{ form.passed_false }}</th>   
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Комментарий</th>
+            <th class="table_cell2" colspan="3">{{ form.comment }}</th>  
+        </tr>
+
+    </table>
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info btn_down" type="submit">Найти</button>
+    </div>
+</form>
+</section> 
+
+
+<section id="content-tab2">
+{% if sheartests %}
+    {% for test in sheartests %}
+    
+    <table class="table" onClick='location.href="{% url "sheartest-detail" test.id %}"'>
+        <tr class="table_row">
+            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
+            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+            {% if test.test_time %}
+            <th class="table_cell">Время: {{ test.test_time }}</th>
+            {% else %}
+            <th class="table_cell">Время: ---</th>
+            {% endif %}
+            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
+            <th class="table_cell">Класс: {{ test.timber_params }}</th>
+        </tr>
+        <tr class="table_row">
+            <td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
+            <th class="table_cell" id="cell3">Кол-во швов</th>
+            <th class="table_cell" id="cell3">Прошел</th>
+        </tr>
+        <tr class="table_row">
+            <th class="table_cell">Толщина: {{ test.sample_thickness }} мм</th>
+            <th class="table_cell">Ширина: {{ test.sample_width }} мм</th>
+            <th class="table_cell" id="cell2">Длина: {{ test.sample_length }} мм</th>
+            <th class="table_cell">{{ test.number_of_layers }}</th>
+            {% if test.passed %}
+            <th class="table_cell">+</th>
+            {% else %}
+            <th class="table_cell">-</th>
+            {% endif %}
+        </tr>
+    </table>
+    
+    {% endfor %}
+    {% else %}
+    Тестов не найдено...
+    {% endif %}
+    </section>
+
+</div>
+</div>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <div class="content-section tabletoday">
     {% for test in shear_tests %}
     <table class="content-section tabletoday">
         <th>{{ test.test_number }}</th>
@@ -14,17 +237,5 @@
         <th><a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'shear-test-delete' test.id %}">Удалить</a></th>
     </table>
     {% endfor %}
-</div>
-{% endblock content %}
+</div> -->
 
-{% block sidebar %}
-<form method="POST" action="{% url 'sheartestfilter' %}">
-    {% csrf_token %}
-    <th>  
-    {{ form|crispy }} 
-    </th>
-    <th>
-        <button class="btn btn-info btn-sm mt-1 mb-1" type="submit">Найти</button>
-    </th>
-</form> 
-{% endblock sidebar %}

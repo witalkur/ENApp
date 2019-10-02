@@ -698,135 +698,134 @@ def ShearTestfilterView(request):
 		if form.is_valid():
 			if form.cleaned_data.get('start_test_date'):
 				start_test_date = form.cleaned_data.get('start_test_date')
-				delamination_tests = delamination_tests.filter(test_date__gte=start_test_date).order_by('test_number')
+				shear_tests = shear_tests.filter(test_date__gte=start_test_date).order_by('test_number')
 			if form.cleaned_data.get('end_test_date'):
 				end_test_date = form.cleaned_data.get('end_test_date')
-				delamination_tests = delamination_tests.filter(test_date__lte=end_test_date).order_by('test_number')
+				shear_tests = shear_tests.filter(test_date__lte=end_test_date).order_by('test_number')
 			if form.cleaned_data.get('test_number'):
 				test_number = form.cleaned_data.get('test_number')
-				delamination_tests = delamination_tests.filter(test_number=test_number).order_by('test_number')
+				shear_tests = shear_tests.filter(test_number=test_number).order_by('test_number')
 			if form.cleaned_data.get('equipment'):
 				equipment = form.cleaned_data.get('equipment')
-				delamination_tests = delamination_tests.filter(equipment__iexact=equipment).order_by('test_number')
+				shear_tests = shear_tests.filter(equipment__iexact=equipment).order_by('test_number')
 			if form.cleaned_data.get('type_of_wood'):
 				type_of_wood = form.cleaned_data.get('type_of_wood')
-				delamination_tests = delamination_tests.filter(type_of_wood=type_of_wood).order_by('test_number')
+				shear_tests = shear_tests.filter(type_of_wood=type_of_wood).order_by('test_number')
 			if form.cleaned_data.get('timber_params'):
 				timber_params = form.cleaned_data.get('timber_params')
-				delamination_tests = delamination_tests.filter(timber_params__iexact=timber_params).order_by('test_number')
+				shear_tests = shear_tests.filter(timber_params__iexact=timber_params).order_by('test_number')
 			if form.cleaned_data.get('sorter_person'):
 				sorter_person = form.cleaned_data.get('sorter_person')
-				delamination_tests = delamination_tests.filter(sorter_person=sorter_person).order_by('test_number')
+				shear_tests = shear_tests.filter(sorter_person=sorter_person).order_by('test_number')
 			if form.cleaned_data.get('fj_person'):
 				fj_person = form.cleaned_data.get('fj_person')
-				delamination_tests = delamination_tests.filter(fj_person=fj_person).order_by('test_number')
+				shear_tests = shear_tests.filter(fj_person=fj_person).order_by('test_number')
 			if form.cleaned_data.get('glue_person'):
 				glue_person = form.cleaned_data.get('glue_person')
-				delamination_tests = delamination_tests.filter(glue_person=glue_person).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_person=glue_person).order_by('test_number')
 			if form.cleaned_data.get('marking_person'):
 				marking_person = form.cleaned_data.get('marking_person')
-				delamination_tests = delamination_tests.filter(marking_person=marking_person).order_by('test_number')
+				shear_tests = shear_tests.filter(marking_person=marking_person).order_by('test_number')
 			if form.cleaned_data.get('air_moisture_from'):
 				air_moisture_from = form.cleaned_data.get('air_moisture_from')
-				delamination_tests = delamination_tests.filter(air_moisture__gte=air_moisture_from).order_by('test_number')
+				shear_tests = shear_tests.filter(air_moisture__gte=air_moisture_from).order_by('test_number')
 			if form.cleaned_data.get('air_moisture_to'):
 				air_moisture_to = form.cleaned_data.get('air_moisture_to')
-				delamination_tests = delamination_tests.filter(air_moisture__lte=air_moisture_to).order_by('test_number')
+				shear_tests = shear_tests.filter(air_moisture__lte=air_moisture_to).order_by('test_number')
 			if form.cleaned_data.get('wood_moisture_from'):
 				wood_moisture_from = form.cleaned_data.get('wood_moisture_from')
-				delamination_tests = delamination_tests.filter(wood_moisture__gte=wood_moisture_from).order_by('test_number')
+				shear_tests = shear_tests.filter(wood_moisture__gte=wood_moisture_from).order_by('test_number')
 			if form.cleaned_data.get('wood_moisture_to'):
 				wood_moisture_to = form.cleaned_data.get('wood_moisture_to')
-				delamination_tests = delamination_tests.filter(wood_moisture__lte=wood_moisture_to).order_by('test_number')
+				shear_tests = shear_tests.filter(wood_moisture__lte=wood_moisture_to).order_by('test_number')
 			if form.cleaned_data.get('glue_harderner_amount'):
 				glue_harderner_amount = form.cleaned_data.get('glue_harderner_amount')
-				delamination_tests = delamination_tests.filter(glue_harderner_amount__iexact=glue_harderner_amount).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_harderner_amount__iexact=glue_harderner_amount).order_by('test_number')
 			if form.cleaned_data.get('air_temperature_from'):
 				air_temperature_from = form.cleaned_data.get('air_temperature_from')
-				delamination_tests = delamination_tests.filter(air_temperature__gte=air_temperature_from).order_by('test_number')
+				shear_tests = shear_tests.filter(air_temperature__gte=air_temperature_from).order_by('test_number')
 			if form.cleaned_data.get('air_temperature_to'):
 				air_temperature_to = form.cleaned_data.get('air_temperature_to')
-				delamination_tests = delamination_tests.filter(air_temperature__lte=air_temperature_to).order_by('test_number')
+				shear_tests = shear_tests.filter(air_temperature__lte=air_temperature_to).order_by('test_number')
 			if form.cleaned_data.get('wood_temperature_from'):
 				wood_temperature_from = form.cleaned_data.get('wood_temperature_from')
-				delamination_tests = delamination_tests.filter(wood_temperature__gte=wood_temperature_from).order_by('test_number')
+				shear_tests = shear_tests.filter(wood_temperature__gte=wood_temperature_from).order_by('test_number')
 			if form.cleaned_data.get('wood_temperature_to'):
 				wood_temperature_to = form.cleaned_data.get('wood_temperature_to')
-				delamination_tests = delamination_tests.filter(wood_temperature__lte=wood_temperature_to).order_by('test_number')
+				shear_tests = shear_tests.filter(wood_temperature__lte=wood_temperature_to).order_by('test_number')
 			if form.cleaned_data.get('glue'):
 				glue = form.cleaned_data.get('glue')
-				delamination_tests = delamination_tests.filter(glue__iexact=glue).order_by('test_number')
+				shear_tests = shear_tests.filter(glue__iexact=glue).order_by('test_number')
 			if form.cleaned_data.get('glue_batch_number'):
 				glue_batch_number = form.cleaned_data.get('glue_batch_number')
-				delamination_tests = delamination_tests.filter(glue_batch_number=glue_batch_number).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_batch_number=glue_batch_number).order_by('test_number')
 			if form.cleaned_data.get('start_glue_expiration_date'):
 				start_glue_expiration_date = form.cleaned_data.get('start_glue_expiration_date')
-				delamination_tests = delamination_tests.filter(glue_expiration_date__gte=start_glue_expiration_date).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_expiration_date__gte=start_glue_expiration_date).order_by('test_number')
 			if form.cleaned_data.get('end_glue_expiration_date'):
 				end_glue_expiration_date = form.cleaned_data.get('end_glue_expiration_date')
-				delamination_tests = delamination_tests.filter(glue_expiration_date__lte=end_glue_expiration_date).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_expiration_date__lte=end_glue_expiration_date).order_by('test_number')
 			if form.cleaned_data.get('sample_thickness_from'):
 				sample_thickness_from = form.cleaned_data.get('sample_thickness_from')
-				delamination_tests = delamination_tests.filter(sample_thickness__gte=sample_thickness_from).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_thickness__gte=sample_thickness_from).order_by('test_number')
 			if form.cleaned_data.get('sample_thickness_to'):
 				sample_thickness_to = form.cleaned_data.get('sample_thickness_to')
-				delamination_tests = delamination_tests.filter(sample_thickness__lte=sample_thickness_to).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_thickness__lte=sample_thickness_to).order_by('test_number')
 			if form.cleaned_data.get('sample_width_from'):
 				sample_width_from = form.cleaned_data.get('sample_width_from')
-				delamination_tests = delamination_tests.filter(sample_width__gte=sample_width_from).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_width__gte=sample_width_from).order_by('test_number')
 			if form.cleaned_data.get('sample_width_to'):
 				sample_width_to = form.cleaned_data.get('sample_width_to')
-				delamination_tests = delamination_tests.filter(sample_width__lte=sample_width_to).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_width__lte=sample_width_to).order_by('test_number')
 			if form.cleaned_data.get('sample_length_from'):
 				sample_length_from = form.cleaned_data.get('sample_length_from')
-				delamination_tests = delamination_tests.filter(sample_length__gte=sample_length_from).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_length__gte=sample_length_from).order_by('test_number')
 			if form.cleaned_data.get('sample_length_to'):
 				sample_length_to = form.cleaned_data.get('sample_length_to')
-				delamination_tests = delamination_tests.filter(sample_length__lte=sample_length_to).order_by('test_number')
+				shear_tests = shear_tests.filter(sample_length__lte=sample_length_to).order_by('test_number')
 			if form.cleaned_data.get('glue_use_amount_from'):
 				glue_use_amount_from = form.cleaned_data.get('glue_use_amount_from')
-				delamination_tests = delamination_tests.filter(glue_use_amount__gte=glue_use_amount_from).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_use_amount__gte=glue_use_amount_from).order_by('test_number')
 			if form.cleaned_data.get('glue_use_amount_to'):
 				glue_use_amount_to = form.cleaned_data.get('glue_use_amount_to')
-				delamination_tests = delamination_tests.filter(glue_use_amount__lte=glue_use_amount_to).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_use_amount__lte=glue_use_amount_to).order_by('test_number')
 			if form.cleaned_data.get('glue_pressure_from'):
 				glue_pressure_from = form.cleaned_data.get('glue_pressure_from')
-				delamination_tests = delamination_tests.filter(glue_pressure__gte=glue_pressure_from).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_pressure__gte=glue_pressure_from).order_by('test_number')
 			if form.cleaned_data.get('glue_pressure_to'):
 				glue_pressure_to = form.cleaned_data.get('glue_pressure_to')
-				delamination_tests = delamination_tests.filter(glue_pressure__lte=glue_pressure_to).order_by('test_number')
+				shear_tests = shear_tests.filter(glue_pressure__lte=glue_pressure_to).order_by('test_number')
 			if form.cleaned_data.get('start_glue_time_from'):
 				start_glue_time_from = form.cleaned_data.get('start_glue_time_from')
-				delamination_tests = delamination_tests.filter(start_glue_time__gte=start_glue_time_from).order_by('test_number')
+				shear_tests = shear_tests.filter(start_glue_time__gte=start_glue_time_from).order_by('test_number')
 			if form.cleaned_data.get('start_glue_time_to'):
 				start_glue_time_to = form.cleaned_data.get('start_glue_time_to')
-				delamination_tests = delamination_tests.filter(start_glue_time__lte=start_glue_time_to).order_by('test_number')
+				shear_tests = shear_tests.filter(start_glue_time__lte=start_glue_time_to).order_by('test_number')
 			if form.cleaned_data.get('pressure_time_from'):
 				pressure_time_from = form.cleaned_data.get('pressure_time_from')
-				delamination_tests = delamination_tests.filter(pressure_time__gte=pressure_time_from).order_by('test_number')
+				shear_tests = shear_tests.filter(pressure_time__gte=pressure_time_from).order_by('test_number')
 			if form.cleaned_data.get('pressure_time_to'):
 				pressure_time_to = form.cleaned_data.get('pressure_time_to')
-				delamination_tests = delamination_tests.filter(pressure_time__lte=pressure_time_to).order_by('test_number')
+				shear_tests = shear_tests.filter(pressure_time__lte=pressure_time_to).order_by('test_number')
 			if form.cleaned_data.get('layer_ripped_percent_average_from'):
 				layer_ripped_percent_average_from = form.cleaned_data.get('layer_ripped_percent_average_from')
-				delamination_tests = delamination_tests.filter(layer_ripped_percent_average__gte=layer_ripped_percent_average_from).order_by('test_number')
+				shear_tests = shear_tests.filter(layer_ripped_percent_average__gte=layer_ripped_percent_average_from).order_by('test_number')
 			if form.cleaned_data.get('layer_ripped_percent_average_to'):
 				layer_ripped_percent_average_to = form.cleaned_data.get('layer_ripped_percent_average_to')
-				delamination_tests = delamination_tests.filter(layer_ripped_percent_average__lte=layer_ripped_percent_average_to).order_by('test_number')
+				shear_tests = shear_tests.filter(layer_ripped_percent_average__lte=layer_ripped_percent_average_to).order_by('test_number')
 			if form.cleaned_data.get('force_crash_from'):
 				force_crash_from = form.cleaned_data.get('force_crash_from')
-				delamination_tests = delamination_tests.filter(force_crash__gte=force_crash_from).order_by('test_number')
+				shear_tests = shear_tests.filter(force_crash__gte=force_crash_from).order_by('test_number')
 			if form.cleaned_data.get('force_crash_to'):
 				force_crash_to = form.cleaned_data.get('force_crash_to')
-				delamination_tests = delamination_tests.filter(force_crash__lte=force_crash_to).order_by('test_number')
-
+				shear_tests = shear_tests.filter(force_crash__lte=force_crash_to).order_by('test_number')
 			if form.cleaned_data.get('passed_true'):
-				delamination_tests = delamination_tests.filter(passed=True).order_by('test_number')
+				shear_tests = shear_tests.filter(passed=True).order_by('test_number')
 			if form.cleaned_data.get('passed_false'):
-				delamination_tests = delamination_tests.filter(passed=False).order_by('test_number')
+				shear_tests = shear_tests.filter(passed=False).order_by('test_number')
 			if form.cleaned_data.get('comment'):
 				comment = form.cleaned_data.get('comment')
-				delamination_tests = delamination_tests.filter(comment__icontains=comment).order_by('test_number')
+				shear_tests = shear_tests.filter(comment__icontains=comment).order_by('test_number')
 
 	else:
 		form = ShearTestFilterForm()
