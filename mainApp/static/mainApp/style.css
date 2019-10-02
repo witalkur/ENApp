@@ -532,3 +532,9 @@ img	{
 .btn_down {
 	width: 100%;
 }
+
+.set_link {
+	display: block;
+	width: 100%;
+	height: 100%;
+}

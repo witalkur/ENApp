@@ -11,11 +11,7 @@
         <th class="table_cell2">{{ object.name }}</th>
     </tr>
 </table>
-<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'woodtype-update' object.id %}">Редактировать</a>
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'woodtype-delete' object.id %}">Удалить</a>
-
-
-
-
+<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'strengthclass-update' object.id %}">Редактировать</a>
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'strengthclass-delete' object.id %}">Удалить</a>
 
 {% endblock content %}

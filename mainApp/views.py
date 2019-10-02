@@ -866,7 +866,8 @@ class Wood_types_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 	model = Wood_types
 	success_url = '/settings'
 	template_name = 'mainApp/wood_types_update.html'
-	fields = ['name',]
+	form_class = Wood_typeForm
+	#fields = ['name',]
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Порода дерева сохранена!')
@@ -907,7 +908,8 @@ class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateV
 	model = strength_class_types
 	success_url = '/settings'
 	template_name = 'mainApp/strength_class_update.html'
-	fields = ['name',]
+	form_class = strength_class_typesForm
+	#fields = ['name',]
 
 	def post(self, request, *args, **kwargs):
 		messages.success(request, f'Класс прочности сохранен!')
@@ -931,5 +933,15 @@ class Strength_class_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteV
 	def test_func(self):
 		strength_class_type = self.get_object()
 		if self.request.user == strength_class_type.author:
+			return True
+		return False
+
+
+class Strength_class_DetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = strength_class_types
+
+	def test_func(self):
+		test = self.get_object()
+		if self.request.user == test.author:
 			return True
 		return False
