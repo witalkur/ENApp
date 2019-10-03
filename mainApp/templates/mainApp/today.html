@@ -236,51 +236,58 @@
 		</div>
 		<div class="sidebar">
 			{% block sidebar %}
-			<div class="sidebar_inner">
-				<div id="dark_cell_sidebar">Добавление тестов</div>
-				<div class="sidebar_item">
-					<a href="{% url 'bendtest' %}" class="side_link">+ Тест на изгиб</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'testshear' %}" class="side_link">+ Тест на срез</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'testdelamination' %}" class="side_link">+ Тест на деламинацию</a>
-				</div>
-			</div>
-			<div class="sidebar_inner">
-				<div id="dark_cell_sidebar">Фильтрация тестов</div>
-				<div class="sidebar_item">
-					<a href="{% url 'bendtestfilter' %}" class="side_link">Найти тесты на изгиб</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'sheartestfilter' %}" class="side_link">Найти тесты на срез</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'delamtestfilter' %}" class="side_link">Найти тесты на деламинацию</a>
-				</div>
-			</div>
-			<div class="sidebar_inner">
-				<div class="sidebar_item">
-					<a href="{% url 'nonconformities' %}" class="side_link">Несоответствия</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'persons' %}" class="side_link">Ответственные лица</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'tools' %}" class="side_link">Оборудование/Инструменты/Приборы</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="#" class="side_link">Ссылки на стандарт</a>
-				</div>
-				<div class="sidebar_item">
-					<a href="{% url 'settings' %}" class="side_link">Настройки</a>
-				</div>
-			</div>
+		<table class="table_detail sidebar_table">
+            <tr class="table_row">
+                <th class="table_cell dark_cell">Добавление тестов</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtest" %}"'>+ Тест на изгиб</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "testshear" %}"'>+ Тест на срез</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "testdelamination" %}"'>+ Тест на деламинацию</th>
+            </tr>
+           </table >
+
+           	<table class="table_detail sidebar_table">
+            <tr class="table_row">
+                <th class="table_cell dark_cell">Поиск тестов</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtestfilter" %}"'>Найти тесты на изгиб</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "sheartestfilter" %}"'>Найти тесты на срез</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "delamtestfilter" %}"'>Найти тесты на деламинацию</th>
+            </tr>
+           </table >
+
+           <table class="table_detail sidebar_table">
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "persons" %}"'>Ответственные лица</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "tools" %}"'>Оборудование/Инструменты/Приборы</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "nonconformities" %}"'>Несоответствия</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="#'>Ссылки на стандарты</th>
+            </tr>
+            <tr class="table_row">
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "settings" %}"'>Настройки</th>
+            </tr>
+           </table >
 			{% endblock sidebar %}
 		</div>
 	</div>
 </div>	
+
 
 
 

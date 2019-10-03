@@ -34,6 +34,12 @@
             <th class="table_cell2">{{ form.end_test_date }}</th>   
         </tr>
         <tr class="table_row">
+            <th class="table_cell dark_cell">Время проведения теста, от</th>
+            <th class="table_cell2">{{ form.test_time_from }}</th>
+            <th class="table_cell dark_cell">Время проведения теста, до</th>
+            <th class="table_cell2">{{ form.test_time_to }}</th>   
+        </tr>
+        <tr class="table_row">
             <th class="table_cell dark_cell">Номер теста</th>
             <th class="table_cell2">{{ form.test_number }}</th>
             <th class="table_cell dark_cell">Оборудование</th>
@@ -151,6 +157,13 @@
             <th class="table_cell dark_cell">Сила в кН, до</th>
             <th class="table_cell2">{{ form.force_crash_to }}</th>   
         </tr>
+        <tr class="table_row">
+            <th class="table_cell dark_cell">Продолжительность под нагрузкой в сек., от</th>
+            <th class="table_cell2">{{ form.time_of_testing_from }}</th>
+            <th class="table_cell dark_cell">Продолжительность под нагрузкой в сек., до</th>
+            <th class="table_cell2">{{ form.time_of_testing_to }}</th>   
+        </tr>
+
         <tr class="table_row">
             <th class="table_cell dark_cell">Соответствует нормам</th>
             <th class="table_cell2 long_inp">{{ form.passed_true }}</th>

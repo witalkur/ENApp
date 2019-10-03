@@ -9,7 +9,7 @@ from .models import def_bt_glue_expiration_date, def_d_glue_expiration_date, def
 class BendtestForm(forms.ModelForm):
 	test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today())
 	glue_expiration_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=def_bt_glue_expiration_date)
-	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}))
+	comment = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 85}))
 	test_time = forms.TimeField(required=False, widget=TimePickerInput())
 
 	class Meta:
@@ -173,6 +173,8 @@ class BendtestFilterForm(forms.ModelForm):
 class DelaminationTestFilterForm(forms.ModelForm):
 	start_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=None,required=False)
 	end_test_date = forms.DateField(widget=DatePickerInput(format='%Y-%m-%d', options={'locale': 'ru'}), initial=datetime.date.today(), required=False)
+	test_time_from = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
+	test_time_to = forms.TimeField(widget=TimePickerInput(), initial=None, required=False)
 	test_number = forms.IntegerField(initial=None, required=False)
 	equipment = forms.CharField(max_length=100, initial=None, required=False)
 	type_of_wood = forms.ModelChoiceField(queryset=Wood_types.objects.all(), initial='None', required=False)

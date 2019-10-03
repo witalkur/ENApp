@@ -335,6 +335,13 @@ cursor:pointer;
 box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
 }
 
+.click_sidebar:hover {
+cursor:pointer;
+box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+background: #ded7d7;
+}
+
+
 .table_inner {
 	border-spacing: 0;
 	text-align: center;
@@ -541,4 +548,8 @@ img	{
 
 .work_filter {
 	margin-top: 10px;
+}
+
+.sidebar_table {
+	margin-right: 30px;
 }
