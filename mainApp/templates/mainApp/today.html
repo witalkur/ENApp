@@ -234,8 +234,9 @@
 			</div>
 			{% endblock %}
 		</div>
+		{% block sidebar %}
 		<div class="sidebar">
-			{% block sidebar %}
+			
 		<table class="table_detail sidebar_table">
             <tr class="table_row">
                 <th class="table_cell dark_cell">Добавление тестов</th>
@@ -283,8 +284,9 @@
                 <th class="table_cell click_sidebar" onClick='location.href="{% url "settings" %}"'>Настройки</th>
             </tr>
            </table >
-			{% endblock sidebar %}
+			
 		</div>
+		{% endblock sidebar %}
 	</div>
 </div>	
 

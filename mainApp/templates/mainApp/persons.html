@@ -3,11 +3,11 @@
 {% load bootstrap4 %}
 
 {% block content %} 
-<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'person-create' %}">Добавить нового сотрудника</a>
+<a class="btn btn-info btn-sm mt-3" href="{% url 'person-create' %}">Добавить нового сотрудника</a>
 {% if persons %}
 {% for person in persons %}
-<table class="table" onClick='location.href="{% url "person-detail" person.id %}"'>
-     <tr class="table_row">
+<table class="table_detail" onClick='location.href="{% url "person-detail" person.id %}"'>
+     <tr class="table_row ">
         <th class="table_cell dark_cell">Имя</th>
         <th colspan="3" class="table_cell">{{ person.name }}</th>
     </tr>

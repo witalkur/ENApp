@@ -3,24 +3,60 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Регистрация</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Зарегистрироваться</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
+<div class="content-section">
+       <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom">Регистрация</legend>
+                    <table class="table_detail">
+                      <tr class="table_row">
+                          <th class="table_cell dark_cell">Имя пользователя</th>
+                          <th colspan="3" class="table_cell2">{{ form.username }}</th>
+                      </tr>
+                      <tr class="table_row">
+                          <th class="table_cell dark_cell">Адрес электронной почты</th>
+                          <th colspan="3" class="table_cell2">{{ form.email }}</th>
+                      </tr>
+                      <tr class="table_row">
+                          <th class="table_cell" id="cell3">Пароль</th>
+                          <th colspan="3" class="table_cell2" id="cell4">{{ form.password1 }}</th>
+                       </tr>
+                       <tr class="table_row">
+                          <th class="table_cell" id="cell3">Подтверждение пароля</th>
+                          <th colspan="3" class="table_cell2" id="cell4">{{ form.password2 }}</th>
+                       </tr>
+                       </table>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info btn_down" type="submit">Зарегистрироваться</button>
+                </div>
+            </form> 
+    <div class="boredr-top pt-1">
             <small class="text-muted">
         У Вас уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Войти</a>
     </small>
         </div>
     </div>
+
+
 {% endblock content %}
 
 {% block sidebar %}
 {% endblock sidebar %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
