@@ -4,6 +4,7 @@
 
 
 {% block content %}
+{% if perms.mainApp.delete_TestLamella %}
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
@@ -17,4 +18,8 @@
             </div>
         </form>
     </div>
+    {% else %}
+<h2>У данного аккаунта нет прав на удаление данных!</h2>
+ <a href="{% url 'login' %}">Сменить аккаунт</a>
+{% endif %}
 {% endblock content %}

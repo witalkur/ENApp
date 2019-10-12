@@ -4,6 +4,7 @@
 
 
 {% block content %} 
+{% if perms.mainApp.change_Tool %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
@@ -33,4 +34,8 @@
         <button class="btn btn-outline-info" type="submit">Сохранить</button>
     </div>
 </form>
+{% else %}
+<h2>У данного аккаунта нет прав на редактирование данных!</h2>
+ <a href="{% url 'login' %}">Сменить аккаунт</a>
+{% endif %}
 {% endblock content %}

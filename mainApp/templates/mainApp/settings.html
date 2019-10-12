@@ -22,8 +22,10 @@
         {% endif %}
     </table>
     </fieldset>
+    {% if perms.mainApp.add_Wood_types %}
         <span class="long">{{ wood_form.name }}</span>
         <button class="btn btn-outline-info" type="submit">Добавить</button>
+        {% endif %}
 </form>
 
 <form method="POST" enctype="multipart/form-data">
@@ -45,8 +47,10 @@
         {% endif %}
     </table>
     </fieldset>
+    {% if perms.mainApp.add_strength_class_types %}
         <span class="long">{{ class_form.name }}</span>
         <button class="btn btn-outline-info" type="submit">Добавить</button>
+         {% endif %}
 </form>
 
 

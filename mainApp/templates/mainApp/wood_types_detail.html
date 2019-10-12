@@ -11,11 +11,12 @@
         <th class="table_cell2">{{ object.name }}</th>
     </tr>
 </table>
+{% if perms.mainApp.change_Wood_types %}
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'woodtype-update' object.id %}">Редактировать</a>
+{% endif %}
+
+{% if perms.mainApp.delete_Wood_types %}
 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'woodtype-delete' object.id %}">Удалить</a>
-
-
-
-
+{% endif %}
 
 {% endblock content %}

@@ -22,7 +22,11 @@
      	<th colspan="3" class="table_cell" id="cell4">{{ person.comment }}</th>
      </tr>
 </table>
+{% if perms.mainApp.change_Person %}
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'person-update' person.id %}">Редактировать</a>
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'person-delete' person.id %}">Удалить</a>
+{% endif %}
 
+{% if perms.mainApp.delete_Person %}
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'person-delete' person.id %}">Удалить</a>
+{% endif %}
 {% endblock content %}

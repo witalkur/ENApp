@@ -11,7 +11,11 @@
         <th class="table_cell2">{{ object.name }}</th>
     </tr>
 </table>
+{% if perms.mainApp.change_strength_class_types %}
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'strengthclass-update' object.id %}">Редактировать</a>
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'strengthclass-delete' object.id %}">Удалить</a>
+{% endif %}
 
+{% if perms.mainApp.delete_strength_class_types %}
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'strengthclass-delete' object.id %}">Удалить</a>
+{% endif %}
 {% endblock content %}

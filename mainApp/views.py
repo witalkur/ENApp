@@ -5,9 +5,10 @@ from django.contrib import messages
 from .models import TestLamella, TestDelamination, TestShear, Nonconformity, Person, Tool, Wood_types, strength_class_types
 import datetime
 from django.views.generic import UpdateView, DeleteView, ListView, DetailView, CreateView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 @login_required
 def today(request):
@@ -84,6 +85,7 @@ def TestDelaminationView(request):
 	return render(request, 'mainApp/TestDelamination.html', {'form': form})
 
 @login_required
+
 def TestShearView(request):
 	if request.method == 'POST':
 		form = TestShearForm(request.POST, request.FILES)
@@ -297,6 +299,7 @@ class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		if self.request.user == person.author:
 			return True
 		return False
+
 
 class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Person

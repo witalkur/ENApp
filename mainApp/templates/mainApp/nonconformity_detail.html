@@ -23,6 +23,11 @@
             <th class="table_cell" colspan="2">{{ nonconformity.description }}</th>
         </tr>
     </table>
+    {% if perms.mainApp.change_Nonconformity %}
     <th><a class="btn btn-info btn-sm mt-2 mb-1" href="{% url 'nonconformity-update' nonconformity.id %}">Изменить</a></th>
+    {% endif %}
+
+{% if perms.mainApp.delete_Nonconformity %}
        <th> <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nonconformity-delete' nonconformity.id %}">Удалить</a></th>
+       {% endif %}
 {% endblock content %}

@@ -3,7 +3,8 @@
 {% load bootstrap4 %}
 
 
-{% block content %} 
+{% block content %}
+{% if perms.mainApp.change_strength_class_types %}
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
@@ -14,4 +15,8 @@
         <button class="btn btn-outline-info" type="submit">Сохранить</button>
     </div>
 </form>
+{% else %}
+<h2>У данного аккаунта нет прав на редактирование данных!</h2>
+ <a href="{% url 'login' %}">Сменить аккаунт</a>
+{% endif %}
 {% endblock content %}

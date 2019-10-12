@@ -163,9 +163,13 @@
         {% endif %}
     </tr>
 </table>
+{% if perms.mainApp.change_TestShear %}
 <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'shear-test-update' object.id %}">Изменить</a>
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'shear-test-delete' object.id %}">Удалить</a>
+{% endif %}
 
+{% if perms.mainApp.delete_TestShear %}
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'shear-test-delete' object.id %}">Удалить</a>
+{% endif %}
 
 
 {% endblock content %}
