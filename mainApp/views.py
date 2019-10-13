@@ -21,9 +21,9 @@ def today(request):
 		form = DateForm()
 		today_date = datetime.date.today()
 		user = get_object_or_404(User, username=request.user.username)
-	bendtests = TestLamella.objects.filter(test_date=today_date, author=user).order_by('test_number')
-	delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=user).order_by('test_number')
-	shear_tests = TestShear.objects.filter(test_date=today_date, author=user).order_by('test_number')
+	bendtests = TestLamella.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
+	delamination_tests = TestDelamination.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
+	shear_tests = TestShear.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
 	return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 		'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm,})
 
@@ -46,7 +46,7 @@ class BendTestDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -56,7 +56,7 @@ class TestShearDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -66,7 +66,7 @@ class DelamTestDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -85,7 +85,6 @@ def TestDelaminationView(request):
 	return render(request, 'mainApp/TestDelamination.html', {'form': form})
 
 @login_required
-
 def TestShearView(request):
 	if request.method == 'POST':
 		form = TestShearForm(request.POST, request.FILES)
@@ -105,9 +104,9 @@ def DateTestsView(request):
 		if form.is_valid():
 			user = get_object_or_404(User, username=request.user.username)
 			today_date = form.cleaned_data.get('need_date')
-			bendtests = TestLamella.objects.filter(test_date=today_date, author=user).order_by('test_number')
-			delamination_tests = TestDelamination.objects.filter(test_date=today_date, author=user).order_by('test_number')
-			shear_tests = TestShear.objects.filter(test_date=today_date, author=user).order_by('test_number')
+			bendtests = TestLamella.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
+			delamination_tests = TestDelamination.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
+			shear_tests = TestShear.objects.filter(test_date=today_date, author__profile__company=user.profile.company).order_by('test_number')
 			return render(request, 'mainApp/today.html', {'bendtests': bendtests, 'delaminationtests': delamination_tests, 
 				'sheartests': shear_tests, 'date': today_date, 'date_form': DateForm})
 
@@ -129,12 +128,12 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
-		form.instance.author = self.request.user
+		form.instance.author.profile.company = self.request.user.profile.company
 		return super().form_valid(form)
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -154,12 +153,12 @@ class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, Update
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
-		form.instance.author = self.request.user
+		form.instance.author.profile.company = self.request.user.profile.company
 		return super().form_valid(form)
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -182,12 +181,12 @@ class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
-		form.instance.author = self.request.user
+		form.instance.author.profile.company = self.request.user.profile.company
 		return super().form_valid(form)
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -198,7 +197,7 @@ class BendTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -215,7 +214,7 @@ class ShearTestDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 @login_required
 def NonconformitiesView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	nonconformities = Nonconformity.objects.filter(author=user).order_by('nonconformity_date')
+	nonconformities = Nonconformity.objects.filter(author__profile__company=user.profile.company).order_by('nonconformity_date')
 	return render(request, 'mainApp/nonconformities.html', {'nonconformities': nonconformities,})
 
 
@@ -224,7 +223,7 @@ class NonconformityDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailVie
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -243,7 +242,7 @@ class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateVie
 
 	def test_func(self):
 		nonconformity = self.get_object()
-		if self.request.user == nonconformity.author:
+		if self.request.user.profile.company == nonconformity.author.profile.company:
 			return True
 		return False
 
@@ -258,7 +257,7 @@ class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
 
 	def test_func(self):
 		nonconformity = self.get_object()
-		if self.request.user == nonconformity.author:
+		if self.request.user.profile.company == nonconformity.author.profile.company:
 			return True
 		return False
 
@@ -280,7 +279,7 @@ def NonconformityCreateView(request):
 @login_required
 def PersonsView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	persons = Person.objects.filter(author=user).order_by('name')
+	persons = Person.objects.filter(author__profile__company=user.profile.company).order_by('name')
 	return render(request, 'mainApp/persons.html', {'persons': persons,})
 
 class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -296,7 +295,7 @@ class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 	def test_func(self):
 		person = self.get_object()
-		if self.request.user == person.author:
+		if self.request.user.profile.company == person.author.profile.company:
 			return True
 		return False
 
@@ -312,7 +311,7 @@ class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 	def test_func(self):
 		person = self.get_object()
-		if self.request.user == person.author:
+		if self.request.user.profile.company == person.author.profile.company:
 			return True
 		return False
 
@@ -334,14 +333,14 @@ class PersonDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
 @login_required
 def ToolsView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	tools = Tool.objects.filter(author=user).order_by('name')
+	tools = Tool.objects.filter(author__profile__company=user.profile.company).order_by('name')
 	return render(request, 'mainApp/tools.html', {'tools': tools,})
 
 class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -357,7 +356,7 @@ class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 	def test_func(self):
 		tool = self.get_object()
-		if self.request.user == tool.author:
+		if self.request.user.profile.company == tool.author.profile.company:
 			return True
 		return False
 
@@ -373,7 +372,7 @@ class ToolDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 	def test_func(self):
 		tool = self.get_object()
-		if self.request.user == tool.author:
+		if self.request.user.profile.company == tool.author.profile.company:
 			return True
 		return False
 
@@ -394,7 +393,7 @@ class ToolDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -402,7 +401,7 @@ class ToolDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 @login_required
 def bendtestfilterView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	bendtests = TestLamella.objects.filter(author=user).order_by('test_number')
+	bendtests = TestLamella.objects.filter(author__profile__company=user.profile.company).order_by('test_number')
 	if request.method == 'POST':
 		form = BendtestFilterForm(request.POST)
 		if form.is_valid():
@@ -557,7 +556,7 @@ def bendtestfilterView(request):
 @login_required
 def DelaminationTestfilterView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	delamination_tests = TestDelamination.objects.filter(author=user).order_by('test_number')
+	delamination_tests = TestDelamination.objects.filter(author__profile__company=user.profile.company).order_by('test_number')
 	if request.method == 'POST':
 		form = DelaminationTestFilterForm(request.POST)
 		if form.is_valid():
@@ -695,7 +694,7 @@ def DelaminationTestfilterView(request):
 @login_required
 def ShearTestfilterView(request):
 	user = get_object_or_404(User, username=request.user.username)
-	shear_tests = TestShear.objects.filter(author=user).order_by('test_number')
+	shear_tests = TestShear.objects.filter(author__profile__company=user.profile.company).order_by('test_number')
 	if request.method == 'POST':
 		form = ShearTestFilterForm(request.POST)
 		if form.is_valid():
@@ -859,8 +858,8 @@ def SettingsView(request):
 	else:
 		class_form = strength_class_typesForm(prefix='strength_class')
 	user = get_object_or_404(User, username=request.user.username)
-	wood_types_list = Wood_types.objects.filter(author=user).order_by('name')
-	class_strength_list = strength_class_types.objects.filter(author=user).order_by('name')
+	wood_types_list = Wood_types.objects.filter(author__profile__company=user.profile.company).order_by('name')
+	class_strength_list = strength_class_types.objects.filter(author__profile__company=user.profile.company).order_by('name')
 	return render(request, 'mainApp/settings.html', {'wood_form': wood_form, 'class_form': class_form,
 		'wood_types_list': wood_types_list, 'class_strength_list': class_strength_list})
 
@@ -877,7 +876,7 @@ class Wood_types_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 
 	def test_func(self):
 		wood_type = self.get_object()
-		if self.request.user == wood_type.author:
+		if self.request.user.profile.company == wood_type.author.profile.company:
 			return True
 		return False
 
@@ -892,7 +891,7 @@ class Wood_types_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
 
 	def test_func(self):
 		wood_type = self.get_object()
-		if self.request.user == wood_type.author:
+		if self.request.user.profile.company == wood_type.author.profile.company:
 			return True
 		return False
 
@@ -901,7 +900,7 @@ class Wood_types_DetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView)
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
 
@@ -919,7 +918,7 @@ class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateV
 
 	def test_func(self):
 		strength_class_type = self.get_object()
-		if self.request.user == strength_class_type.author:
+		if self.request.user.profile.company == strength_class_type.author.profile.company:
 			return True
 		return False
 
@@ -934,7 +933,7 @@ class Strength_class_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteV
 
 	def test_func(self):
 		strength_class_type = self.get_object()
-		if self.request.user == strength_class_type.author:
+		if self.request.user.profile.company == strength_class_type.author.profile.company:
 			return True
 		return False
 
@@ -944,6 +943,6 @@ class Strength_class_DetailView(LoginRequiredMixin, UserPassesTestMixin, DetailV
 
 	def test_func(self):
 		test = self.get_object()
-		if self.request.user == test.author:
+		if self.request.user.profile.company == test.author.profile.company:
 			return True
 		return False
