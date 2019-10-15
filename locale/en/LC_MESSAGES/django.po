@@ -1,0 +1,534 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-15 21:42+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\mainApp\templates\mainApp\bendtest.html:11
+#, fuzzy
+#| msgid "Найти тесты на изгиб"
+msgid "Добавить новый тест на изгиб"
+msgstr "Bend tests search"
+
+#: .\mainApp\templates\mainApp\bendtest.html:14
+#: .\mainApp\templates\mainApp\bendtestfilter.html:43
+#: .\mainApp\templates\mainApp\bendtestfilter.html:199
+#: .\mainApp\templates\mainApp\today.html:149
+#: .\mainApp\templates\mainApp\today.html:185
+#: .\mainApp\templates\mainApp\today.html:227
+msgid "Номер теста"
+msgstr "Number of test"
+
+#: .\mainApp\templates\mainApp\bendtest.html:15
+#: .\mainApp\templates\mainApp\bendtestfilter.html:200
+#: .\mainApp\templates\mainApp\today.html:150
+#: .\mainApp\templates\mainApp\today.html:186
+#: .\mainApp\templates\mainApp\today.html:228
+msgid "Дата"
+msgstr "Date"
+
+#: .\mainApp\templates\mainApp\bendtest.html:16
+#: .\mainApp\templates\mainApp\bendtestfilter.html:202
+#: .\mainApp\templates\mainApp\bendtestfilter.html:204
+#: .\mainApp\templates\mainApp\today.html:152
+#: .\mainApp\templates\mainApp\today.html:154
+#: .\mainApp\templates\mainApp\today.html:188
+#: .\mainApp\templates\mainApp\today.html:190
+#: .\mainApp\templates\mainApp\today.html:230
+#: .\mainApp\templates\mainApp\today.html:232
+msgid "Время"
+msgstr "Time"
+
+#: .\mainApp\templates\mainApp\bendtest.html:17
+#: .\mainApp\templates\mainApp\bendtestfilter.html:206
+#: .\mainApp\templates\mainApp\today.html:156
+#: .\mainApp\templates\mainApp\today.html:192
+#: .\mainApp\templates\mainApp\today.html:234
+msgid "Порода"
+msgstr "Wood species"
+
+#: .\mainApp\templates\mainApp\bendtest.html:18
+#: .\mainApp\templates\mainApp\bendtestfilter.html:207
+#: .\mainApp\templates\mainApp\today.html:157
+#: .\mainApp\templates\mainApp\today.html:193
+#: .\mainApp\templates\mainApp\today.html:235
+msgid "Класс"
+msgstr "Strength class"
+
+#: .\mainApp\templates\mainApp\bendtest.html:28
+#: .\mainApp\templates\mainApp\bendtestfilter.html:210
+#: .\mainApp\templates\mainApp\today.html:160
+#: .\mainApp\templates\mainApp\today.html:196
+#: .\mainApp\templates\mainApp\today.html:238
+msgid "Размеры образца"
+msgstr "Sample dimensions"
+
+#: .\mainApp\templates\mainApp\bendtest.html:29
+#: .\mainApp\templates\mainApp\bendtestfilter.html:41
+#: .\mainApp\templates\mainApp\bendtestfilter.html:211
+#: .\mainApp\templates\mainApp\today.html:161
+msgid "Отбор проводил"
+msgstr "Selection person"
+
+#: .\mainApp\templates\mainApp\bendtest.html:32
+#: .\mainApp\templates\mainApp\bendtestfilter.html:214
+#: .\mainApp\templates\mainApp\today.html:164
+#: .\mainApp\templates\mainApp\today.html:201
+#: .\mainApp\templates\mainApp\today.html:243
+msgid "Толщина"
+msgstr "Thickness"
+
+#: .\mainApp\templates\mainApp\bendtest.html:33
+#: .\mainApp\templates\mainApp\bendtestfilter.html:215
+#: .\mainApp\templates\mainApp\today.html:165
+#: .\mainApp\templates\mainApp\today.html:202
+#: .\mainApp\templates\mainApp\today.html:244
+msgid "Ширина"
+msgstr "Width"
+
+#: .\mainApp\templates\mainApp\bendtest.html:34
+#: .\mainApp\templates\mainApp\bendtest.html:46
+#: .\mainApp\templates\mainApp\bendtestfilter.html:216
+#: .\mainApp\templates\mainApp\today.html:166
+#: .\mainApp\templates\mainApp\today.html:203
+#: .\mainApp\templates\mainApp\today.html:245
+msgid "Длина"
+msgstr "Length"
+
+#: .\mainApp\templates\mainApp\bendtest.html:43
+msgid "Параметры пальцевого соединения"
+msgstr "FJ parameters"
+
+#: .\mainApp\templates\mainApp\bendtest.html:47
+msgid "Шаг"
+msgstr "Pace"
+
+#: .\mainApp\templates\mainApp\bendtest.html:48
+msgid "Зазор"
+msgstr "Gap"
+
+#: .\mainApp\templates\mainApp\bendtest.html:49
+msgid "Угол"
+msgstr "Angle"
+
+#: .\mainApp\templates\mainApp\bendtest.html:50
+msgid "Ориентация"
+msgstr "Orientation"
+
+#: .\mainApp\templates\mainApp\bendtest.html:60
+msgid "Влажность"
+msgstr "Humidity"
+
+#: .\mainApp\templates\mainApp\bendtest.html:61
+msgid "Клей (отвердитель)"
+msgstr "Glue (hardener)"
+
+#: .\mainApp\templates\mainApp\bendtest.html:62
+#: .\mainApp\templates\mainApp\bendtestfilter.html:125
+msgid "Номер партии клея"
+msgstr "Adhesive batch number"
+
+#: .\mainApp\templates\mainApp\bendtest.html:63
+msgid "Срок годности"
+msgstr "Expiration date"
+
+#: .\mainApp\templates\mainApp\bendtest.html:66
+msgid "Слева"
+msgstr "On the left"
+
+#: .\mainApp\templates\mainApp\bendtest.html:67
+msgid "Справа"
+msgstr "On the right"
+
+#: .\mainApp\templates\mainApp\bendtest.html:73
+msgid "Параметры склеивания"
+msgstr "Gluing parameters"
+
+#: .\mainApp\templates\mainApp\bendtest.html:76
+msgid "Расход клея"
+msgstr "Glue consumption"
+
+#: .\mainApp\templates\mainApp\bendtest.html:77
+msgid "Давление"
+msgstr "Pressure"
+
+#: .\mainApp\templates\mainApp\bendtest.html:78
+msgid "Продолжительность"
+msgstr "Bonding duration"
+
+#: .\mainApp\templates\mainApp\bendtest.html:79
+#: .\mainApp\templates\mainApp\bendtestfilter.html:55
+msgid "Соотношение Клей:Отвердитель"
+msgstr "Ratio Adhesive:Harderner"
+
+#: .\mainApp\templates\mainApp\bendtest.html:88
+msgid "Результаты тестирования"
+msgstr "Test results"
+
+#: .\mainApp\templates\mainApp\bendtest.html:91
+msgid "Сила"
+msgstr "Force strength"
+
+#: .\mainApp\templates\mainApp\bendtest.html:92
+msgid "Напряжение"
+msgstr "Tension"
+
+#: .\mainApp\templates\mainApp\bendtest.html:93
+msgid "Излом по соединению"
+msgstr "Fracture at the fj"
+
+#: .\mainApp\templates\mainApp\bendtest.html:94
+msgid "Излом в основании соединения"
+msgstr "Fracture at the base of the fj"
+
+#: .\mainApp\templates\mainApp\bendtest.html:95
+msgid "Излом вне соединения"
+msgstr "Fracture out of fj"
+
+#: .\mainApp\templates\mainApp\bendtest.html:105
+#: .\mainApp\templates\mainApp\bendtestfilter.html:179
+msgid "Комментарий"
+msgstr "Comment"
+
+#: .\mainApp\templates\mainApp\bendtest.html:106
+#: .\mainApp\templates\mainApp\bendtestfilter.html:91
+msgid "Оборудование"
+msgstr "Equipment"
+
+#: .\mainApp\templates\mainApp\bendtest.html:113
+#: .\mainApp\templates\mainApp\bendtestfilter.html:173
+msgid "Соответствует нормам"
+msgstr "Passed"
+
+#: .\mainApp\templates\mainApp\bendtest.html:115
+msgid "Фото"
+msgstr "Photo"
+
+#: .\mainApp\templates\mainApp\bendtest.html:121
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:12
+#: .\mainApp\templates\mainApp\bendtestfilter.html:17
+msgid "Фильтры"
+msgstr "Filters"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:14
+#: .\mainApp\templates\mainApp\bendtestfilter.html:19
+msgid "Результаты поиска"
+msgstr "Searching results"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:26
+msgid "Поиск тестов на изгиб"
+msgstr "Bend tests search"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:29
+msgid "Дата проведения теста, от"
+msgstr "Test date, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:31
+msgid "Дата проведения теста, до"
+msgstr "Test date, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:35
+msgid "Время проведения теста, от"
+msgstr "Test time, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:37
+msgid "Время проведения теста, до"
+msgstr "Test time, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:47
+msgid "Порода дерева"
+msgstr "Wood species"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:49
+msgid "Класс прочности"
+msgstr "Strength class"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:53
+msgid "Клей"
+msgstr "Adhesive"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:59
+msgid "Толщина ламели в мм, от"
+msgstr "Lamella thickness in mm, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:61
+msgid "Толщина ламели в мм, до"
+msgstr "Lamella thickness in mm, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:65
+msgid "Ширина ламели в мм, от"
+msgstr "Lamella width in mm, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:67
+msgid "Ширина ламели в мм, до"
+msgstr "Lamella width in mm, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:71
+msgid "Длина ламели в мм, от"
+msgstr "Lamella length in mm, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:73
+msgid "Длина ламели в мм, до"
+msgstr "Lamella length in mm, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:77
+msgid "Длина fj-соединения, мм"
+msgstr "Length of the fj, mm"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:79
+msgid "Шаг fj-соединения, мм"
+msgstr "Pace of the fj, mm"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:83
+msgid "Зазор fj-соединения, мм"
+msgstr "Gap of the fj, mm"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:85
+msgid "Угол fj-соединения, гр."
+msgstr "Angle of the fj, degr."
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:89
+msgid "Ориентация fj-соединения"
+msgstr "Orientation of the fj"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:95
+#, python-format
+msgid "Влажность ламели слева в %%, от"
+msgstr "Humidity of lamella on the left in %%, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:97
+#, python-format
+msgid "Влажность ламели слева  в %%, до"
+msgstr "Humidity of lamella on the left in %%, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:101
+#, python-format
+msgid "Влажность ламели справа в %%, от"
+msgstr "Humidity of lamella on the right in %%, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:103
+#, python-format
+msgid "Влажность ламели справа в %%, до"
+msgstr "Humidity of lamella on the right in %%, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:107
+msgid "Давление склейки, от"
+msgstr "Gluing pressure, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:109
+msgid "Давление склейки, до"
+msgstr "Gluing pressure, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:113
+msgid "Продолжительность склейки в сек., от"
+msgstr "Bonding duration in sec., from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:115
+msgid "Продолжительность склейки в сек., до"
+msgstr "Bonding duration in sec., to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:119
+msgid "Расход клея в гр/м2, от"
+msgstr "Glue consumption in g/m2, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:121
+msgid "Расход клея в гр/м2, до"
+msgstr "Glue consumption in g/m2, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:127
+msgid "Параметры ламели"
+msgstr "Lamella parameters"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:131
+msgid "Срок годности партии клея, от"
+msgstr "Adhesive expiration date, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:133
+msgid "Срок годности партии клея, до"
+msgstr "Adhesive expiration date, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:137
+msgid "Сила в кН, от"
+msgstr "Force in kN, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:139
+msgid "Сила в кН, до"
+msgstr "Force in kN, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:143
+msgid "Продолжительность под нагрузкой в сек., от"
+msgstr "Test duration in sec., from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:145
+msgid "Продолжительность под нагрузкой в секю, до"
+msgstr "Test duration in sec., to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:149
+msgid "Прочность ламели, от"
+msgstr "Lamella strength, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:151
+msgid "Прочность ламели, до"
+msgstr "Lamella strength, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:155
+msgid "Излом по соединению в %%, от"
+msgstr "Fracture at the fj in %, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:157
+msgid "Излом по соединению в %%, до"
+msgstr "Fracture at the fj in %, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:161
+msgid "Излом в основании соединения в %%, от"
+msgstr "Fracture at the base of the fj in %, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:163
+msgid "Излом в основании соединения в %%, до"
+msgstr "Fracture at the base of the fj in %, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:167
+msgid "Излом вне соединения в %%, от"
+msgstr "Fracture out of fj in %, from"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:169
+msgid "Излом вне соединения в %%, до"
+msgstr "Fracture out of fj in %, to"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:175
+msgid "Не соответствует нормам"
+msgstr "Not passed"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:188
+msgid "Найти"
+msgstr "Search"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:224
+msgid "Тестов не найдено..."
+msgstr "No tests found ..."
+
+#: .\mainApp\templates\mainApp\today.html:92
+msgid "Главная"
+msgstr "Home"
+
+#: .\mainApp\templates\mainApp\today.html:94
+msgid "Мой профиль"
+msgstr "Profile"
+
+#: .\mainApp\templates\mainApp\today.html:95
+msgid "Выйти"
+msgstr "Sign out"
+
+#: .\mainApp\templates\mainApp\today.html:97
+msgid "Войти"
+msgstr "Sign in"
+
+#: .\mainApp\templates\mainApp\today.html:98
+msgid "Регистрация"
+msgstr "Register"
+
+#: .\mainApp\templates\mainApp\today.html:126
+msgid "Перейти"
+msgstr "Go"
+
+#: .\mainApp\templates\mainApp\today.html:136
+msgid "Изгиб"
+msgstr "Bend"
+
+#: .\mainApp\templates\mainApp\today.html:138
+msgid "Срез"
+msgstr "Shear"
+
+#: .\mainApp\templates\mainApp\today.html:140
+msgid "Деламинация"
+msgstr "Delamination"
+
+#: .\mainApp\templates\mainApp\today.html:176
+#: .\mainApp\templates\mainApp\today.html:218
+msgid "В этот день тестов не добавлено"
+msgstr "No tests added on this day"
+
+#: .\mainApp\templates\mainApp\today.html:197
+#: .\mainApp\templates\mainApp\today.html:239
+msgid "Кол-во швов"
+msgstr "Number of seams"
+
+#: .\mainApp\templates\mainApp\today.html:198
+#: .\mainApp\templates\mainApp\today.html:240
+msgid "Прошел"
+msgstr "Passed"
+
+#: .\mainApp\templates\mainApp\today.html:260
+msgid "В этот день тестов не добалено"
+msgstr "No tests added on this day."
+
+#: .\mainApp\templates\mainApp\today.html:272
+msgid "Добавление тестов"
+msgstr "Adding tests"
+
+#: .\mainApp\templates\mainApp\today.html:275
+msgid "Тест на изгиб"
+msgstr "Bend test"
+
+#: .\mainApp\templates\mainApp\today.html:278
+msgid "Тест на срез"
+msgstr "Shear test"
+
+#: .\mainApp\templates\mainApp\today.html:281
+msgid "Тест на деламинацию"
+msgstr "Delamination test"
+
+#: .\mainApp\templates\mainApp\today.html:287
+msgid "Поиск тестов"
+msgstr "Tests search"
+
+#: .\mainApp\templates\mainApp\today.html:290
+msgid "Найти тесты на изгиб"
+msgstr "Bend tests search"
+
+#: .\mainApp\templates\mainApp\today.html:293
+msgid "Найти тесты на срез"
+msgstr "Shear tests search"
+
+#: .\mainApp\templates\mainApp\today.html:296
+msgid "Найти тесты на деламинацию"
+msgstr "Delamination tests search"
+
+#: .\mainApp\templates\mainApp\today.html:302
+msgid "Ответственные лица"
+msgstr "Responsible persons"
+
+#: .\mainApp\templates\mainApp\today.html:305
+msgid "Оборудование/Инструменты/Приборы"
+msgstr "Equipment / Tools / Devices"
+
+#: .\mainApp\templates\mainApp\today.html:308
+msgid "Несоответствия"
+msgstr "Nonconformities"
+
+#: .\mainApp\templates\mainApp\today.html:311
+msgid "Ссылки на стандарты"
+msgstr "References to Standard"
+
+#: .\mainApp\templates\mainApp\today.html:314
+msgid "Настройки"
+msgstr "Settings"
+
+#~ msgid "On the left"
+#~ msgstr "Length"

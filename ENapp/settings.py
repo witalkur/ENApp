@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LANGUAGES = (
+        ('ru', 'Russian'),
+        ('en', 'English'),
+    )
 
 # Application definition
 
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'ENapp.urls'
@@ -69,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -149,3 +155,7 @@ EMAIL_HOST_PASSWORD = 'Nikita888nikita888'
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
+
+LOCALE_PATHS = (
+        os.path.join(BASE_DIR, 'locale'),
+    )

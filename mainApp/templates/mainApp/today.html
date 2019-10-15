@@ -2,6 +2,8 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
+{% load i18n %}
+
 
 
 <!DOCTYPE html>
@@ -59,13 +61,41 @@
 				<a id="logo" href="/">FPC App EN 14080:2013</a>
 			</div>
 			<nav id="nav">
-				<a id="nav__link" href="{% url 'today' %}">Главная</a>
+				<form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+    <ul class="nav navbar-nav navbar-right language menu">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% if LANGUAGE_CODE == 'en' %}
+            <li>
+                <button type="submit"
+                        name="language"
+                        value="ru"
+                        class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
+                    Ру
+                </button>
+            </li>
+         {% else %}   
+         <li>
+                <button type="submit"
+                        name="language"
+                        value="en"
+                        class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
+                    En
+                </button>
+            </li>
+        {% endif %}
+    </ul>
+</form>
+				<a id="nav__link" href="{% url 'today' %}">{% trans 'Главная' %}</a>
 				{% if user.is_authenticated %}
-				<a id="nav__link" href="{% url 'profile' %}">Мой профиль</a>
-				<a id="nav__link" href="{% url 'logout' %}">Выйти</a>
+				<a id="nav__link" href="{% url 'profile' %}">{% trans 'Мой профиль' %}</a>
+				<a id="nav__link" href="{% url 'logout' %}">{% trans 'Выйти' %}</a>
 				{% else %}
-				<a id="nav__link" href="{% url 'login' %}">Войти</a>
-				<a id="nav__link" href="{% url 'register' %}">Регистрация</a>
+				<a id="nav__link" href="{% url 'login' %}">{% trans 'Войти' %}</a>
+				<a id="nav__link" href="{% url 'register' %}">{% trans 'Регистрация' %}</a>
 				{% endif %}
 			</nav>
 		</div>	
@@ -93,7 +123,7 @@
 
 	                </dir>
 	                <dir class="but">
-	                <button class="btn btn-info btn-sm" type="submit">Перейти</button></dir> 
+	                <button class="btn btn-info btn-sm" type="submit">{% trans 'Перейти' %}</button></dir> 
 	            </form>
 				
 				
@@ -103,11 +133,11 @@
 			<div class="tabs">
 					
 				    	<input id="tab1" type="radio" name="tabs" checked>
-				    	<label for="tab1">Изгиб</label>
+				    	<label for="tab1">{% trans 'Изгиб' %}</label>
 				    	<input id="tab2" type="radio" name="tabs">
-				    	<label for="tab2">Срез</label>
+				    	<label for="tab2">{% trans 'Срез' %}</label>
 				    	<input id="tab3" type="radio" name="tabs">
-				    	<label for="tab3">Деламинация</label>
+				    	<label for="tab3">{% trans 'Деламинация' %}</label>
 				    
 				    
 			     <section id="content-tab1">
@@ -116,24 +146,24 @@
                         
                         <table class="table" onClick='location.href="{% url "bendtest-detail" test.id %}"'>
                         	<tr class="table_row">
-	                            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
-	                            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+	                            <th class="table_cell">{% trans 'Номер теста' %}: {{ test.test_number }}</th>
+	                            <th class="table_cell">{% trans 'Дата' %}: {{ test.test_date|date:"d-m-Y" }}</th>
 	                            {% if test.test_time %}
-	                            <th class="table_cell">Время: {{ test.test_time }}</th>
+	                            <th class="table_cell">{% trans 'Время' %}: {{ test.test_time }}</th>
 	                            {% else %}
-	                            <th class="table_cell">Время: ---</th>
+	                            <th class="table_cell">{% trans 'Время' %}: ---</th>
 	                            {% endif %}
-	                            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
-	                            <th class="table_cell">Класс: {{ test.strength_class }}</th>
+	                            <th class="table_cell">{% trans 'Порода' %}: {{ test.type_of_wood }}</th>
+	                            <th class="table_cell">{% trans 'Класс' %}: {{ test.strength_class }}</th>
                             </tr>
                             <tr class="table_row">
-                            	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-                            	<th colspan="2" class="table_cell" id="cell3">Отбор проводил</th>
+                            	<td colspan="3" class="table_cell" id="cell1">{% trans 'Размеры образца' %}</td>
+                            	<th colspan="2" class="table_cell" id="cell3">{% trans 'Отбор проводил' %}</th>
                             </tr>
                             <tr class="table_row">
-                            	<th class="table_cell">Толщина: {{ test.lamellas_thickness }} мм</th>
-                            	<th class="table_cell">Ширина: {{ test.lamellas_width }} мм</th>
-                            	<th class="table_cell" id="cell2">Длина: {{ test.lamellas_length }} мм</th>
+                            	<th class="table_cell">{% trans 'Толщина' %}: {{ test.lamellas_thickness }} мм</th>
+                            	<th class="table_cell">{% trans 'Ширина' %}: {{ test.lamellas_width }} мм</th>
+                            	<th class="table_cell" id="cell2">{% trans 'Длина' %}: {{ test.lamellas_length }} мм</th>
                             	<th colspan="2" class="table_cell">{{ test.lamellas_took_person }}</th>
                             </tr>
 
@@ -143,7 +173,7 @@
                         
                         {% endfor %}
                         {% else %}
-                        В этот день тестов не добавлено
+                        {% trans 'В этот день тестов не добавлено' %}
                    		{% endif %}
 			    </section> 
 			    <section id="content-tab2">
@@ -152,25 +182,25 @@
                         
                         <table class="table" onClick='location.href="{% url "sheartest-detail" test.id %}"'>
                         	<tr class="table_row">
-	                            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
-	                            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+	                            <th class="table_cell">{% trans 'Номер теста' %}: {{ test.test_number }}</th>
+	                            <th class="table_cell">{% trans 'Дата' %}: {{ test.test_date|date:"d-m-Y" }}</th>
 	                            {% if test.test_time %}
-	                            <th class="table_cell">Время: {{ test.test_time }}</th>
+	                            <th class="table_cell">{% trans 'Время' %}: {{ test.test_time }}</th>
 	                            {% else %}
-	                            <th class="table_cell">Время: ---</th>
+	                            <th class="table_cell">{% trans 'Время' %}: ---</th>
 	                            {% endif %}
-	                            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
-	                            <th class="table_cell">Класс: {{ test.timber_params }}</th>
+	                            <th class="table_cell">{% trans 'Порода' %}: {{ test.type_of_wood }}</th>
+	                            <th class="table_cell">{% trans 'Класс' %}: {{ test.timber_params }}</th>
                             </tr>
                             <tr class="table_row">
-                            	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-                            	<th class="table_cell" id="cell3">Кол-во швов</th>
-                            	<th class="table_cell" id="cell3">Прошел</th>
+                            	<td colspan="3" class="table_cell" id="cell1">{% trans 'Размеры образца' %}</td>
+                            	<th class="table_cell" id="cell3">{% trans 'Кол-во швов' %}</th>
+                            	<th class="table_cell" id="cell3">{% trans 'Прошел' %}</th>
                             </tr>
                             <tr class="table_row">
-                            	<th class="table_cell">Толщина: {{ test.sample_thickness }} мм</th>
-                            	<th class="table_cell">Ширина: {{ test.sample_width }} мм</th>
-                            	<th class="table_cell" id="cell2">Длина: {{ test.sample_length }} мм</th>
+                            	<th class="table_cell">{% trans 'Толщина' %}: {{ test.sample_thickness }} мм</th>
+                            	<th class="table_cell">{% trans 'Ширина' %}: {{ test.sample_width }} мм</th>
+                            	<th class="table_cell" id="cell2">{% trans 'Длина' %}: {{ test.sample_length }} мм</th>
                             	<th class="table_cell">{{ test.number_of_layers }}</th>
                             	{% if test.passed %}
                             	<th class="table_cell">+</th>
@@ -185,7 +215,7 @@
                         
                         {% endfor %}
                         {% else %}
-                        В этот день тестов не добавлено
+                        {% trans 'В этот день тестов не добавлено' %}
                    		{% endif %}
 			    </section> 
 			    <section id="content-tab3">
@@ -194,25 +224,25 @@
                         
                         <table class="table" onClick='location.href="{% url "delaminationtest-detail" test.id %}"'>
                         	<tr class="table_row">
-	                            <th class="table_cell">Номер теста: {{ test.test_number }}</th>
-	                            <th class="table_cell">Дата: {{ test.test_date|date:"d-m-Y" }}</th>
+	                            <th class="table_cell">{% trans 'Номер теста' %}: {{ test.test_number }}</th>
+	                            <th class="table_cell">{% trans 'Дата' %}: {{ test.test_date|date:"d-m-Y" }}</th>
 	                            {% if test.test_time %}
-	                            <th class="table_cell">Время: {{ test.test_time }}</th>
+	                            <th class="table_cell">{% trans 'Время' %}: {{ test.test_time }}</th>
 	                            {% else %}
-	                            <th class="table_cell">Время: ---</th>
+	                            <th class="table_cell">{% trans 'Время' %}: ---</th>
 	                            {% endif %}
-	                            <th class="table_cell">Порода: {{ test.type_of_wood }}</th>
-	                            <th class="table_cell">Класс: {{ test.timber_params }}</th>
+	                            <th class="table_cell">{% trans 'Порода' %}: {{ test.type_of_wood }}</th>
+	                            <th class="table_cell">{% trans 'Класс' %}: {{ test.timber_params }}</th>
                             </tr>
                             <tr class="table_row">
-                            	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-                            	<th class="table_cell" id="cell3">Кол-во швов</th>
-                            	<th class="table_cell" id="cell3">Прошел</th>
+                            	<td colspan="3" class="table_cell" id="cell1">{% trans 'Размеры образца' %}</td>
+                            	<th class="table_cell" id="cell3">{% trans 'Кол-во швов' %}</th>
+                            	<th class="table_cell" id="cell3">{% trans 'Прошел' %}</th>
                             </tr>
                             <tr class="table_row">
-                            	<th class="table_cell">Толщина: {{ test.sample_thickness }} мм</th>
-                            	<th class="table_cell">Ширина: {{ test.sample_width }} мм</th>
-                            	<th class="table_cell" id="cell2">Длина: {{ test.sample_length }} мм</th>
+                            	<th class="table_cell">{% trans 'Толщина' %}: {{ test.sample_thickness }} мм</th>
+                            	<th class="table_cell">{% trans 'Ширина' %}: {{ test.sample_width }} мм</th>
+                            	<th class="table_cell" id="cell2">{% trans 'Длина' %}: {{ test.sample_length }} мм</th>
                             	<th class="table_cell">{{ test.number_of_layers }}</th>
                             	{% if test.passed %}
                             	<th class="table_cell">+</th>
@@ -227,7 +257,7 @@
                         
                         {% endfor %}
                         {% else %}
-                        В этот день тестов не добавлено
+                        {% trans 'В этот день тестов не добалено' %}
                    		{% endif %}
 			    </section>  
 			   
@@ -239,49 +269,49 @@
 			
 		<table class="table_detail sidebar_table">
             <tr class="table_row">
-                <th class="table_cell dark_cell">Добавление тестов</th>
+                <th class="table_cell dark_cell">{% trans 'Добавление тестов' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtest" %}"'>+ Тест на изгиб</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtest" %}"'>+ {% trans 'Тест на изгиб' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "testshear" %}"'>+ Тест на срез</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "testshear" %}"'>+ {% trans 'Тест на срез' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "testdelamination" %}"'>+ Тест на деламинацию</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "testdelamination" %}"'>+ {% trans 'Тест на деламинацию' %}</th>
             </tr>
            </table >
 
            	<table class="table_detail sidebar_table">
             <tr class="table_row">
-                <th class="table_cell dark_cell">Поиск тестов</th>
+                <th class="table_cell dark_cell">{% trans 'Поиск тестов' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtestfilter" %}"'>Найти тесты на изгиб</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "bendtestfilter" %}"'>{% trans 'Найти тесты на изгиб' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "sheartestfilter" %}"'>Найти тесты на срез</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "sheartestfilter" %}"'>{% trans 'Найти тесты на срез' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "delamtestfilter" %}"'>Найти тесты на деламинацию</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "delamtestfilter" %}"'>{% trans 'Найти тесты на деламинацию' %}</th>
             </tr>
            </table >
 
            <table class="table_detail sidebar_table">
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "persons" %}"'>Ответственные лица</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "persons" %}"'>{% trans 'Ответственные лица' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "tools" %}"'>Оборудование/Инструменты/Приборы</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "tools" %}"'>{% trans 'Оборудование/Инструменты/Приборы' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "nonconformities" %}"'>Несоответствия</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "nonconformities" %}"'>{% trans 'Несоответствия' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="#'>Ссылки на стандарты</th>
+                <th class="table_cell click_sidebar" onClick='location.href="#'>{% trans 'Ссылки на стандарты' %}</th>
             </tr>
             <tr class="table_row">
-                <th class="table_cell click_sidebar" onClick='location.href="{% url "settings" %}"'>Настройки</th>
+                <th class="table_cell click_sidebar" onClick='location.href="{% url "settings" %}"'>{% trans 'Настройки' %}</th>
             </tr>
            </table >
 			
