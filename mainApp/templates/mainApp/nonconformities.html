@@ -1,23 +1,24 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %} 
-<a class="btn btn-info btn-sm mt-3" href="{% url 'nonconformity-create' %}">Добавить новое несоотвествие</a>
+<a class="btn btn-info btn-sm mt-3" href="{% url 'nonconformity-create' %}">{% trans 'Добавить новое несоотвествие' %}</a>
  {% if nonconformities %}
 {% for nonconformity in nonconformities %}
                         
     <table class="table_detail" onClick='location.href="{% url "nonconformity-detail" nonconformity.id %}"'>
         <tr class="table_row">
-            <th class="table_cell" rowspan="2" id="cell2">Дата: {{ nonconformity.nonconformity_date|date:"d-m-Y" }}</th>
-            <th class="table_cell dark_cell">Ответственный</th>
+            <th class="table_cell" rowspan="2" id="cell2">{% trans 'Дата' %}: {{ nonconformity.nonconformity_date|date:"d-m-Y" }}</th>
+            <th class="table_cell dark_cell">{% trans 'Ответственный' %}</th>
             
         </tr>
         <tr class="table_row">
             <th class="table_cell">{{ nonconformity.resp_person }}</th>
          </tr>   
         <tr class="table_row">
-            <th class="table_cell dark_cell" colspan="2" id="cell3" >Название</th>
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >{% trans 'Название' %}</th>
             
         </tr>
         <tr class="table_row">
@@ -28,7 +29,7 @@
     
     {% endfor %}
     {% else %}
-    Несоответствий не обнаружено
+    {% trans 'Несоответствий не обнаружено' %}
     {% endif %}
 
 {% endblock content %}

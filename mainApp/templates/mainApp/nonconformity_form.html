@@ -1,6 +1,7 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 {% if perms.mainApp.add_Nonconformity %}
@@ -8,23 +9,23 @@
         <form method="POST" enctype="multipart/form-data">
 {% csrf_token %}
 <fieldset class="form-group">
-    <legend class="border-bottom mb-4">Добавить несоответствие</legend>
+    <legend class="border-bottom mb-4">{% trans 'Добавить несоответствие' %}</legend>
      <table class="table_detail">
         <tr class="table_row">
-            <th class="table_cell" rowspan="2" id="cell2">Дата: {{ form.nonconformity_date }}</th>
-            <th class="table_cell dark_cell">Ответственный</th>   
+            <th class="table_cell" rowspan="2" id="cell2">{% trans 'Дата' %}: {{ form.nonconformity_date }}</th>
+            <th class="table_cell dark_cell">{% trans 'Ответственный' %}</th>   
         </tr>
         <tr class="table_row">
             <th class="table_cell">{{ form.resp_person }}</th>
          </tr>   
         <tr class="table_row">
-            <th class="table_cell dark_cell" colspan="2" id="cell3" >Название</th> 
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >{% trans 'Название' %}</th> 
         </tr>
         <tr class="table_row">
             <th class="table_cell long_name" colspan="2">{{ form.name }}</th>
         </tr>
         <tr class="table_row">
-            <th class="table_cell dark_cell" colspan="2" id="cell3" >Описание</th>
+            <th class="table_cell dark_cell" colspan="2" id="cell3" >{% trans 'Описание' %}</th>
         </tr>
         <tr class="table_row">
             <th class="table_cell" colspan="2">{{ form.description }}</th>
@@ -32,12 +33,12 @@
     </table>
     </fieldset>
     <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Добавить</button>
+        <button class="btn btn-outline-info" type="submit">{% trans 'Добавить' %}</button>
     </div>
 </form>
     </div>
     {% else %}
-    <h2>У данного аккаунта нет прав на добавление данных!</h2>
- <a href="{% url 'login' %}">Сменить аккаунт</a>
+    <h2>{% trans 'У данного аккаунта нет прав на добавление данных' %}!</h2>
+ <a href="{% url 'login' %}">{% trans 'Сменить аккаунт' %}</a>
 {% endif %}
 {% endblock content %}
