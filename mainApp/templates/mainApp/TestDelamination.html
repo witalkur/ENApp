@@ -1,21 +1,21 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 
 {% block content %}	
 <form method="POST" enctype="multipart/form-data">
 {% csrf_token %}
 <fieldset class="form-group">
-<legend class="border-bottom">Добавить тест на деламинацию</legend>
+<legend class="border-bottom">{% trans 'Добавить тест на деламинацию' %}</legend>
 <table class="table_detail">
     <tr>
-        <th class="table_cell dark_cell">Номер теста</th>
-        <th class="table_cell dark_cell">Дата</th>
-        <th class="table_cell dark_cell">Время</th>
-        <th class="table_cell dark_cell">Порода</th>
-        <th class="table_cell dark_cell">Класс</th>
+        <th class="table_cell dark_cell">{% trans 'Номер теста' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Дата' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Время' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Порода' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Класс' %}</th>
     </tr>
     <tr>
         <th class="table_cell">{{ form.test_number }}</th>
@@ -25,62 +25,62 @@
         <th class="table_cell">{{ form.timber_params }}</th>
     </tr>
     <tr>
-        <td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-        <th colspan="2" class="table_cell" id="cell3">Оборудование</th>
+        <td colspan="3" class="table_cell" id="cell1">{% trans 'Размеры образца' %}</td>
+        <th colspan="2" class="table_cell" id="cell3">{% trans 'Оборудование' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">Толщина</th>
-        <th class="table_cell dark_cell">Ширина</th>
-        <th class="table_cell dark_cell" id="cell2">Длина</th>
+        <th class="table_cell dark_cell">{% trans 'Толщина, мм' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Ширина, мм' %}</th>
+        <th class="table_cell dark_cell" id="cell2">{% trans 'Длина, мм' %}</th>
         <th colspan="2" rowspan="2" class="table_cell">{{ form.equipment }}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.sample_thickness }} мм</th>
-        <th class="table_cell">{{ form.sample_width }} мм</th>
-        <th class="table_cell" id="cell2">{{ form.sample_length }} мм</th>
+        <th class="table_cell">{{ form.sample_thickness }}</th>
+        <th class="table_cell">{{ form.sample_width }}</th>
+        <th class="table_cell" id="cell2">{{ form.sample_length }}</th>
     </tr>
     <tr>
-        <th colspan="5" class="table_cell" id="cell3">Ответственные лица</th>
+        <th colspan="5" class="table_cell" id="cell3">{% trans 'Ответственные лица' %}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Визуальная сортировка</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Визуальная сортировка' %}</th>
         <th colspan="3" class="table_cell">{{ form.sorter_person }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Склейка по длине</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Склейка по длине' %}</th>
         <th colspan="3" class="table_cell">{{ form.fj_person }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Склейка по пласти</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Склейка по пласти' %}</th>
         <th colspan="3" class="table_cell">{{ form.glue_person }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Нанесение маркировки</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Нанесение маркировки' %}</th>
         <th colspan="3" class="table_cell">{{ form.marking_person }}</th>
     </tr>
     <tr>
-        <th colspan="5" class="table_cell" id="cell3">Технологические параметры процесса</th>
+        <th colspan="5" class="table_cell" id="cell3">{% trans 'Технологические параметры процесса' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">Влажность воздуха</th>
-        <th class="table_cell dark_cell">Влажность древесины</th>
-        <th class="table_cell dark_cell">Температура воздуха</th>
-        <th class="table_cell dark_cell">Температура древесины</th>
-        <th class="table_cell dark_cell">Температура клея</th>
+        <th class="table_cell dark_cell">{% trans 'Влажность воздуха, %' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Влажность древесины, %' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Температура воздуха, °C' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Температура древесины, °C' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Температура клея, °C' %}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.air_moisture }} %</th>
-        <th class="table_cell">{{ form.wood_moisture }} %</th>
+        <th class="table_cell">{{ form.air_moisture }}</th>
+        <th class="table_cell">{{ form.wood_moisture }}</th>
         <th class="table_cell">{{ form.air_temperature }}</th>
         <th class="table_cell">{{ form.wood_temperature }}</th>
         <th class="table_cell">{{ form.glue_temperature }}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">Клей</th>
-        <th class="table_cell dark_cell">Номер партии клея</th>
-        <th class="table_cell dark_cell">Срок годности клея</th>
-        <th class="table_cell dark_cell">Время начала прессования</th>
-        <th class="table_cell dark_cell">Время конца прессования</th>
+        <th class="table_cell dark_cell">{% trans 'Клей' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Номер партии клея' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Срок годности клея' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Время начала прессования' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Время конца прессования' %}</th>
     </tr>
      <tr>
         <th class="table_cell">{{ form.glue }}</th>
@@ -90,43 +90,43 @@
         <th class="table_cell">{{ form.end_glue_time }}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">Расход клея</th>
-        <th class="table_cell dark_cell">Давление</th>
-        <th class="table_cell dark_cell">Продолжительность</th>
-        <th colspan="2" class="table_cell dark_cell">Соотношение Клей:Отвердитель</th>
+        <th class="table_cell dark_cell">{% trans 'Расход клея, г/см2' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Давление, г/см3' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Продолжительность, мин.' %}</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Соотношение Клей:Отвердитель' %}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.glue_use_amount }} г/см2</th>
-        <th class="table_cell">{{ form.glue_pressure }} г/см3</th>
-        <th class="table_cell">{{ form.pressure_time }} сек.</th>
+        <th class="table_cell">{{ form.glue_use_amount }}</th>
+        <th class="table_cell">{{ form.glue_pressure }}</th>
+        <th class="table_cell">{{ form.pressure_time }}</th>
         <th class="table_cell" colspan="2">{{ form.glue_harderner_amount }}</th>
     </tr>
     <tr>
-        <th colspan="5" class="table_cell" id="cell3">Результаты тестирования</th>
+        <th colspan="5" class="table_cell" id="cell3">{% trans 'Результаты тестирования' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">Кол-во швов</th>
+        <th class="table_cell dark_cell">{% trans 'Кол-во швов' %}</th>
         <th class="table_cell">{{ form.number_of_layers }}</th>
-        <th class="table_cell dark_cell">Процент раскрытия шва</th>
-        <th colspan="2" class="table_cell">{{ form.layer_out_percent }} %</th>
+        <th class="table_cell dark_cell">{% trans 'Процент раскрытия шва' %}</th>
+        <th colspan="2" class="table_cell">{{ form.layer_out_percent }}</th>
     </tr>
     <tr>
-        <th colspan="5" class="table_cell" id="cell3">Комментарий</th>
+        <th colspan="5" class="table_cell" id="cell3">{% trans 'Комментарий' %}</th>
     </tr>
     <tr>
         <th class="table_cell" colspan="5">{{ form.comment }}</th>
     </tr>
 
     <tr>
-        <th class="table_cell dark_cell">Соответствует нормам:</th>
+        <th class="table_cell dark_cell">{% trans 'Соответствует нормам' %}:</th>
         <th class="table_cell long_inp">{{ form.passed }}</th>
-        <th class="table_cell dark_cell">Фото:</th>
+        <th class="table_cell dark_cell">{% trans 'Фото' %}:</th>
         <th class="table_cell long" colspan="2">{{ form.photo }}</th>
     </tr>
 </table>
 </fieldset>
     <div class="form-group">
-        <button class="btn btn-info btn_down" type="submit">Сохранить</button>
+        <button class="btn btn-info btn_down" type="submit">{% trans 'Сохранить' %}</button>
     </div>
 </form>		
 

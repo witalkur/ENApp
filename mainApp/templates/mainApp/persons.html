@@ -1,24 +1,25 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %} 
-<a class="btn btn-info btn-sm mt-3" href="{% url 'person-create' %}">Добавить нового сотрудника</a>
+<a class="btn btn-info btn-sm mt-3" href="{% url 'person-create' %}">{% trans 'Добавить нового сотрудника' %}</a>
 {% if persons %}
 {% for person in persons %}
 <table class="table_detail" onClick='location.href="{% url "person-detail" person.id %}"'>
      <tr class="table_row ">
-        <th class="table_cell dark_cell">Имя</th>
+        <th class="table_cell dark_cell">{% trans 'Имя' %}</th>
         <th colspan="3" class="table_cell">{{ person.name }}</th>
     </tr>
     <tr class="table_row">
-        <th class="table_cell" id="cell3">Должность</th>
+        <th class="table_cell" id="cell3">{% trans 'Должность' %}</th>
         <th colspan="3" class="table_cell" id="cell4">{{ person.position }}</th>
      </tr>
      <tr class="table_row">
-         <th class="table_cell" id="cell3">Дата обучения</th>  
+         <th class="table_cell" id="cell3">{% trans 'Дата обучения' %}</th>  
          <th class="table_cell" id="cell4">{{ person.training_date }}</th>
-         <th class="table_cell" id="cell3">Дата следующего обучения</th>  
+         <th class="table_cell" id="cell3">{% trans 'Дата следующего обучения' %}</th>  
          <th class="table_cell" id="cell4">{{ person.next_training_date }}</th>
      </tr>
 
@@ -26,6 +27,6 @@
 
 {% endfor %}
 {% else %}
-    Ни одного сотрудника не добавлено
+    {% trans 'Ни одного сотрудника не добавлено' %}
 {% endif %}
 {% endblock content %}

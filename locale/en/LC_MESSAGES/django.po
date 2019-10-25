@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-16 23:06+0300\n"
+"POT-Creation-Date: 2019-10-25 20:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,16 +19,23 @@ msgstr ""
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:11
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:10
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:10
 msgid "Изменить параметры теста"
 msgstr "Change the test parameters"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:14
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:13
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:13
+#: .\mainApp\templates\mainApp\TestDelamination.html:14
 #: .\mainApp\templates\mainApp\bendtest.html:14
 #: .\mainApp\templates\mainApp\bendtestfilter.html:43
 #: .\mainApp\templates\mainApp\bendtestfilter.html:199
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:43
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:181
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:43
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:193
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:8
+#: .\mainApp\templates\mainApp\testlamella_detail.html:8
 #: .\mainApp\templates\mainApp\today.html:149
 #: .\mainApp\templates\mainApp\today.html:185
 #: .\mainApp\templates\mainApp\today.html:227
@@ -37,12 +44,18 @@ msgstr "Number of test"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:15
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:14
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:14
+#: .\mainApp\templates\mainApp\TestDelamination.html:15
 #: .\mainApp\templates\mainApp\bendtest.html:15
 #: .\mainApp\templates\mainApp\bendtestfilter.html:200
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:182
 #: .\mainApp\templates\mainApp\nonconformities.html:13
 #: .\mainApp\templates\mainApp\nonconformity_detail.html:8
+#: .\mainApp\templates\mainApp\nonconformity_form.html:15
 #: .\mainApp\templates\mainApp\nonconformity_update.html:14
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:194
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:9
+#: .\mainApp\templates\mainApp\testlamella_detail.html:9
 #: .\mainApp\templates\mainApp\today.html:150
 #: .\mainApp\templates\mainApp\today.html:186
 #: .\mainApp\templates\mainApp\today.html:228
@@ -51,11 +64,17 @@ msgstr "Date"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:16
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:15
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:15
+#: .\mainApp\templates\mainApp\TestDelamination.html:16
 #: .\mainApp\templates\mainApp\bendtest.html:16
 #: .\mainApp\templates\mainApp\bendtestfilter.html:202
 #: .\mainApp\templates\mainApp\bendtestfilter.html:204
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:184
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:186
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:196
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:198
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:10
+#: .\mainApp\templates\mainApp\testlamella_detail.html:10
 #: .\mainApp\templates\mainApp\today.html:152
 #: .\mainApp\templates\mainApp\today.html:154
 #: .\mainApp\templates\mainApp\today.html:188
@@ -67,9 +86,14 @@ msgstr "Time"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:17
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:16
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:16
+#: .\mainApp\templates\mainApp\TestDelamination.html:17
 #: .\mainApp\templates\mainApp\bendtest.html:17
 #: .\mainApp\templates\mainApp\bendtestfilter.html:206
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:188
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:200
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:11
+#: .\mainApp\templates\mainApp\testlamella_detail.html:11
 #: .\mainApp\templates\mainApp\today.html:156
 #: .\mainApp\templates\mainApp\today.html:192
 #: .\mainApp\templates\mainApp\today.html:234
@@ -78,9 +102,14 @@ msgstr "Wood species"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:18
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:17
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:17
+#: .\mainApp\templates\mainApp\TestDelamination.html:18
 #: .\mainApp\templates\mainApp\bendtest.html:18
 #: .\mainApp\templates\mainApp\bendtestfilter.html:207
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:189
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:201
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:12
+#: .\mainApp\templates\mainApp\testlamella_detail.html:12
 #: .\mainApp\templates\mainApp\today.html:157
 #: .\mainApp\templates\mainApp\today.html:193
 #: .\mainApp\templates\mainApp\today.html:235
@@ -89,9 +118,14 @@ msgstr "Strength class"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:28
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:27
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:27
+#: .\mainApp\templates\mainApp\TestDelamination.html:28
 #: .\mainApp\templates\mainApp\bendtest.html:28
 #: .\mainApp\templates\mainApp\bendtestfilter.html:210
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:192
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:204
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:26
+#: .\mainApp\templates\mainApp\testlamella_detail.html:26
 #: .\mainApp\templates\mainApp\today.html:160
 #: .\mainApp\templates\mainApp\today.html:196
 #: .\mainApp\templates\mainApp\today.html:238
@@ -102,39 +136,65 @@ msgstr "Sample dimensions"
 #: .\mainApp\templates\mainApp\bendtest.html:29
 #: .\mainApp\templates\mainApp\bendtestfilter.html:41
 #: .\mainApp\templates\mainApp\bendtestfilter.html:211
+#: .\mainApp\templates\mainApp\testlamella_detail.html:27
 #: .\mainApp\templates\mainApp\today.html:161
 msgid "Отбор проводил"
 msgstr "Selection person"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:32
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:31
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:31
+#: .\mainApp\templates\mainApp\TestDelamination.html:32
+#: .\mainApp\templates\mainApp\bendtest.html:32
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:197
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:209
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:30
+#: .\mainApp\templates\mainApp\testlamella_detail.html:30
 msgid "Толщина, мм"
 msgstr "Thickness, mm"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:33
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:32
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:32
+#: .\mainApp\templates\mainApp\TestDelamination.html:33
+#: .\mainApp\templates\mainApp\bendtest.html:33
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:198
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:210
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:31
+#: .\mainApp\templates\mainApp\testlamella_detail.html:31
 msgid "Ширина, мм"
 msgstr "Width, mm"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:34
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:46
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:33
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:33
+#: .\mainApp\templates\mainApp\TestDelamination.html:34
+#: .\mainApp\templates\mainApp\bendtest.html:34
+#: .\mainApp\templates\mainApp\bendtest.html:46
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:199
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:211
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:32
+#: .\mainApp\templates\mainApp\testlamella_detail.html:32
+#: .\mainApp\templates\mainApp\testlamella_detail.html:44
 msgid "Длина, мм"
 msgstr "Length, mm"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:43
 #: .\mainApp\templates\mainApp\bendtest.html:43
+#: .\mainApp\templates\mainApp\testlamella_detail.html:41
 msgid "Параметры пальцевого соединения"
 msgstr "FJ parameters"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:47
+#: .\mainApp\templates\mainApp\bendtest.html:47
+#: .\mainApp\templates\mainApp\testlamella_detail.html:45
 msgid "Шаг, мм"
 msgstr "Pace, mm"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:48
+#: .\mainApp\templates\mainApp\bendtest.html:48
+#: .\mainApp\templates\mainApp\testlamella_detail.html:46
 msgid "Зазор, мм"
 msgstr "Gap, mm"
 
@@ -144,62 +204,91 @@ msgstr "Angle, degr."
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:50
 #: .\mainApp\templates\mainApp\bendtest.html:50
+#: .\mainApp\templates\mainApp\testlamella_detail.html:48
 msgid "Ориентация"
 msgstr "Orientation"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:60
-#: .\mainApp\templates\mainApp\bendtest.html:60
 msgid "Влажность"
 msgstr "Humidity"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:61
 #: .\mainApp\templates\mainApp\bendtest.html:61
+#: .\mainApp\templates\mainApp\testlamella_detail.html:59
 msgid "Клей (отвердитель)"
 msgstr "Glue (hardener)"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:62
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:79
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:79
+#: .\mainApp\templates\mainApp\TestDelamination.html:80
 #: .\mainApp\templates\mainApp\bendtest.html:62
 #: .\mainApp\templates\mainApp\bendtestfilter.html:125
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:97
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:97
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:86
+#: .\mainApp\templates\mainApp\testlamella_detail.html:60
 msgid "Номер партии клея"
 msgstr "Adhesive batch number"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:63
 #: .\mainApp\templates\mainApp\bendtest.html:63
+#: .\mainApp\templates\mainApp\testlamella_detail.html:61
 msgid "Срок годности"
 msgstr "Expiration date"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:73
 #: .\mainApp\templates\mainApp\bendtest.html:73
+#: .\mainApp\templates\mainApp\testlamella_detail.html:71
 msgid "Параметры склеивания"
 msgstr "Gluing parameters"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:76
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:92
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:92
+#: .\mainApp\templates\mainApp\TestDelamination.html:93
+#: .\mainApp\templates\mainApp\bendtest.html:76
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:107
+#: .\mainApp\templates\mainApp\testlamella_detail.html:74
 msgid "Расход клея, г/см2"
 msgstr "Glue consumption, gr/cm2"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:77
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:93
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:93
+#: .\mainApp\templates\mainApp\TestDelamination.html:94
+#: .\mainApp\templates\mainApp\bendtest.html:77
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:108
+#: .\mainApp\templates\mainApp\testlamella_detail.html:75
 msgid "Давление, г/см3"
 msgstr "Pressure, gr/cm3"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:78
+#: .\mainApp\templates\mainApp\bendtest.html:78
+#: .\mainApp\templates\mainApp\testlamella_detail.html:76
 msgid "Продолжительность, сек."
 msgstr "Bonding duration, sec."
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:79
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:95
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:95
+#: .\mainApp\templates\mainApp\TestDelamination.html:96
 #: .\mainApp\templates\mainApp\bendtest.html:79
 #: .\mainApp\templates\mainApp\bendtestfilter.html:55
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:93
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:93
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:110
+#: .\mainApp\templates\mainApp\testlamella_detail.html:77
 msgid "Соотношение Клей:Отвердитель"
 msgstr "Ratio Adhesive:Harderner"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:88
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:104
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:104
+#: .\mainApp\templates\mainApp\TestDelamination.html:105
 #: .\mainApp\templates\mainApp\bendtest.html:88
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:127
+#: .\mainApp\templates\mainApp\testlamella_detail.html:94
 msgid "Результаты тестирования"
 msgstr "Test results"
 
@@ -212,236 +301,311 @@ msgid "Напряжение, кН/м2"
 msgstr "Tension, kN/m2"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:93
+#: .\mainApp\templates\mainApp\bendtest.html:93
+#: .\mainApp\templates\mainApp\testlamella_detail.html:99
 #, python-format
 msgid "Излом по соединению, %%"
 msgstr "Fracture at the fj, %%"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:94
+#: .\mainApp\templates\mainApp\bendtest.html:94
+#: .\mainApp\templates\mainApp\testlamella_detail.html:100
 #, python-format
 msgid "Излом в основании соединения, %%"
 msgstr "Fracture at the base of the fj, %%"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:95
+#: .\mainApp\templates\mainApp\bendtest.html:95
+#: .\mainApp\templates\mainApp\testlamella_detail.html:101
 #, python-format
 msgid "Излом вне соединения, %%"
 msgstr "Fracture out of fj, %%"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:105
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:113
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:119
+#: .\mainApp\templates\mainApp\TestDelamination.html:114
 #: .\mainApp\templates\mainApp\bendtest.html:105
 #: .\mainApp\templates\mainApp\bendtestfilter.html:179
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:162
+#: .\mainApp\templates\mainApp\person_detail.html:23
+#: .\mainApp\templates\mainApp\person_form.html:28
+#: .\mainApp\templates\mainApp\person_update.html:28
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:174
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:136
+#: .\mainApp\templates\mainApp\testlamella_detail.html:111
 msgid "Комментарий"
 msgstr "Comment"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:106
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:28
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:28
+#: .\mainApp\templates\mainApp\TestDelamination.html:29
 #: .\mainApp\templates\mainApp\bendtest.html:106
 #: .\mainApp\templates\mainApp\bendtestfilter.html:91
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:45
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:45
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:27
+#: .\mainApp\templates\mainApp\testlamella_detail.html:112
 msgid "Оборудование"
 msgstr "Equipment"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:113
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:120
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:126
+#: .\mainApp\templates\mainApp\TestDelamination.html:121
 #: .\mainApp\templates\mainApp\bendtest.html:113
 #: .\mainApp\templates\mainApp\bendtestfilter.html:173
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:156
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:168
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:147
+#: .\mainApp\templates\mainApp\testlamella_detail.html:124
 msgid "Соответствует нормам"
 msgstr "Passed"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:115
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:122
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:128
+#: .\mainApp\templates\mainApp\TestDelamination.html:123
 #: .\mainApp\templates\mainApp\bendtest.html:115
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:153
+#: .\mainApp\templates\mainApp\testlamella_detail.html:130
 msgid "Фото"
 msgstr "Photo"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:121
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:128
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:134
+#: .\mainApp\templates\mainApp\TestDelamination.html:129
 #: .\mainApp\templates\mainApp\bendtest.html:121
 #: .\mainApp\templates\mainApp\nonconformity_update.html:36
+#: .\mainApp\templates\mainApp\person_update.html:34
+#: .\mainApp\templates\mainApp\strength_class_update.html:23
 msgid "Сохранить"
 msgstr "Save"
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:126
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:132
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:138
 #: .\mainApp\templates\mainApp\nonconformity_update.html:40
+#: .\mainApp\templates\mainApp\person_update.html:38
+#: .\mainApp\templates\mainApp\strength_class_update.html:27
 msgid "У данного аккаунта нет прав на редактирование данных"
 msgstr "This account does not have permission to edit data."
 
 #: .\mainApp\templates\mainApp\BendTestUpdate.html:127
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:133
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:139
 #: .\mainApp\templates\mainApp\nonconformity_confirm_delete.html:24
 #: .\mainApp\templates\mainApp\nonconformity_form.html:42
 #: .\mainApp\templates\mainApp\nonconformity_update.html:41
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:23
+#: .\mainApp\templates\mainApp\person_form.html:39
+#: .\mainApp\templates\mainApp\person_update.html:39
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:24
+#: .\mainApp\templates\mainApp\strength_class_update.html:28
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:24
 msgid "Сменить аккаунт"
 msgstr "Change account"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:42
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:42
+#: .\mainApp\templates\mainApp\TestDelamination.html:43
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:41
 #: .\mainApp\templates\mainApp\today.html:302
 msgid "Ответственные лица"
 msgstr "Responsible persons"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:45
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:45
+#: .\mainApp\templates\mainApp\TestDelamination.html:46
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:44
 msgid "Визуальная сортировка"
 msgstr "Sorting person"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:49
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:49
+#: .\mainApp\templates\mainApp\TestDelamination.html:50
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:48
 msgid "Склейка по длине"
 msgstr "F-joint person"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:53
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:53
+#: .\mainApp\templates\mainApp\TestDelamination.html:54
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:52
 msgid "Склейка по пласти"
 msgstr "Gluing person"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:57
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:57
+#: .\mainApp\templates\mainApp\TestDelamination.html:58
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:56
 msgid "Нанесение маркировки"
 msgstr "Marking person"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:61
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:61
+#: .\mainApp\templates\mainApp\TestDelamination.html:62
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:60
 msgid "Технологические параметры процесса"
 msgstr "Test parameters"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:64
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:64
+#: .\mainApp\templates\mainApp\TestDelamination.html:65
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:63
 #, python-format
 msgid "Влажность воздуха, %%"
 msgstr "Air humidity, %%"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:65
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:65
+#: .\mainApp\templates\mainApp\TestDelamination.html:66
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:64
+#: .\mainApp\templates\mainApp\testlamella_detail.html:58
 #, python-format
 msgid "Влажность древесины, %%"
 msgstr "Humidity of wood, %%"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:66
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:66
+#: .\mainApp\templates\mainApp\TestDelamination.html:67
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:65
 msgid "Температура воздуха, °C"
 msgstr "Air temperature, °C"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:67
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:67
+#: .\mainApp\templates\mainApp\TestDelamination.html:68
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:66
 msgid "Температура древесины, °C"
 msgstr "Wood temperature, °C"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:68
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:68
+#: .\mainApp\templates\mainApp\TestDelamination.html:69
 msgid "Температура клея, °C"
 msgstr "Glue temperature °C"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:78
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:78
+#: .\mainApp\templates\mainApp\TestDelamination.html:79
 #: .\mainApp\templates\mainApp\bendtestfilter.html:53
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:91
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:91
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:85
 msgid "Клей"
 msgstr "Adhesive"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:80
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:80
+#: .\mainApp\templates\mainApp\TestDelamination.html:81
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:87
 msgid "Срок годности клея"
 msgstr "Expiration date"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:81
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:81
+#: .\mainApp\templates\mainApp\TestDelamination.html:82
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:88
 msgid "Время начала прессования"
 msgstr "Press start time"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:82
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:82
+#: .\mainApp\templates\mainApp\TestDelamination.html:83
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:89
 msgid "Время конца прессования"
 msgstr "Press end time"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:94
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:94
+#: .\mainApp\templates\mainApp\TestDelamination.html:95
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:109
 msgid "Продолжительность, мин."
 msgstr "Pressing duration, min."
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:107
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:107
+#: .\mainApp\templates\mainApp\TestDelamination.html:108
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:193
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:205
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:130
 #: .\mainApp\templates\mainApp\today.html:197
 #: .\mainApp\templates\mainApp\today.html:239
 msgid "Кол-во швов"
 msgstr "Number of seams"
 
 #: .\mainApp\templates\mainApp\DelamTestUpdate.html:109
+#: .\mainApp\templates\mainApp\TestDelamination.html:110
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:132
 msgid "Процент раскрытия шва"
 msgstr "Percent of delamination"
+
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:108
+msgid "Сила в кН"
+msgstr "Force strength, kN"
+
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:109
+msgid "Продолжительность под нагрузкой, сек."
+msgstr "Test duration in sec."
+
+#: .\mainApp\templates\mainApp\ShearTestUpdate.html:110
+msgid "Средний процент разрыва волокон"
+msgstr "The average percentage of fiber breaks"
+
+#: .\mainApp\templates\mainApp\TestDelamination.html:11
+msgid "Добавить тест на деламинацию"
+msgstr "Add a new delamination test"
 
 #: .\mainApp\templates\mainApp\bendtest.html:11
 msgid "Добавить новый тест на изгиб"
 msgstr "Add a new bend test"
 
-#: .\mainApp\templates\mainApp\bendtest.html:32
-#: .\mainApp\templates\mainApp\bendtestfilter.html:214
-#: .\mainApp\templates\mainApp\today.html:164
-#: .\mainApp\templates\mainApp\today.html:201
-#: .\mainApp\templates\mainApp\today.html:243
-msgid "Толщина"
-msgstr "Thickness"
-
-#: .\mainApp\templates\mainApp\bendtest.html:33
-#: .\mainApp\templates\mainApp\bendtestfilter.html:215
-#: .\mainApp\templates\mainApp\today.html:165
-#: .\mainApp\templates\mainApp\today.html:202
-#: .\mainApp\templates\mainApp\today.html:244
-msgid "Ширина"
-msgstr "Width"
-
-#: .\mainApp\templates\mainApp\bendtest.html:34
-#: .\mainApp\templates\mainApp\bendtest.html:46
-#: .\mainApp\templates\mainApp\bendtestfilter.html:216
-#: .\mainApp\templates\mainApp\today.html:166
-#: .\mainApp\templates\mainApp\today.html:203
-#: .\mainApp\templates\mainApp\today.html:245
-msgid "Длина"
-msgstr "Length"
-
-#: .\mainApp\templates\mainApp\bendtest.html:47
-msgid "Шаг"
-msgstr "Pace"
-
-#: .\mainApp\templates\mainApp\bendtest.html:48
-msgid "Зазор"
-msgstr "Gap"
-
 #: .\mainApp\templates\mainApp\bendtest.html:49
-msgid "Угол"
-msgstr "Angle"
+#: .\mainApp\templates\mainApp\testlamella_detail.html:47
+#, fuzzy
+#| msgid "Угол, град."
+msgid "Угол, г."
+msgstr "Angle, degr."
+
+#: .\mainApp\templates\mainApp\bendtest.html:60
+#, fuzzy, python-format
+#| msgid "Влажность"
+msgid "Влажность, %%"
+msgstr "Humidity"
 
 #: .\mainApp\templates\mainApp\bendtest.html:66
+#: .\mainApp\templates\mainApp\testlamella_detail.html:64
 msgid "Слева"
 msgstr "On the left"
 
 #: .\mainApp\templates\mainApp\bendtest.html:67
+#: .\mainApp\templates\mainApp\testlamella_detail.html:65
 msgid "Справа"
 msgstr "On the right"
 
-#: .\mainApp\templates\mainApp\bendtest.html:76
-msgid "Расход клея"
-msgstr "Glue consumption"
-
-#: .\mainApp\templates\mainApp\bendtest.html:77
-msgid "Давление"
-msgstr "Pressure"
-
-#: .\mainApp\templates\mainApp\bendtest.html:78
-msgid "Продолжительность"
-msgstr "Bonding duration"
-
 #: .\mainApp\templates\mainApp\bendtest.html:91
-msgid "Сила"
+#: .\mainApp\templates\mainApp\testlamella_detail.html:97
+#, fuzzy
+#| msgid "Сила"
+msgid "Сила, kH"
 msgstr "Force strength"
 
 #: .\mainApp\templates\mainApp\bendtest.html:92
-msgid "Напряжение"
-msgstr "Tension"
-
-#: .\mainApp\templates\mainApp\bendtest.html:93
-msgid "Излом по соединению"
-msgstr "Fracture at the fj"
-
-#: .\mainApp\templates\mainApp\bendtest.html:94
-msgid "Излом в основании соединения"
-msgstr "Fracture at the base of the fj"
-
-#: .\mainApp\templates\mainApp\bendtest.html:95
-msgid "Излом вне соединения"
-msgstr "Fracture out of fj"
+#: .\mainApp\templates\mainApp\testlamella_detail.html:98
+#, fuzzy
+#| msgid "Напряжение, кН/м2"
+msgid "Напряжение, kH/м2"
+msgstr "Tension, kN/m2"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:12
 #: .\mainApp\templates\mainApp\bendtestfilter.html:17
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:14
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:19
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:14
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:19
 msgid "Фильтры"
 msgstr "Filters"
 
@@ -449,6 +613,8 @@ msgstr "Filters"
 #: .\mainApp\templates\mainApp\bendtestfilter.html:19
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:16
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:21
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:16
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:21
 msgid "Результаты поиска"
 msgstr "Searching results"
 
@@ -458,21 +624,25 @@ msgstr "Bend tests search"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:29
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:31
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:31
 msgid "Дата проведения теста, от"
 msgstr "Test date, from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:31
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:33
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:33
 msgid "Дата проведения теста, до"
 msgstr "Test date, to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:35
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:37
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:37
 msgid "Время проведения теста, от"
 msgstr "Test time, from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:37
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:39
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:39
 msgid "Время проведения теста, до"
 msgstr "Test time, to"
 
@@ -482,6 +652,7 @@ msgstr "Wood species"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:49
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:51
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:51
 msgid "Класс прочности"
 msgstr "Strength class"
 
@@ -567,11 +738,13 @@ msgstr "Bonding duration in sec., to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:119
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:125
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:125
 msgid "Расход клея в гр/м2, от"
 msgstr "Glue consumption in g/m2, from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:121
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:127
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:127
 msgid "Расход клея в гр/м2, до"
 msgstr "Glue consumption in g/m2, to"
 
@@ -581,28 +754,34 @@ msgstr "Lamella parameters"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:131
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:101
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:101
 msgid "Срок годности партии клея, от"
 msgstr "Adhesive expiration date, from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:133
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:103
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:103
 msgid "Срок годности партии клея, до"
 msgstr "Adhesive expiration date, to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:137
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:155
 msgid "Сила в кН, от"
 msgstr "Force in kN, from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:139
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:157
 msgid "Сила в кН, до"
 msgstr "Force in kN, to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:143
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:161
 msgid "Продолжительность под нагрузкой в сек., от"
 msgstr "Test duration in sec., from"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:145
-msgid "Продолжительность под нагрузкой в секю, до"
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:163
+msgid "Продолжительность под нагрузкой в сек., до"
 msgstr "Test duration in sec., to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:149
@@ -645,16 +824,40 @@ msgstr "Fracture out of fj in %%, to"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:175
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:158
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:170
 msgid "Не соответствует нормам"
 msgstr "Not passed"
 
 #: .\mainApp\templates\mainApp\bendtestfilter.html:188
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:169
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:181
 msgid "Найти"
 msgstr "Search"
 
+#: .\mainApp\templates\mainApp\bendtestfilter.html:214
+#: .\mainApp\templates\mainApp\today.html:164
+#: .\mainApp\templates\mainApp\today.html:201
+#: .\mainApp\templates\mainApp\today.html:243
+msgid "Толщина"
+msgstr "Thickness"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:215
+#: .\mainApp\templates\mainApp\today.html:165
+#: .\mainApp\templates\mainApp\today.html:202
+#: .\mainApp\templates\mainApp\today.html:244
+msgid "Ширина"
+msgstr "Width"
+
+#: .\mainApp\templates\mainApp\bendtestfilter.html:216
+#: .\mainApp\templates\mainApp\today.html:166
+#: .\mainApp\templates\mainApp\today.html:203
+#: .\mainApp\templates\mainApp\today.html:245
+msgid "Длина"
+msgstr "Length"
+
 #: .\mainApp\templates\mainApp\bendtestfilter.html:224
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:211
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:223
 msgid "Тестов не найдено..."
 msgstr "No tests found ..."
 
@@ -663,106 +866,131 @@ msgid "Поиск тестов на деламинацию"
 msgstr "Delamination tests search"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:49
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:49
 msgid "Тип древесины"
 msgstr "Wood species"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:55
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:55
 msgid "Ответственный за сортировку"
 msgstr "Sorting person"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:57
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:57
 msgid "Ответственный за склейку по длине"
 msgstr "F-joint person"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:61
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:61
 msgid "Ответственный за склейку по пласти"
 msgstr "Gluing person"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:63
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:63
 msgid "Ответственный за нанесение маркировки"
 msgstr "Marking person"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:67
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:67
 #, python-format
 msgid "Влажность воздуха в %%, от"
 msgstr "Air humidity in %%, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:69
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:69
 #, python-format
 msgid "Влажность воздуха в %%, до"
 msgstr "Air humidity in %%, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:73
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:73
 msgid "Температура воздуха в °C, от"
 msgstr "Air temperature in °C, from "
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:75
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:75
 msgid "Температура воздуха в °C, до"
 msgstr "Air temperature in °C, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:79
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:79
 #, python-format
 msgid "Влажность древесины в %%, от"
 msgstr "Humidity of wood in %%, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:81
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:81
 #, python-format
 msgid "Влажность древесины в %%, до"
 msgstr "Humidity of wood in %%, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:85
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:85
 msgid "Температура древесины в °C, от"
 msgstr "Wood temperature in °C, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:87
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:87
 msgid "Температура древесины в °C, до"
 msgstr "Wood temperature in °C, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:107
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:107
 msgid "Толщина образца в мм, от"
 msgstr "Sample thickness in mm, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:109
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:109
 msgid "Толщина образца в мм, до"
 msgstr "Sample thickness in mm, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:113
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:113
 msgid "Ширина образца в мм, от"
 msgstr "Sample width in mm, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:115
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:115
 msgid "Ширина образца в мм, до"
 msgstr "Sample width in mm, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:119
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:119
 msgid "Длина образца в мм, от"
 msgstr "Sample length in mm, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:121
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:121
 msgid "Длина образца в мм, до"
 msgstr "Sample length in mm, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:131
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:131
 msgid "Давление прессования, от"
 msgstr "Gluing pressure, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:133
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:133
 msgid "Давление прессования, до"
 msgstr "Gluing pressure, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:137
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:137
 msgid "Время начала прессования, от"
 msgstr "Press start time, from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:139
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:139
 msgid "Время начала прессования, до"
 msgstr "Press start time, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:143
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:143
 msgid "Продолжительность прессования в мин., от"
 msgstr "Pressing duration in min., from"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:145
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:145
 msgid "Продолжительность прессования в мин., до"
 msgstr "Pressing duration in min., to"
 
@@ -775,6 +1003,7 @@ msgid "Процент раскрытия швов, до"
 msgstr "Percent of delamination, to"
 
 #: .\mainApp\templates\mainApp\delamination_testsfilter.html:194
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:206
 #: .\mainApp\templates\mainApp\today.html:198
 #: .\mainApp\templates\mainApp\today.html:240
 msgid "Прошел"
@@ -795,6 +1024,10 @@ msgstr "Responsible person"
 #: .\mainApp\templates\mainApp\nonconformity_detail.html:15
 #: .\mainApp\templates\mainApp\nonconformity_form.html:22
 #: .\mainApp\templates\mainApp\nonconformity_update.html:22
+#: .\mainApp\templates\mainApp\settings.html:13
+#: .\mainApp\templates\mainApp\settings.html:38
+#: .\mainApp\templates\mainApp\strength_class_types_detail.html:9
+#: .\mainApp\templates\mainApp\strength_class_update.html:15
 msgid "Название"
 msgstr "Name"
 
@@ -811,14 +1044,23 @@ msgid "Вы уверены, что хотите удалить данное не
 msgstr "Are you sure you want to delete this nonconformity"
 
 #: .\mainApp\templates\mainApp\nonconformity_confirm_delete.html:17
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:16
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:17
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:17
 msgid "Да, удалить"
 msgstr "Yes, delete"
 
 #: .\mainApp\templates\mainApp\nonconformity_confirm_delete.html:18
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:17
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:18
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:18
 msgid "Отменить"
 msgstr "Cancel"
 
 #: .\mainApp\templates\mainApp\nonconformity_confirm_delete.html:23
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:22
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:23
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:23
 msgid "У данного аккаунта нет прав на удаление данных"
 msgstr "This account does not have permission to delete data."
 
@@ -829,10 +1071,16 @@ msgid "Описание"
 msgstr "Description"
 
 #: .\mainApp\templates\mainApp\nonconformity_detail.html:28
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:162
+#: .\mainApp\templates\mainApp\testlamella_detail.html:139
 msgid "Изменить"
 msgstr "Edit"
 
 #: .\mainApp\templates\mainApp\nonconformity_detail.html:32
+#: .\mainApp\templates\mainApp\person_detail.html:32
+#: .\mainApp\templates\mainApp\strength_class_types_detail.html:20
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:166
+#: .\mainApp\templates\mainApp\testlamella_detail.html:143
 msgid "Удалить"
 msgstr "Delete"
 
@@ -841,16 +1089,132 @@ msgid "Добавить несоответствие"
 msgstr "Add a new nonconformity"
 
 #: .\mainApp\templates\mainApp\nonconformity_form.html:36
+#: .\mainApp\templates\mainApp\person_form.html:34
+#: .\mainApp\templates\mainApp\settings.html:28
+#: .\mainApp\templates\mainApp\settings.html:53
 msgid "Добавить"
 msgstr "Add"
 
 #: .\mainApp\templates\mainApp\nonconformity_form.html:41
+#: .\mainApp\templates\mainApp\person_form.html:38
 msgid "У данного аккаунта нет прав на добавление данных"
 msgstr "This account does not have permission to add data."
 
 #: .\mainApp\templates\mainApp\nonconformity_update.html:11
 msgid "Редактировать несоответствие"
 msgstr "Edit a nonconformity"
+
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:12
+msgid "Удаление данных о сотруднике"
+msgstr "Delete employee data"
+
+#: .\mainApp\templates\mainApp\person_confirm_delete.html:13
+msgid "Вы уверены, что хотите удалить данные об этом сотруднике"
+msgstr "Are you sure you want to delete data about this employee"
+
+#: .\mainApp\templates\mainApp\person_detail.html:9
+#: .\mainApp\templates\mainApp\person_form.html:14
+#: .\mainApp\templates\mainApp\person_update.html:14
+#: .\mainApp\templates\mainApp\persons.html:12
+msgid "Имя"
+msgstr "Name"
+
+#: .\mainApp\templates\mainApp\person_detail.html:13
+#: .\mainApp\templates\mainApp\person_form.html:18
+#: .\mainApp\templates\mainApp\person_update.html:18
+#: .\mainApp\templates\mainApp\persons.html:16
+msgid "Должность"
+msgstr "Position"
+
+#: .\mainApp\templates\mainApp\person_detail.html:17
+#: .\mainApp\templates\mainApp\person_form.html:22
+#: .\mainApp\templates\mainApp\person_update.html:22
+#: .\mainApp\templates\mainApp\persons.html:20
+msgid "Дата обучения"
+msgstr "Training date"
+
+#: .\mainApp\templates\mainApp\person_detail.html:19
+#: .\mainApp\templates\mainApp\person_form.html:24
+#: .\mainApp\templates\mainApp\person_update.html:24
+#: .\mainApp\templates\mainApp\persons.html:22
+msgid "Дата следующего обучения"
+msgstr "Next training date"
+
+#: .\mainApp\templates\mainApp\person_detail.html:28
+#: .\mainApp\templates\mainApp\strength_class_types_detail.html:16
+msgid "Редактировать"
+msgstr "Edit"
+
+#: .\mainApp\templates\mainApp\person_form.html:11
+msgid "Добавить данные о сотруднике"
+msgstr "Add employee details"
+
+#: .\mainApp\templates\mainApp\person_update.html:11
+msgid "Редактировать данные о сотруднике"
+msgstr "Edit employee details"
+
+#: .\mainApp\templates\mainApp\persons.html:7
+msgid "Добавить нового сотрудника"
+msgstr "Add new employee"
+
+#: .\mainApp\templates\mainApp\persons.html:30
+msgid "Ни одного сотрудника не добавлено"
+msgstr "No employees added"
+
+#: .\mainApp\templates\mainApp\settings.html:10
+msgid "Породы дерева"
+msgstr "Wood species"
+
+#: .\mainApp\templates\mainApp\settings.html:22
+#: .\mainApp\templates\mainApp\settings.html:47
+msgid "Ни одной породы дерева не добавлено"
+msgstr "No wood species added"
+
+#: .\mainApp\templates\mainApp\settings.html:35
+msgid "Классы прочности"
+msgstr "Strength class"
+
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:28
+msgid "Поиск тестов на срез"
+msgstr "Shear tests search"
+
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:149
+msgid "Средний процент разрыва волокон, от"
+msgstr "The average percentage of fiber breaks, from"
+
+#: .\mainApp\templates\mainApp\shear_testsfilter.html:151
+msgid "Средний процент разрыва волокон, до"
+msgstr "The average percentage of fiber breaks, to"
+
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:13
+msgid "Удаление данных о классе прочности"
+msgstr "Delete a strength class"
+
+#: .\mainApp\templates\mainApp\strength_class_confirm_delete.html:14
+msgid "Вы уверены, что хотите удалить данный класс прочности"
+msgstr "Are you sure you want to delete this strength class"
+
+#: .\mainApp\templates\mainApp\strength_class_update.html:12
+msgid "Редактировать данные о классе прочности"
+msgstr "Edit strength class data"
+
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:13
+msgid "Удаление теста"
+msgstr "Delete a test"
+
+#: .\mainApp\templates\mainApp\test_confirm_delete.html:14
+msgid "Вы уверены, что хотите удалить данный тест"
+msgstr "Are you sure you want to delete this test"
+
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:149
+#: .\mainApp\templates\mainApp\testlamella_detail.html:126
+msgid "Да"
+msgstr "Yes"
+
+#: .\mainApp\templates\mainApp\testdelamination_detail.html:151
+#: .\mainApp\templates\mainApp\testlamella_detail.html:128
+msgid "Нет"
+msgstr "No"
 
 #: .\mainApp\templates\mainApp\today.html:92
 msgid "Главная"
@@ -944,6 +1308,41 @@ msgstr "References to Standard"
 #: .\mainApp\templates\mainApp\today.html:314
 msgid "Настройки"
 msgstr "Settings"
+
+#~ msgid "Шаг"
+#~ msgstr "Pace"
+
+#~ msgid "Зазор"
+#~ msgstr "Gap"
+
+#~ msgid "Угол"
+#~ msgstr "Angle"
+
+#~ msgid "Расход клея"
+#~ msgstr "Glue consumption"
+
+#~ msgid "Давление"
+#~ msgstr "Pressure"
+
+#~ msgid "Продолжительность"
+#~ msgstr "Bonding duration"
+
+#~ msgid "Напряжение"
+#~ msgstr "Tension"
+
+#~ msgid "Излом по соединению"
+#~ msgstr "Fracture at the fj"
+
+#~ msgid "Излом в основании соединения"
+#~ msgstr "Fracture at the base of the fj"
+
+#~ msgid "Излом вне соединения"
+#~ msgstr "Fracture out of fj"
+
+#, fuzzy
+#~| msgid "Редактировать данные о сотруднике"
+#~ msgid "Редактировать данные о породе дерева"
+#~ msgstr "Edit employee details"
 
 #~ msgid "On the left"
 #~ msgstr "Length"

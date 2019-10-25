@@ -1,15 +1,16 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Породы дерева</legend>
+        <legend class="border-bottom mb-4">{% trans 'Породы дерева' %}</legend>
         <table class="table_detail">
             <tr class="table_row">
-                <th class="table_cell dark_cell">Название</th>
+                <th class="table_cell dark_cell">{% trans 'Название' %}</th>
             </tr>
              {% if wood_types_list %}
                 {% for wood_type in wood_types_list %}
@@ -18,23 +19,23 @@
                 </tr>
                 {% endfor %}
             {% else %}
-            Ни одной породы дерева не добавлено
+            {% trans 'Ни одной породы дерева не добавлено' %}
         {% endif %}
     </table>
     </fieldset>
     {% if perms.mainApp.add_Wood_types %}
         <span class="long">{{ wood_form.name }}</span>
-        <button class="btn btn-outline-info" type="submit">Добавить</button>
+        <button class="btn btn-outline-info" type="submit">{% trans 'Добавить' %}</button>
         {% endif %}
 </form>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Классы прочности</legend>
+        <legend class="border-bottom mb-4">{% trans 'Классы прочности' %}</legend>
         <table class="table_detail">
             <tr class="table_row">
-                <th class="table_cell dark_cell">Название</th>
+                <th class="table_cell dark_cell">{% trans 'Название' %}</th>
             </tr>
              {% if class_strength_list %}
         {% for class_strength in class_strength_list %}
@@ -43,13 +44,13 @@
             </tr>
             {% endfor %}
         {% else %}
-            Ни одной породы дерева не добавлено
+            {% trans 'Ни одной породы дерева не добавлено' %}
         {% endif %}
     </table>
     </fieldset>
     {% if perms.mainApp.add_strength_class_types %}
         <span class="long">{{ class_form.name }}</span>
-        <button class="btn btn-outline-info" type="submit">Добавить</button>
+        <button class="btn btn-outline-info" type="submit">{% trans 'Добавить' %}</button>
          {% endif %}
 </form>
 

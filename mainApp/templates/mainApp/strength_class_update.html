@@ -1,5 +1,6 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% load bootstrap4 %}
 
 
@@ -8,15 +9,22 @@
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
-    <legend class="border-bottom mb-4">Редактировать данные о породе дерева</legend>
-    {{ form|crispy }}
+    <legend class="border-bottom mb-4">{% trans 'Редактировать данные о классе прочности' %}</legend>
+    <table class="table_detail">
+    <tr class="table_row">
+        <th class="table_cell dark_cell">{% trans 'Название' %}</th>
+    </tr>
+    <tr class="table_row">
+        <th class="table_cell2">{{ form.name }}</th>
+    </tr>
+    </table>
     </fieldset>
     <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Сохранить</button>
+        <button class="btn btn-outline-info" type="submit">{% trans 'Сохранить' %}</button>
     </div>
 </form>
 {% else %}
-<h2>У данного аккаунта нет прав на редактирование данных!</h2>
- <a href="{% url 'login' %}">Сменить аккаунт</a>
+<h2>{% trans 'У данного аккаунта нет прав на редактирование данных' %}!</h2>
+ <a href="{% url 'login' %}">{% trans 'Сменить аккаунт' %}</a>
 {% endif %}
 {% endblock content %}

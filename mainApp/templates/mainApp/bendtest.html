@@ -29,42 +29,42 @@
         <th colspan="2" class="table_cell" id="cell3">{% trans 'Отбор проводил' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">{% trans 'Толщина' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Ширина' %}</th>
-        <th class="table_cell dark_cell" id="cell2">{% trans 'Длина' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Толщина, мм' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Ширина, мм' %}</th>
+        <th class="table_cell dark_cell" id="cell2">{% trans 'Длина, мм' %}</th>
         <th colspan="2" rowspan="2" class="table_cell">{{ form.lamellas_took_person }}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.lamellas_thickness }} мм</th>
-        <th class="table_cell">{{ form.lamellas_width }} мм</th>
-        <th class="table_cell" id="cell2">{{ form.lamellas_length }} мм</th>
+        <th class="table_cell">{{ form.lamellas_thickness }}</th>
+        <th class="table_cell">{{ form.lamellas_width }}</th>
+        <th class="table_cell" id="cell2">{{ form.lamellas_length }}</th>
     </tr>
     <tr>
         <th colspan="5" id="cell3">{% trans 'Параметры пальцевого соединения' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">{% trans 'Длина' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Шаг' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Зазор' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Угол' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Длина, мм' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Шаг, мм' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Зазор, мм' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Угол, г.' %}</th>
         <th class="table_cell dark_cell">{% trans 'Ориентация' %}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.fj_length }} мм</th>
-        <th class="table_cell">{{ form.fj_path }} мм</th>
-        <th class="table_cell">{{ form.fj_gap }} мм</th>
-        <th class="table_cell">{{ form.fj_angle }} г</th>
+        <th class="table_cell">{{ form.fj_length }}</th>
+        <th class="table_cell">{{ form.fj_path }}</th>
+        <th class="table_cell">{{ form.fj_gap }}</th>
+        <th class="table_cell">{{ form.fj_angle }}</th>
         <th class="table_cell">{{ form.fj_orientation }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell" id="cell3">{% trans 'Влажность' %}</th>
+        <th colspan="2" class="table_cell" id="cell3">{% trans 'Влажность, %' %}</th>
         <th class="table_cell" id="cell3">{% trans 'Клей (отвердитель)' %}</th>
         <th class="table_cell" id="cell3">{% trans 'Номер партии клея' %}</th>
         <th class="table_cell" id="cell3">{% trans 'Срок годности' %}</th>
     </tr>
     <tr>
-        <th class="table_cell short">{% trans 'Слева' %}: {{ form.lamellas_left_moisture }} %</th>
-        <th class="table_cell short">{% trans 'Справа' %}: {{ form.lamellas_right_moisture }} %</th>
+        <th class="table_cell short">{% trans 'Слева' %}: {{ form.lamellas_left_moisture }}</th>
+        <th class="table_cell short">{% trans 'Справа' %}: {{ form.lamellas_right_moisture }}</th>
         <th class="table_cell">{{ form.glue }}</th>
         <th class="table_cell">{{ form.glue_batch_number }}</th>
         <th class="table_cell">{{ form.glue_expiration_date }}</th>
@@ -73,33 +73,33 @@
         <th colspan="5" class="table_cell" id="cell3">{% trans 'Параметры склеивания' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">{% trans 'Расход клея' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Давление' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Продолжительность' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Расход клея, г/см2' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Давление, г/см3' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Продолжительность, сек.' %}</th>
         <th colspan="2" class="table_cell dark_cell">{% trans 'Соотношение Клей:Отвердитель' %}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.glue_use_amount }} г/см2</th>
-        <th class="table_cell">{{ form.glue_pressure }} г/см3</th>
-        <th class="table_cell">{{ form.pressure_time }} сек.</th>
+        <th class="table_cell">{{ form.glue_use_amount }}</th>
+        <th class="table_cell">{{ form.glue_pressure }}</th>
+        <th class="table_cell">{{ form.pressure_time }}</th>
         <th class="table_cell2" colspan="2">{{ form.glue_harderner_amount }}</th>
     </tr>
     <tr>
         <th colspan="5" class="table_cell" id="cell3">{% trans 'Результаты тестирования' %}</th>
     </tr>
     <tr>
-        <th class="table_cell dark_cell">{% trans 'Сила' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Напряжение' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Излом по соединению' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Излом в основании соединения' %}</th>
-        <th class="table_cell dark_cell">{% trans 'Излом вне соединения' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Сила, kH' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Напряжение, kH/м2' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Излом по соединению, %' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Излом в основании соединения, %' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Излом вне соединения, %' %}</th>
     </tr>
     <tr>
-        <th class="table_cell">{{ form.force_crash }} kH</th>
-        <th class="table_cell">{{ form.lamellas_strength }} kH/м2</th>
-        <th class="table_cell short">{{ form.by_fj_crash }} %</th>
-        <th class="table_cell short">{{ form.base_fj_crash }} %</th>
-        <th class="table_cell short">{{ form.out_of_fj_crash }} %</th>
+        <th class="table_cell">{{ form.force_crash }}</th>
+        <th class="table_cell">{{ form.lamellas_strength }}</th>
+        <th class="table_cell short">{{ form.by_fj_crash }}</th>
+        <th class="table_cell short">{{ form.base_fj_crash }}</th>
+        <th class="table_cell short">{{ form.out_of_fj_crash }}</th>
     </tr>
     <tr>
         <th colspan="4" class="table_cell" id="cell3">{% trans 'Комментарий' %}</th>
