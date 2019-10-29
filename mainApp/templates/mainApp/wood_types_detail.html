@@ -1,22 +1,23 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
-{% block content %} 
+{% load i18n %}
 
+{% block content %} 
 <table class="table_detail">
     <tr class="table_row">
-        <th class="table_cell dark_cell">Название</th>
+        <th class="table_cell dark_cell">{% trans 'Название' %}</th>
     </tr>
     <tr class="table_row">
         <th class="table_cell2">{{ object.name }}</th>
     </tr>
 </table>
 {% if perms.mainApp.change_Wood_types %}
-<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'woodtype-update' object.id %}">Редактировать</a>
+<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'woodtype-update' object.id %}">{% trans 'Редактировать' %}</a>
 {% endif %}
 
 {% if perms.mainApp.delete_Wood_types %}
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'woodtype-delete' object.id %}">Удалить</a>
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'woodtype-delete' object.id %}">{% trans 'Удалить' %}</a>
 {% endif %}
 
 {% endblock content %}

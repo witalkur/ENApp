@@ -1,31 +1,32 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %} 
-<a class="btn btn-info btn-sm mt-3" href="{% url 'tool-create' %}">Добавить инструмент/датчик/оборудование</a>
+<a class="btn btn-info btn-sm mt-3" href="{% url 'tool-create' %}">{% trans 'Добавить оборудование/инструмент/прибор' %}</a>
 {% if tools %}
 {% for tool in tools %}
-<table class="table" onClick='location.href="{% url "tool-detail" tool.id %}"'>
+<table class="table_detail" onClick='location.href="{% url "tool-detail" tool.id %}"'>
      <tr class="table_row">
-        <th class="table_cell dark_cell">Название</th>
+        <th class="table_cell dark_cell">{% trans 'Название' %}</th>
         <th colspan="3" class="table_cell">{{ tool.name }}</th>
     </tr>
     <tr class="table_row">
-        <th class="table_cell" id="cell3">Ответственный</th>
+        <th class="table_cell" id="cell3">{% trans 'Ответственный' %}</th>
         <th colspan="3" class="table_cell" id="cell4">{{ tool.resp_person.name }}</th>
      </tr>
      <tr class="table_row">
-         <th class="table_cell" id="cell3">Дата калибровки</th>  
+         <th class="table_cell" id="cell3">{% trans 'Дата калибровки' %}</th>  
          <th class="table_cell" id="cell4">{{ tool.calibration_date }}</th>
-         <th class="table_cell" id="cell3">Дата следующей калибровки</th>  
+         <th class="table_cell" id="cell3">{% trans 'Дата следующей калибровки' %}</th>  
          <th class="table_cell" id="cell4">{{ tool.next_calibration_date }}</th>
      </tr>
 
 </table>
 {% endfor %}
 {% else %}
-    Ни одного инструмента/датчика/оборудования не добавлено
+    {% trans 'Ни одного оборудования/инструмента/прибора не добавлено' %}
 {% endif %}
 {% endblock content %}
 

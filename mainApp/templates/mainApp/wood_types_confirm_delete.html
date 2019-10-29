@@ -1,7 +1,7 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
-
+{% load i18n %}
 
 {% block content %}
 {% if perms.mainApp.delete_Wood_types %}
@@ -9,17 +9,17 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Удаление данных о породе дерева</legend>
-                <h2>Вы уверены, что хотите удалить данную породу дерева?</h2>
+                <legend class="border-bottom mb-4">{% trans 'Удаление данных о породе дерева' %}</legend>
+                <h2>{% trans 'Вы уверены, что хотите удалить данную породу дерева' %}?</h2>
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-danger" type="submit">Да, удалить</button>
-                <a class="btn btn-outline-sec" href="{% url 'settings' %}">Отменить</a>
+                <button class="btn btn-outline-danger" type="submit">{% trans 'Да, удалить' %}</button>
+                <a class="btn btn-outline-sec" href="{% url 'settings' %}">{% trans 'Отменить' %}</a>
             </div>
         </form>
     </div>
 {% else %}
-<h2>У данного аккаунта нет прав на удаление данных!</h2>
- <a href="{% url 'login' %}">Сменить аккаунт</a>
+<h2>{% trans 'У данного аккаунта нет прав на удаление данных' %}!</h2>
+ <a href="{% url 'login' %}">{% trans 'Сменить аккаунт' %}</a>
 {% endif %}
 {% endblock content %}

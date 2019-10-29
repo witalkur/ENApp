@@ -185,8 +185,8 @@
 
 
 <section id="content-tab2">
-{% if sheartests %}
-    {% for test in sheartests %}
+{% if shear_tests %}
+    {% for test in shear_tests %}
     
     <table class="table" onClick='location.href="{% url "sheartest-detail" test.id %}"'>
         <tr class="table_row">
@@ -206,9 +206,9 @@
             <th class="table_cell" id="cell3">{% trans 'Прошел' %}</th>
         </tr>
         <tr class="table_row">
-            <th class="table_cell">{% trans 'Толщина, мм' %}: {{ test.sample_thickness }} мм</th>
-            <th class="table_cell">{% trans 'Ширина, мм' %}: {{ test.sample_width }} мм</th>
-            <th class="table_cell" id="cell2">{% trans 'Длина, мм' %}: {{ test.sample_length }} мм</th>
+            <th class="table_cell">{% trans 'Толщина, мм' %}: {{ test.sample_thickness }}</th>
+            <th class="table_cell">{% trans 'Ширина, мм' %}: {{ test.sample_width }}</th>
+            <th class="table_cell" id="cell2">{% trans 'Длина, мм' %}: {{ test.sample_length }}</th>
             <th class="table_cell">{{ test.number_of_layers }}</th>
             {% if test.passed %}
             <th class="table_cell">+</th>

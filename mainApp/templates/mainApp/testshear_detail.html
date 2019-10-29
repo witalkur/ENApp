@@ -1,14 +1,15 @@
 {% extends "mainApp/today.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load i18n %}
 {% block content %}
 <table class="table_detail">
 	<tr>
-		<th class="table_cell dark_cell">Номер теста</th>
-		<th class="table_cell dark_cell">Дата</th>
-		<th class="table_cell dark_cell">Время</th>
-		<th class="table_cell dark_cell">Порода</th>
-		<th class="table_cell dark_cell">Класс</th>
+		<th class="table_cell dark_cell">{% trans 'Номер теста' %}</th>
+		<th class="table_cell dark_cell">{% trans 'Дата' %}</th>
+		<th class="table_cell dark_cell">{% trans 'Время' %}</th>
+		<th class="table_cell dark_cell">{% trans 'Порода' %}</th>
+		<th class="table_cell dark_cell">{% trans 'Класс' %}</th>
 	</tr>
 	<tr>
         <th class="table_cell">{{ object.test_number }}</th>
@@ -22,52 +23,52 @@
         <th class="table_cell">{{ object.strength_class }}</th>
     </tr>
     <tr>
-    	<td colspan="3" class="table_cell" id="cell1">Размеры образца</td>
-        <th colspan="2" class="table_cell" id="cell3">Оборудование</th>
+    	<td colspan="3" class="table_cell" id="cell1">{% trans 'Размеры образца' %}</td>
+        <th colspan="2" class="table_cell" id="cell3">{% trans 'Оборудование' %}</th>
     </tr>
     <tr>
-    	<th class="table_cell dark_cell">Толщина</th>
-		<th class="table_cell dark_cell">Ширина</th>
-		<th class="table_cell dark_cell" id="cell2">Длина</th>
+    	<th class="table_cell dark_cell">{% trans 'Толщина, мм' %}</th>
+		<th class="table_cell dark_cell">{% trans 'Ширина, мм' %}</th>
+		<th class="table_cell dark_cell" id="cell2">{% trans 'Длина, мм' %}</th>
 		<th colspan="2" rowspan="2" class="table_cell">{{ object.equipment }}</th>
     </tr>
     <tr>
-    	<th class="table_cell">{{ object.sample_thickness }} мм</th>
-    	<th class="table_cell">{{ object.sample_width }} мм</th>
-    	<th class="table_cell" id="cell2">{{ object.sample_length }} мм</th>
+    	<th class="table_cell">{{ object.sample_thickness }}</th>
+    	<th class="table_cell">{{ object.sample_width }}</th>
+    	<th class="table_cell" id="cell2">{{ object.sample_length }}</th>
     </tr>
     <tr>
-    	<th colspan="5" class="table_cell" id="cell3">Ответственные лица</th>
+    	<th colspan="5" class="table_cell" id="cell3">{% trans 'Ответственные лица' %}</th>
     </tr>
     <tr>
-		<th colspan="2" class="table_cell dark_cell">Визуальная сортировка</th>
+		<th colspan="2" class="table_cell dark_cell">{% trans 'Визуальная сортировка' %}</th>
 		<th colspan="3" class="table_cell">{{ object.sorter_person }}</th>
 	</tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Склейка по длине</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Склейка по длине' %}</th>
         <th colspan="3" class="table_cell">{{ object.fj_person }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Склейка по пласти</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Склейка по пласти' %}</th>
         <th colspan="3" class="table_cell">{{ object.glue_person }}</th>
     </tr>
     <tr>
-        <th colspan="2" class="table_cell dark_cell">Нанесение маркировки</th>
+        <th colspan="2" class="table_cell dark_cell">{% trans 'Нанесение маркировки' %}</th>
         <th colspan="3" class="table_cell">{{ object.marking_person }}</th>
     </tr>
     <tr>
-        <th colspan="5" class="table_cell" id="cell3">Технологические параметры процесса</th>
+        <th colspan="5" class="table_cell" id="cell3">{% trans 'Технологические параметры процесса' %}</th>
     </tr>
     <tr>
-    	<th class="table_cell dark_cell">Влажность воздуха</th>
-    	<th class="table_cell dark_cell">Влажность древесины</th>
-    	<th class="table_cell dark_cell">Температура воздуха</th>
-    	<th class="table_cell dark_cell">Температура древесины</th>
-        <th class="table_cell dark_cell">Температура клея</th>
+    	<th class="table_cell dark_cell">{% trans 'Влажность воздуха, %' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Влажность древесины, %' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Температура воздуха, °C' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Температура древесины, °C' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Температура клея, °C' %}</th>
     </tr>
     <tr>
-    	<th class="table_cell">{{ object.air_moisture }} %</th>
-    	<th class="table_cell">{{ object.wood_moisture }} %</th>
+    	<th class="table_cell">{{ object.air_moisture }}</th>
+    	<th class="table_cell">{{ object.wood_moisture }}</th>
     	<th class="table_cell">{{ object.air_temperature }}</th>
         {% if object.wood_temperature %}
     	<th class="table_cell">{{ object.wood_temperature }}</th>
@@ -81,11 +82,11 @@
         {% endif %}
     </tr>
     <tr>
-    	<th class="table_cell dark_cell">Клей</th>
-        <th class="table_cell dark_cell">Номер партии клея</th>
-        <th class="table_cell dark_cell">Срок годности клея</th>
-        <th class="table_cell dark_cell">Время начала прессования</th>
-        <th class="table_cell dark_cell">Время конца прессования</th>
+    	<th class="table_cell dark_cell">{% trans 'Клей' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Номер партии клея' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Срок годности клея' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Время начала прессования' %}</th>
+        <th class="table_cell dark_cell">{% trans 'Время конца прессования' %}</th>
     </tr>
      <tr>
         <th class="table_cell">{{ object.glue }}</th>
@@ -103,16 +104,16 @@
         {% endif %}
     </tr>
     <tr>
-    	<th class="table_cell dark_cell">Расход клея</th>
-    	<th class="table_cell dark_cell">Давление</th>
-    	<th class="table_cell dark_cell">Продолжительность</th>
-    	<th colspan="2" class="table_cell dark_cell">Соотношение Клей:Отвердитель</th>
+    	<th class="table_cell dark_cell">{% trans 'Расход клея, г/см2' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Давление, г/см3' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Продолжительность, мин.' %}</th>
+    	<th colspan="2" class="table_cell dark_cell">{% trans 'Соотношение Клей:Отвердитель' %}</th>
     </tr>
     <tr>
-    	<th class="table_cell">{{ object.glue_use_amount }} г/см2</th>
-    	<th class="table_cell">{{ object.glue_pressure }} г/см3</th>
+    	<th class="table_cell">{{ object.glue_use_amount }}</th>
+    	<th class="table_cell">{{ object.glue_pressure }}</th>
     	{% if object.pressure_time %}
-    	<th class="table_cell">{{ object.pressure_time }} сек.</th>
+    	<th class="table_cell">{{ object.pressure_time }}</th>
     	{% else %}
         <th class="table_cell">---</th>
         {% endif %}
@@ -123,22 +124,22 @@
         {% endif %}
     </tr>
     <tr>
-    	<th colspan="5" class="table_cell" id="cell3">Результаты тестирования</th>
+    	<th colspan="5" class="table_cell" id="cell3">{% trans 'Результаты тестирования' %}</th>
     </tr>
     <tr>
-    	<th class="table_cell dark_cell">Кол-во швов</th>
-    	<th class="table_cell dark_cell">Сила</th>
-    	<th class="table_cell dark_cell">Продолжительность тестирования</th>
-    	<th colspan="2" class="table_cell dark_cell">Средний процент разрыва волокон</th>
+    	<th class="table_cell dark_cell">{% trans 'Кол-во швов' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Сила в кН' %}</th>
+    	<th class="table_cell dark_cell">{% trans 'Продолжительность под нагрузкой, сек.' %}</th>
+    	<th colspan="2" class="table_cell dark_cell">{% trans 'Средний процент разрыва волокон' %}</th>
     </tr>
     <tr>
     	<th class="table_cell">{{ object.number_of_layers }}</th>
-    	<th class="table_cell">{{ object.force_crash }} kH</th>
-    	<th class="table_cell">{{ object.time_of_testing }} сек</th>
+    	<th class="table_cell">{{ object.force_crash }}</th>
+    	<th class="table_cell">{{ object.time_of_testing }}</th>
     	<th colspan="2" class="table_cell">{{ object.layer_ripped_percent_average }} %</th>
     </tr>
     <tr>
-    	<th colspan="5" class="table_cell" id="cell3">Комментарий</th>
+    	<th colspan="5" class="table_cell" id="cell3">{% trans 'Комментарий' %}</th>
     </tr>
     <tr>
     	{% if object.comment %}
@@ -149,13 +150,13 @@
     </tr>
 
     <tr>
-    	<th class="table_cell dark_cell">Соответствует нормам:</th>
+    	<th class="table_cell dark_cell">{% trans 'Соответствует нормам' %}:</th>
     	{% if object.passed %}
-    	<th class="table_cell">Да</th>
+    	<th class="table_cell">{% trans 'Да' %}</th>
     	{% else %}
-        <th class="table_cell">Нет</th>
+        <th class="table_cell">{% trans 'Нет' %}</th>
         {% endif %}
-    	<th class="table_cell dark_cell">Фото:</th>
+    	<th class="table_cell dark_cell">{% trans 'Фото' %}:</th>
         {% if object.photo %}
     	<th class="table_cell" colspan="2"><a href="{{ object.photo.url }}" target="_blank"><img src="{{ object.photo.url }}"></a></th>
         {% else %}
@@ -164,11 +165,11 @@
     </tr>
 </table>
 {% if perms.mainApp.change_TestShear %}
-<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'shear-test-update' object.id %}">Изменить</a>
+<a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'shear-test-update' object.id %}">{% trans 'Изменить' %}</a>
 {% endif %}
 
 {% if perms.mainApp.delete_TestShear %}
-<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'shear-test-delete' object.id %}">Удалить</a>
+<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'shear-test-delete' object.id %}">{% trans 'Удалить' %}</a>
 {% endif %}
 
 
