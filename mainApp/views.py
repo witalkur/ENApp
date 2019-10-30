@@ -8,7 +8,7 @@ from django.views.generic import UpdateView, DeleteView, ListView, DetailView, C
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.utils import translation
 
 @login_required
 def today(request):
@@ -34,7 +34,11 @@ def bendtest(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Новый тест на изгиб сохранен!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новый тест на изгиб сохранен!')
+			else:
+				messages.success(request, f'New bending test saved!')
 			return redirect('today')
 	else:
 		form = BendtestForm()
@@ -78,7 +82,11 @@ def TestDelaminationView(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Новый тест на деламинацию сохранен!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новый тест на деламинацию сохранен!')
+			else:
+				messages.success(request, f'New delamination test saved!')
 			return redirect('today')
 	else:
 		form = TestDelaminationForm()
@@ -91,7 +99,11 @@ def TestShearView(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Новый тест на срез сохранен!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новый тест на срез сохранен!')
+			else:
+				messages.success(request, f'New shear test saved!')
 			return redirect('today')
 	else:
 		form = TestShearForm()
@@ -124,7 +136,11 @@ class BendTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		'out_of_fj_crash', 'comment', 'photo']'''
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Тест на изгиб был изменен!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Тест на изгиб был изменен!')
+		else:
+			messages.success(request, f'Bending test has been modified!')
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
@@ -149,7 +165,11 @@ class DelaminationTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, Update
 		'start_glue_time', 'end_glue_time', 'pressure_time', 'layer_out_percent', 'passed', 'comment', 'photo',]'''
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Тест на деламинацию был изменен!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Тест на деламинацию был изменен!')
+		else:
+			messages.success(request, f'Delamination test has been modified!')
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
@@ -177,7 +197,11 @@ class ShearTestUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		 'force_crash', 'passed', 'comment', 'photo']'''
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Тест на срез был изменен!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Тест на срез был изменен!')
+		else:
+			messages.success(request, f'Shear test has been modified!')
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
@@ -237,7 +261,11 @@ class NonconformityUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateVie
 	#fields = ['name', 'description', 'resp_person', 'nonconformity_date',]
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Несоответствие отредактировано!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Несоответствие отредактировано!')
+		else:
+			messages.success(request, f'Nonconformity has been modified!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -252,7 +280,11 @@ class NonconformityDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
 	template_name = 'mainApp/nonconformity_confirm_delete.html'
 	
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Несоответствие удалено!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Несоответствие удалено!')
+		else:
+			messages.success(request, f'Nonconformity has been deleted!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -270,7 +302,11 @@ def NonconformityCreateView(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Новое несоответствие добавлено!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новое несоответствие добавлено!')
+			else:
+				messages.success(request, f'New nonconformity has been added!')
 			return redirect('nonconformities')
 	else:
 		form = NonconformityForm()
@@ -290,7 +326,11 @@ class PersonUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	#fields = ['name', 'position', 'training_date', 'next_training_date', 'comment',]
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Данные о сотруднике сохранены!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Данные о сотруднике сохранены!')
+		else:
+			messages.success(request, f'Employee data saved!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -306,7 +346,11 @@ class PersonDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	template_name = 'mainApp/person_confirm_delete.html'
 	
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Данные о сотруднике удалены!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Данные о сотруднике удалены!')
+		else:
+			messages.success(request, f'Employee data has been deleted!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -322,7 +366,11 @@ def PersonCreateView(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Данные о новом сотруднике добавлены!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Данные о новом сотруднике добавлены!')
+			else:
+				messages.success(request, f'New employee data has been added!')
 			return redirect('persons')
 	else:
 		form = PersonForm()
@@ -351,7 +399,11 @@ class ToolUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	#fields = ['name', 'description', 'resp_person', 'calibration_date', 'next_calibration_date',]
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Информация сохранена!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Информация сохранена!')
+		else:
+			messages.success(request, f'Information has been saved!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -367,7 +419,11 @@ class ToolDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	template_name = 'mainApp/tool_confirm_delete.html'
 	
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Данные удалены!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Данные удалены!')
+		else:
+			messages.success(request, f'Information has been deleted!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -382,7 +438,11 @@ def ToolCreateView(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form.save()
-			messages.success(request, f'Данные добавлены!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Данные добавлены!')
+			else:
+				messages.success(request, f'Information has been added!')
 			return redirect('tools')
 	else:
 		form = ToolForm()
@@ -842,7 +902,11 @@ def SettingsView(request):
 		if wood_form.is_valid():
 			wood_form.instance.author = request.user
 			wood_form.save()
-			messages.success(request, f'Новая порода дерева добавлена!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новая порода дерева добавлена!')
+			else:
+				messages.success(request, f'New wood species has been added!')
 			return redirect('settings')
 		
 	else:
@@ -853,7 +917,11 @@ def SettingsView(request):
 		if class_form.is_valid():
 			class_form.instance.author = request.user
 			class_form.save()
-			messages.success(request, f'Новый класс прочности добавлен!')
+			cur_language = translation.get_language()
+			if cur_language == 'ru':
+				messages.success(request, f'Новый класс прочности добавлен!')
+			else:
+				messages.success(request, f'New strength class has been added!')
 			return redirect('settings')
 	else:
 		class_form = strength_class_typesForm(prefix='strength_class')
@@ -871,7 +939,11 @@ class Wood_types_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 	#fields = ['name',]
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Порода дерева сохранена!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Порода дерева сохранена!')
+		else:
+			messages.success(request, f'Wood species has been saved!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -886,7 +958,11 @@ class Wood_types_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
 	template_name = 'mainApp/wood_types_confirm_delete.html'
 	
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Порода дерева удалена!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Порода дерева удалена!')
+		else:
+			messages.success(request, f'Wood species has been deleted!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -913,7 +989,11 @@ class Strength_class_UpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateV
 	#fields = ['name',]
 
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Класс прочности сохранен!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Класс прочности сохранен!')
+		else:
+			messages.success(request, f'Strength class has been saved!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):
@@ -928,7 +1008,11 @@ class Strength_class_DeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteV
 	template_name = 'mainApp/strength_class_confirm_delete.html'
 	
 	def post(self, request, *args, **kwargs):
-		messages.success(request, f'Класс прочности удален!')
+		cur_language = translation.get_language()
+		if cur_language == 'ru':
+			messages.success(request, f'Класс прочности удален!')
+		else:
+			messages.success(request, f'Strength class has been deleted!')
 		return super().post(request, *args, **kwargs)
 
 	def test_func(self):

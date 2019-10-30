@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 20:22+0300\n"
+"POT-Creation-Date: 2019-10-30 19:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1429,6 +1429,21 @@ msgstr "References to Standard"
 msgid "Настройки"
 msgstr "Settings"
 
+#: .\mainApp\templates\mainApp\today.html:325
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\mainApp\templates\mainApp\today.html:326
+msgid "Телефон"
+msgstr "Phone number"
+
+#: .\mainApp\templates\mainApp\today.html:327
+#: .\users\templates\users\password_reset.html:14
+#: .\users\templates\users\profile.html:25
+#: .\users\templates\users\register.html:18
+msgid "Адрес электронной почты"
+msgstr "E-mail address"
+
 #: .\mainApp\templates\mainApp\tool_confirm_delete.html:13
 msgid "Удаление оборудования/инструмента/прибора"
 msgstr "Delete equipment / tool / device"
@@ -1524,12 +1539,6 @@ msgstr "Sign in again"
 #: .\users\templates\users\password_reset.html:11
 msgid "Восстановление пароля"
 msgstr "Password recovery"
-
-#: .\users\templates\users\password_reset.html:14
-#: .\users\templates\users\profile.html:25
-#: .\users\templates\users\register.html:18
-msgid "Адрес электронной почты"
-msgstr "E-mail address"
 
 #: .\users\templates\users\password_reset.html:20
 msgid "Запросить"

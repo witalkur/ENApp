@@ -61,7 +61,7 @@
 				<a id="logo" href="/">FPC App EN 14080:2013</a>
 			</div>
 			<nav id="nav">
-				<form action="{% url 'set_language' %}" method="post">
+				<form id="nav__link2" action="{% url 'set_language' %}" method="post">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
     <ul class="nav navbar-nav navbar-right language menu">
@@ -320,7 +320,13 @@
 	</div>
 </div>	
 
-
+<footer class="site_footer">
+    <div class="contacts">
+        <h6 class="footer_item">{% trans 'Контакты' %}:</h6>
+        <h6 class="footer_item">{% trans 'Телефон' %}: +375 29 226 25 88</h6>
+        <h6 class="footer_item">{% trans 'Адрес электронной почты' %}: witalkur@gmail.com</h6>
+    </div>
+</footer>
 
 
 
